@@ -1,0 +1,222 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://Nodes/Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Nodes/Enemy.tscn" type="PackedScene" id=2]
+[ext_resource path="res://icon.png" type="Texture" id=3]
+[ext_resource path="res://Nodes/pick_up.tscn" type="PackedScene" id=4]
+
+[sub_resource type="NavigationPolygon" id=3]
+vertices = PoolVector2Array( 691.671, 268.9, 560.491, 231.9, 607.581, 221.809, 1255.07, 235.264, 1276.94, 277.309, 1359.34, -85.9587, 1371.12, 595.167, 1287.03, 529.577, 1241.62, -47.2775, -83.6354, -89.3223, 610.945, -47.2775, 553.764, -45.5957, -38.227, -37.1867, -80.2718, 583.395, -41.5906, 235.264, 700.08, 556.486, 654.672, 549.759, 646.263, 278.99, -24.7726, 282.354, -21.4091, 549.759 )
+polygons = [ PoolIntArray( 0, 1, 2, 3, 4 ), PoolIntArray( 5, 6, 7, 4 ), PoolIntArray( 5, 4, 3, 8 ), PoolIntArray( 9, 5, 8, 10 ), PoolIntArray( 2, 1, 11, 10 ), PoolIntArray( 9, 10, 11, 12 ), PoolIntArray( 13, 9, 12, 14 ), PoolIntArray( 0, 15, 16, 17 ), PoolIntArray( 1, 0, 17, 18, 14 ), PoolIntArray( 13, 14, 18, 19 ), PoolIntArray( 6, 13, 19, 15 ), PoolIntArray( 15, 7, 6 ), PoolIntArray( 15, 19, 16 ) ]
+outlines = [ PoolVector2Array( -83.6354, -89.3223, 1359.34, -85.9587, 1371.12, 595.167, -80.2718, 583.395 ), PoolVector2Array( -41.5906, 235.264, 560.491, 231.9, 553.764, -45.5957, -38.227, -37.1867 ), PoolVector2Array( -24.7726, 282.354, -21.4091, 549.759, 654.672, 549.759, 646.263, 278.99 ), PoolVector2Array( 610.945, -47.2775, 607.581, 221.809, 1255.07, 235.264, 1241.62, -47.2775 ), PoolVector2Array( 691.671, 268.9, 700.08, 556.486, 1287.03, 529.577, 1276.94, 277.309 ) ]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 221.453, 78.0106 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 961.15, 148.094 )
+
+[node name="Main" type="Node2D"]
+
+[node name="Navigation2D" type="Navigation2D" parent="." groups=[
+"navigation",
+]]
+
+[node name="NavigationPolygonInstance" type="NavigationPolygonInstance" parent="Navigation2D"]
+navpoly = SubResource( 3 )
+
+[node name="Map" type="Node2D" parent="Navigation2D"]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Navigation2D/Map"]
+position = Vector2( 1017.62, 395.79 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="Navigation2D/Map/StaticBody2D"]
+modulate = Color( 0, 0, 0, 1 )
+scale = Vector2( 6.92, 2.44 )
+texture = ExtResource( 3 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Navigation2D/Map/StaticBody2D"]
+shape = SubResource( 1 )
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="Navigation2D/Map"]
+position = Vector2( 325.615, 397.79 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="Navigation2D/Map/StaticBody2D2"]
+modulate = Color( 0, 0, 0, 1 )
+scale = Vector2( 6.92, 2.44 )
+texture = ExtResource( 3 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Navigation2D/Map/StaticBody2D2"]
+shape = SubResource( 1 )
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="Navigation2D/Map"]
+position = Vector2( 239.615, 99.7897 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="Navigation2D/Map/StaticBody2D3"]
+modulate = Color( 0, 0, 0, 1 )
+scale = Vector2( 6.92, 2.44 )
+texture = ExtResource( 3 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Navigation2D/Map/StaticBody2D3"]
+shape = SubResource( 1 )
+
+[node name="StaticBody2D4" type="StaticBody2D" parent="Navigation2D/Map"]
+position = Vector2( 915.615, 89.7897 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="Navigation2D/Map/StaticBody2D4"]
+modulate = Color( 0, 0, 0, 1 )
+scale = Vector2( 6.92, 2.44 )
+texture = ExtResource( 3 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Navigation2D/Map/StaticBody2D4"]
+shape = SubResource( 1 )
+
+[node name="StaticBody2D5" type="StaticBody2D" parent="Navigation2D/Map"]
+position = Vector2( 628.029, -290.295 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="Navigation2D/Map/StaticBody2D5"]
+modulate = Color( 0, 0, 0, 1 )
+scale = Vector2( 30.04, 4.64 )
+texture = ExtResource( 3 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Navigation2D/Map/StaticBody2D5"]
+shape = SubResource( 2 )
+
+[node name="StaticBody2D6" type="StaticBody2D" parent="Navigation2D/Map"]
+position = Vector2( 658.301, 789.416 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="Navigation2D/Map/StaticBody2D6"]
+modulate = Color( 0, 0, 0, 1 )
+scale = Vector2( 30.04, 4.64 )
+texture = ExtResource( 3 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Navigation2D/Map/StaticBody2D6"]
+shape = SubResource( 2 )
+
+[node name="StaticBody2D7" type="StaticBody2D" parent="Navigation2D/Map"]
+position = Vector2( -310.411, 247.878 )
+rotation = -1.57018
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="Navigation2D/Map/StaticBody2D7"]
+modulate = Color( 0, 0, 0, 1 )
+scale = Vector2( 30.04, 4.64 )
+texture = ExtResource( 3 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Navigation2D/Map/StaticBody2D7"]
+shape = SubResource( 2 )
+
+[node name="StaticBody2D8" type="StaticBody2D" parent="Navigation2D/Map"]
+position = Vector2( 1586.65, 207.515 )
+rotation = -1.57018
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="Navigation2D/Map/StaticBody2D8"]
+modulate = Color( 0, 0, 0, 1 )
+scale = Vector2( 30.04, 4.64 )
+texture = ExtResource( 3 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Navigation2D/Map/StaticBody2D8"]
+shape = SubResource( 2 )
+
+[node name="Player" parent="." instance=ExtResource( 1 )]
+position = Vector2( 1300, 558 )
+
+[node name="Enemy" parent="." instance=ExtResource( 2 )]
+position = Vector2( 576.855, -45.4084 )
+
+[node name="Enemy2" parent="." instance=ExtResource( 2 )]
+position = Vector2( 657.581, 561.719 )
+
+[node name="Enemy3" parent="." instance=ExtResource( 2 )]
+position = Vector2( -60.5445, 258.996 )
+
+[node name="Enemy4" parent="." instance=ExtResource( 2 )]
+position = Vector2( 1333.66, 233.769 )
+
+[node name="pick_up" parent="." instance=ExtResource( 4 )]
+position = Vector2( -25.4559, 548.715 )
+
+[node name="pick_up2" parent="." instance=ExtResource( 4 )]
+position = Vector2( 630.739, 565.685 )
+
+[node name="pick_up3" parent="." instance=ExtResource( 4 )]
+position = Vector2( 653.367, 254.558 )
+
+[node name="pick_up4" parent="." instance=ExtResource( 4 )]
+position = Vector2( -36.7698, 246.073 )
+
+[node name="pick_up5" parent="." instance=ExtResource( 4 )]
+position = Vector2( 1286.93, -33.9412 )
+
+[node name="pick_up6" parent="." instance=ExtResource( 4 )]
+position = Vector2( 557.2, -36.7697 )
+
+[node name="pick_up7" parent="." instance=ExtResource( 4 )]
+position = Vector2( -48.0834, -45.255 )
+
+[node name="WalkPoint" type="Node2D" parent="." groups=[
+"walk_point",
+]]
+
+[node name="WalkPoint2" type="Node2D" parent="." groups=[
+"walk_point",
+]]
+position = Vector2( -40.363, 270.769 )
+
+[node name="WalkPoint3" type="Node2D" parent="." groups=[
+"walk_point",
+]]
+position = Vector2( -36.9995, 560.037 )
+
+[node name="WalkPoint4" type="Node2D" parent="." groups=[
+"walk_point",
+]]
+position = Vector2( 679.444, 571.809 )
+
+[node name="WalkPoint5" type="Node2D" parent="." groups=[
+"walk_point",
+]]
+position = Vector2( 630.672, 240.496 )
+
+[node name="WalkPoint6" type="Node2D" parent="." groups=[
+"walk_point",
+]]
+position = Vector2( 565.082, -57.1811 )
+
+[node name="WalkPoint7" type="Node2D" parent="." groups=[
+"walk_point",
+]]
+position = Vector2( 1291.62, -42.0449 )
+
+[node name="WalkPoint8" type="Node2D" parent="." groups=[
+"walk_point",
+]]
+position = Vector2( 1313.48, 238.814 )
+
+[node name="WalkPoint9" type="Node2D" parent="." groups=[
+"walk_point",
+]]
+position = Vector2( 1330.3, 578.537 )
