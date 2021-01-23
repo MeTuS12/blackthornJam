@@ -8,7 +8,7 @@ enum STATE { WAIT, GO_TO_POINT, AWARE, CHASING, LOST_TARGET }
 var motion = Vector2()
 var direction = Vector2()
 
-export var max_velocity = 100
+export var max_velocity = 50
 var current_max_velocity = 0
 
 export var run_bonus = 1.5
@@ -16,9 +16,9 @@ export var run_bonus = 1.5
 export var acceleration = 2500
 export var deceleration = 3000
 
-export var delta_velocity = 3
+export var delta_velocity = 10
 
-export var wait_time = 1.0
+export var wait_time = 2.0
 export var target_min_distance = 50
 
 

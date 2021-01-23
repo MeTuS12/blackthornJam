@@ -64,7 +64,7 @@ func _physics_process(delta):
 	
 	direction = check_input()
 	move(delta)
-	
+
 
 func move(delta):
 	if direction == Vector2():
