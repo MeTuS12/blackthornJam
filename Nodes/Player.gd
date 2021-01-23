@@ -82,11 +82,9 @@ func move(delta):
 
 
 func update_weight_velocity():
-	print('PICK!')
 	print(min(max_weight, current_weight))
 	
 	var weight_ratio = 1 - min(max_weight, current_weight) / max_weight
-	print(weight_ratio)
 	current_weight_velocity = min_velocity + delta_vel * weight_ratio
 
 
