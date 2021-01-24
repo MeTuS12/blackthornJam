@@ -163,27 +163,6 @@ position = Vector2( 1333.94, 579.213 )
 [node name="Enemy2" parent="." instance=ExtResource( 2 )]
 position = Vector2( 1296.69, -58.1363 )
 
-[node name="pick_up" parent="." instance=ExtResource( 4 )]
-position = Vector2( -25.4559, 548.715 )
-
-[node name="pick_up2" parent="." instance=ExtResource( 4 )]
-position = Vector2( 630.739, 565.685 )
-
-[node name="pick_up3" parent="." instance=ExtResource( 4 )]
-position = Vector2( 653.367, 254.558 )
-
-[node name="pick_up4" parent="." instance=ExtResource( 4 )]
-position = Vector2( -36.7698, 246.073 )
-
-[node name="pick_up5" parent="." instance=ExtResource( 4 )]
-position = Vector2( 1286.93, -33.9412 )
-
-[node name="pick_up6" parent="." instance=ExtResource( 4 )]
-position = Vector2( 557.2, -36.7697 )
-
-[node name="pick_up7" parent="." instance=ExtResource( 4 )]
-position = Vector2( -48.0834, -45.255 )
-
 [node name="WalkPoint" type="Node2D" parent="." groups=[
 "walk_point",
 ]]
@@ -227,3 +206,18 @@ position = Vector2( 1313.48, 238.814 )
 "walk_point",
 ]]
 position = Vector2( 1330.3, 578.537 )
+
+[node name="pick_up" parent="." instance=ExtResource( 4 )]
+position = Vector2( 639.947, 258.622 )
+
+[node name="pick_up2" parent="." instance=ExtResource( 4 )]
+position = Vector2( 409.641, 254.846 )
+
+[node name="pick_up3" parent="." instance=ExtResource( 4 )]
+position = Vector2( 113.265, 262.397 )
+
+[node name="pick_up4" parent="." instance=ExtResource( 4 )]
+position = Vector2( -73.6222, 173.673 )
+
+[node name="pick_up5" parent="." instance=ExtResource( 4 )]
+position = Vector2( -62.3976, 447.554 )

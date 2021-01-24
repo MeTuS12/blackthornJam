@@ -5,8 +5,8 @@ class_name Enemy
 
 enum STATE { WAIT, GO_TO_POINT, AWARE, CHASING, LOST_TARGET }
 
-const DISTANCE_RUN = 300
-const DISTANCE_WALK = 100
+const DISTANCE_RUN = 500
+const DISTANCE_WALK = 200
 
 var motion = Vector2()
 var direction = Vector2()
@@ -34,6 +34,7 @@ var repellers = []
 
 var walk_points = []
 var target_point = null
+var target_pickup_point = null
 var next_path_point = null
 
 var navigation = null
@@ -41,7 +42,6 @@ var path = null
 var player = null
 
 var view_target = null
-var hit_pos = null
 var vis_color = Color(.867,.91,.247,.1)
 var ear_color = Color(.247,.91,.247,.1)
 var target_min_distance_color = Color(.947,.91,.247,.1)
@@ -72,7 +72,7 @@ func change_state(new_state):
 	state = new_state
 	
 	if has_method(new_state_str + '_init'):
-#		print(new_state_str + '_init')
+		print(new_state_str + '_init')
 		call(new_state_str + '_init')
 
 
@@ -80,7 +80,7 @@ func end_state():
 	var state_str = STATE.keys()[state]
 	
 	if has_method(state_str + '_end'):
-#		print(state_str + '_end')
+		print(state_str + '_end')
 		call(state_str + '_end')
 
 
@@ -90,19 +90,27 @@ func _physics_process(delta):
 	if has_method(state_str):
 		call(state_str, delta)
 	
+	check_sound()
+	check_vision()
+
+
+func update_target(position):
+	target_point = position
+	print(position)
+
+
+func check_vision():
 	if view_target:
-		ray()
-
-
-
-func ray():
-	var space_state = get_world_2d().direct_space_state
-	var result = space_state.intersect_ray(position, view_target.position, [self])
-	if result:
-		if result.collider.name == "Player":
-				hit_pos = result.position
-				$Sprite.self_modulate.r = 2.0
-				change_state(STATE.CHASING)
+		var space_state = get_world_2d().direct_space_state
+		var result = space_state.intersect_ray(position, view_target.position, [self])
+		
+		if result:
+			if result.collider is Player:
+					update_target(result.position)
+					$Sprite.self_modulate.r = 2.0
+					
+					if state != STATE.CHASING:
+						change_state(STATE.CHASING)
 
 
 
@@ -132,22 +140,21 @@ func WAIT_end():
 func check_sound():
 	var distance_to_player = position.distance_to(player.position)
 	
-	if distance_to_player < DISTANCE_RUN:
-		if player.is_running():
-			target_point = player.position
+	if distance_to_player < DISTANCE_WALK:
+		if player.is_walking():
+			update_target(player.position)
 			change_state(STATE.AWARE)
 	
 	elif distance_to_player < DISTANCE_RUN:
 		if player.is_running():
-			target_point = player.position
+			update_target(player.position)
 			change_state(STATE.AWARE)
 
 
 func GO_TO_POINT_init():
 	walk_points.sort_custom(self, "closest_compare")
 	randomize()
-	target_point = walk_points[ randi() % 3 + 1 ]
-	path = navigation.get_simple_path(position, target_point.position)
+	update_target( walk_points[ randi() % 3 + 1 ].position )
 
 
 func closest_compare(a, b):
@@ -161,10 +168,17 @@ func GO_TO_POINT(_delta):
 
 
 func move_in_path(_delta):
+	if target_pickup_point != null:
+		path = navigation.get_simple_path(position, target_pickup_point)
+	else:
+		path = navigation.get_simple_path(position, target_point)
+	
+	popPathPoint()
+	
 	if next_path_point == null or position.distance_to(next_path_point) < target_min_distance:
-		if not popPathPoint():
+		if not popPathPoint() or position.distance_to(target_point) < target_min_distance:
 			change_state(STATE.WAIT)
-			return
+			return 
 	
 	direction = position.direction_to(next_path_point).normalized()
 	move(_delta)
@@ -219,12 +233,12 @@ func AWARE(_delta):
 
 
 func CHASING_init():
-	path = navigation.get_simple_path(position, hit_pos)
+	path = navigation.get_simple_path(position, target_point)
 
 
 
 func CHASING(_delta):
-	path = navigation.get_simple_path(position, hit_pos)
+	path = navigation.get_simple_path(position, target_point)
 	move_in_path(_delta)
 	is_aware = true
 
