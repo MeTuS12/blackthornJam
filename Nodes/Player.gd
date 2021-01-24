@@ -19,6 +19,8 @@ var current_weight = 0.0
 var current_weight_velocity = 0
 var current_max_velocity = 0
 
+var running = false
+
 export var acceleration = 2500
 export var deceleration = 3000
 
@@ -57,14 +59,17 @@ func check_input():
 func _physics_process(delta):
 	if Input.is_action_pressed("ui_ctrl"):
 		current_max_velocity = current_weight_velocity * silence_penalicer
+		running = false
 	elif Input.is_action_pressed("ui_shift"):
+		running = true
 		current_max_velocity = current_weight_velocity * run_bonus
+	elif Input.is_action_just_released("ui_shift"):
+		running = false
 	else:
 		current_max_velocity = current_weight_velocity
 	
 	direction = check_input()
 	move(delta)
-	
 
 func move(delta):
 	if direction == Vector2():
@@ -99,3 +104,7 @@ func pick(pick_up):
 	pickUps.add_child(pick_up)
 	
 	update_weight_velocity()
+
+
+func is_running():
+	return running

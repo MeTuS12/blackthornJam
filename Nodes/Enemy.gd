@@ -5,6 +5,9 @@ class_name Enemy
 
 enum STATE { WAIT, GO_TO_POINT, AWARE, CHASING, LOST_TARGET }
 
+const DISTANCE_RUN = 300
+const DISTANCE_WALK = 100
+
 var motion = Vector2()
 var direction = Vector2()
 
@@ -22,7 +25,7 @@ export var wait_time = 1.0
 export var target_min_distance = 50
 
 
-onready var pickUps = $PickUps
+#onready var pickUps = $PickUps
 
 var is_aware = false
 
@@ -35,6 +38,12 @@ var next_path_point = null
 
 var navigation = null
 var path = null
+var player = null
+
+var view_target = null
+var hit_pos = null
+var vis_color = Color(.867,.91,.247,.1)
+var ear_color = Color(.247,.91,.247,.1)
 
 var state = STATE.WAIT
 
@@ -49,6 +58,10 @@ func _ready():
 	assert( navigation.size() > 0, "No existe ningún objeto Navigation2D (tiene que pertenecer al grupo 'navigation')" )
 	navigation = navigation[0]
 	
+	player = get_tree().get_nodes_in_group('player')
+	assert( player.size() > 0, "No existe ningún objeto Navigation2D (tiene que pertenecer al grupo 'player')" )
+	player = player[0]
+	
 	change_state(STATE.WAIT)
 
 
@@ -58,7 +71,7 @@ func change_state(new_state):
 	state = new_state
 	
 	if has_method(new_state_str + '_init'):
-		print(new_state_str + '_init')
+#		print(new_state_str + '_init')
 		call(new_state_str + '_init')
 
 
@@ -66,7 +79,7 @@ func end_state():
 	var state_str = STATE.keys()[state]
 	
 	if has_method(state_str + '_end'):
-		print(state_str + '_end')
+#		print(state_str + '_end')
 		call(state_str + '_end')
 
 
@@ -75,19 +88,58 @@ func _physics_process(delta):
 	
 	if has_method(state_str):
 		call(state_str, delta)
+	
+	if view_target:
+		aim()
+
+
+
+func aim():
+	var space_state = get_world_2d().direct_space_state
+	var result = space_state.intersect_ray(position, view_target.position, [self])
+	
+	if result:
+		hit_pos = result.position
+		if result.collider.name == "Player":
+			$Sprite.self_modulate.r = 2.0
+
+
+
+func _draw():
+#	 Lejos
+	draw_circle(Vector2(), 300, vis_color)
+#	 Cerca
+	draw_circle(Vector2(), 100, ear_color)
+
 
 
 func WAIT_init():
 	yield(get_tree().create_timer(wait_time), "timeout")
+	is_aware = false
 	end_state()
 
-#
-#func WAIT():
-#	pass
+
+func WAIT(_delta):
+	check_sound()
 
 
 func WAIT_end():
 	change_state(STATE.GO_TO_POINT)
+
+
+
+func check_sound():
+	var distance_to_player = position.distance_to(player.position)
+	
+	if distance_to_player < DISTANCE_WALK:
+		if player.is_running():
+			target_point = player.position
+			change_state(STATE.AWARE)
+	
+	elif distance_to_player < DISTANCE_RUN:
+		if player.is_running():
+			target_point = player.position
+			change_state(STATE.AWARE)
 
 
 func GO_TO_POINT_init():
@@ -102,6 +154,7 @@ func closest_compare(a, b):
 
 
 func GO_TO_POINT(_delta):
+	check_sound()
 	move_in_path(_delta)
 
 
@@ -150,4 +203,36 @@ func move(delta):
 			motion = motion.normalized() * current_max_velocity
 	
 	motion = move_and_slide(motion)
-	
+
+
+
+func AWARE_init():
+	path = navigation.get_simple_path(position, target_point)
+
+
+
+func AWARE(_delta):
+	move_in_path(_delta)
+	is_aware = true
+
+
+
+func CHASING_init():
+	path = navigation.get_simple_path(position, hit_pos)
+
+
+
+func CHASING(_delta):
+	move_in_path(_delta)
+	is_aware = true
+
+
+func _on_ViewZone_body_entered(body):	
+	if body is Player:
+		view_target = body
+
+
+func _on_ViewZone_body_exited(body):
+	if body == view_target:
+		view_target = null
+		$Sprite.self_modulate.r = 1.0
