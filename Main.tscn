@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Nodes/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Nodes/Enemy.tscn" type="PackedScene" id=2]
 [ext_resource path="res://icon.png" type="Texture" id=3]
 [ext_resource path="res://Nodes/pick_up.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Nodes/EnemyWalkPoint.tscn" type="PackedScene" id=5]
 
 [sub_resource type="NavigationPolygon" id=1]
 vertices = PoolVector2Array( 691.671, 268.9, 560.491, 231.9, 607.581, 221.809, 1255.07, 235.264, 1276.94, 277.309, 1359.34, -85.9587, 1371.12, 595.167, 1287.03, 529.577, 1241.62, -47.2775, -83.6354, -89.3223, 610.945, -47.2775, 553.764, -45.5957, -38.227, -37.1867, -80.2718, 583.395, -41.5906, 235.264, 700.08, 556.486, 654.672, 549.759, 646.263, 278.99, -24.7726, 282.354, -21.4091, 549.759 )
@@ -163,9 +164,7 @@ position = Vector2( 1333.94, 579.213 )
 [node name="Enemy2" parent="." instance=ExtResource( 2 )]
 position = Vector2( 1296.69, -58.1363 )
 
-[node name="WalkPoint" type="Node2D" parent="." groups=[
-"walk_point",
-]]
+[node name="WalkPoint" parent="." instance=ExtResource( 5 )]
 
 [node name="WalkPoint2" type="Node2D" parent="." groups=[
 "walk_point",

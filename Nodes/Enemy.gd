@@ -3,7 +3,7 @@ extends KinematicBody2D
 class_name Enemy
 
 
-enum STATE { WAIT, GO_TO_POINT, AWARE, CHASING, LOST_TARGET }
+enum STATE { WAIT, GO_TO_POINT, CHASING, LOST_TARGET }
 
 const DISTANCE_RUN = 500
 const DISTANCE_WALK = 200
@@ -11,7 +11,7 @@ const DISTANCE_WALK = 200
 var motion = Vector2()
 var direction = Vector2()
 
-export var max_velocity = 50
+export var max_velocity = 150
 var current_max_velocity = 0
 
 export var run_bonus = 1.5
@@ -40,6 +40,7 @@ var next_path_point = null
 var navigation = null
 var path = null
 var player = null
+var pickups
 
 var view_target = null
 var view_target_pickup = null
@@ -50,18 +51,24 @@ var target_min_distance_color = Color(.947,.91,.247,.1)
 var state = STATE.WAIT
 
 
+onready var sprite = $Sprite
+onready var animationPlayer = $Sprite/AnimationPlayer
+
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	walk_points = get_tree().get_nodes_in_group('walk_point')
 	assert( walk_points.size() >= 4, "Tienen que existir al menos 4 puntos de objetivo para los enemigos" )
 	
+	pickups = get_tree().get_nodes_in_group('pickup')
+	
 	navigation = get_tree().get_nodes_in_group('navigation')
 	assert( navigation.size() > 0, "No existe ningún objeto Navigation2D (tiene que pertenecer al grupo 'navigation')" )
 	navigation = navigation[0]
 	
 	player = get_tree().get_nodes_in_group('player')
-	assert( player.size() > 0, "No existe ningún objeto Navigation2D (tiene que pertenecer al grupo 'player')" )
+	assert( player.size() > 0, "No existe ningún objeto Player" )
 	player = player[0]
 	
 	change_state(STATE.WAIT)
@@ -91,8 +98,11 @@ func _physics_process(delta):
 	if has_method(state_str):
 		call(state_str, delta)
 	
+	update_animation()
+	
 	check_sound()
 	check_vision()
+	check_pickup()
 
 
 func update_target(position):
@@ -101,18 +111,51 @@ func update_target(position):
 
 
 
-func check_vision():
-	if view_target:
+func check_sound():
+	var distance_to_player = position.distance_to(player.position)
+	
+	if distance_to_player < DISTANCE_WALK:
+		if player.is_walking():
+			update_target(player.position)
+			change_state(STATE.CHASING)
+	
+	elif distance_to_player < DISTANCE_RUN:
+		if player.is_running():
+			update_target(player.position)
+			change_state(STATE.CHASING)
+			
+
+func check_vision(more_range=false):
+	var real_target = null
+	
+	if more_range:
+		real_target = player
+	else:
+		real_target = view_target
+	
+	if real_target:
 		var space_state = get_world_2d().direct_space_state
-		var result = space_state.intersect_ray(position, view_target.position, [self])
+		var result = space_state.intersect_ray(position, real_target.position, [self])
 		
 		if result:
 			if result.collider is Player:
 					update_target(result.position)
 					$Sprite.self_modulate.r = 2.0
+					change_state(STATE.CHASING)
+					return true
+	
+	return false
+	
 
-					if state != STATE.CHASING:
-						change_state(STATE.CHASING)
+
+func check_pickup():
+	var distance_to_player = position.distance_to(player.position)
+	
+	for p in pickups:
+		if is_instance_valid(p) and p.player_flag and p.enemy_flag:
+			if position.distance_to(p.position) < DISTANCE_RUN:
+				update_target(p.position)
+				change_state(STATE.CHASING)
 
 
 
@@ -136,21 +179,6 @@ func WAIT(_delta):
 
 func WAIT_end():
 	change_state(STATE.GO_TO_POINT)
-
-
-
-func check_sound():
-	var distance_to_player = position.distance_to(player.position)
-	
-	if distance_to_player < DISTANCE_WALK:
-		if player.is_walking():
-			update_target(player.position)
-			change_state(STATE.AWARE)
-	
-	elif distance_to_player < DISTANCE_RUN:
-		if player.is_running():
-			update_target(player.position)
-			change_state(STATE.AWARE)
 
 
 func GO_TO_POINT_init():
@@ -179,12 +207,16 @@ func move_in_path(_delta):
 	
 	if next_path_point == null or position.distance_to(next_path_point) < target_min_distance:
 		if not popPathPoint() or position.distance_to(target_point) < target_min_distance:
-			change_state(STATE.WAIT)
+			change_state(STATE.LOST_TARGET)
 			return 
 	
 	direction = position.direction_to(next_path_point).normalized()
 	move(_delta)
 
+
+func LOST_TARGET_init():
+	if not check_vision(true):
+		change_state(STATE.WAIT)
 
 
 func popPathPoint():
@@ -199,6 +231,23 @@ func popPathPoint():
 func GO_TO_POINT_end():
 	change_state(STATE.GO_TO_POINT)
 
+
+
+func update_animation():
+	var vel = motion.length()
+	
+	if motion.x < 0:
+		sprite.flip_h = true
+	elif motion.x > 0:
+		sprite.flip_h = false
+	
+	if vel > 0:
+		if is_aware:
+			animationPlayer.play("Walk", -1, 1.0)
+		else:
+			animationPlayer.play("Walk", -1, 0.7)
+	else:
+		animationPlayer.play("Idle")
 
 
 func move(delta):
@@ -235,8 +284,7 @@ func AWARE(_delta):
 
 
 
-func CHASING_init():
-	path = navigation.get_simple_path(position, target_point)
+#func CHASING_init():
 
 
 
@@ -256,8 +304,3 @@ func _on_ViewZone_body_exited(body):
 		view_target = null
 		$Sprite.self_modulate.r = 1.0
 
-
-func _on_ViewZone_area_entered(area):
-	if area is PickUpEnemy:
-		print("H")
-		view_target_pickup = area

@@ -3,7 +3,6 @@ extends KinematicBody2D
 class_name Player
 
 const MIN_ANIMATION_SPEED = 0.5
-var PICK_UP = load("res://Nodes/pick_up_enemy.tscn")
 
 
 var motion = Vector2()
@@ -31,12 +30,12 @@ export var deceleration = 3000
 
 export var delta_velocity = 20
 
-var last_direction = Vector2()
+var sprite_direction = 0
 
 onready var pickUps = $PickUps
 onready var pickUpSpawn = $PickupSpawn
-onready var animationPlayer = $Sprite/AnimationPlayer
-onready var sprite = $Sprite
+onready var animationPlayer = $SpriteBase/Sprite/AnimationPlayer
+onready var sprite = $SpriteBase/Sprite
 
 
 # Called when the node enters the scene tree for the first time.
@@ -57,9 +56,15 @@ func check_input():
 	
 	if Input.is_action_pressed("ui_left"):
 		dir += Vector2(-1, 0)
+		sprite.flip_h = true
+		sprite_direction = -1
+		pickUpSpawn.position.x = 10
 	
 	if Input.is_action_pressed("ui_right"):
 		dir += Vector2(1, 0)
+		sprite.flip_h = false
+		sprite_direction = 1
+		pickUpSpawn.position.x = -10
 
 	return dir.normalized()
 
@@ -79,16 +84,7 @@ func _physics_process(delta):
 		walking = true
 	
 	if Input.is_action_just_pressed("ui_pickup_spawn"):
-		if current_weight >= 1:
-			current_weight -= 1
-			var main = get_tree().current_scene
-			var instance = PICK_UP.instance()
-			main.add_child(instance)
-			instance.global_position = pickUpSpawn.global_position
-		
-		update_weight_velocity()
-		
-		print(current_weight)
+		throw_pick_up()
 	
 	direction = check_input()
 	move(delta)
@@ -98,14 +94,6 @@ func _physics_process(delta):
 func update_animation():
 	var vel = motion.length()
 	var speed = 1.0
-	
-	if abs(motion.x) > delta_velocity:
-		if motion.x > 0:
-			sprite.flip_h = false
-			pickUpSpawn.position.x = -115
-		elif motion.x < 0:
-			sprite.flip_h = true
-			pickUpSpawn.position.x = 115
 	
 	if vel > 0:
 		speed = vel / max_velocity * (1.0 - MIN_ANIMATION_SPEED) + MIN_ANIMATION_SPEED
@@ -126,7 +114,6 @@ func move(delta):
 		motion -= motion.normalized() * deceleration * delta
 	else:
 		motion += direction * acceleration * delta
-		last_direction = direction
 	
 	if motion.length() < delta_velocity:
 		motion = Vector2()
@@ -146,12 +133,16 @@ func update_weight_velocity():
 
 func pick(pick_up):
 	current_weight += pick_up.weight
+	pick_up.pick(self)
+
+
+func throw_pick_up():
+	var pick_ups = pickUps.get_children()
 	
-	pick_up.visible = false
-	pick_up.get_parent().remove_child(pick_up)
-	pickUps.add_child(pick_up)
-	
-	update_weight_velocity()
+	if pick_ups.size() > 0:
+		var throw_pick_up = pick_ups[randi() % pick_ups.size()]
+		throw_pick_up.throw(self)
+
 
 
 func is_running():
