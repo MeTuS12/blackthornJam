@@ -45,7 +45,7 @@ tracks/1/keys = {
 "values": [ Vector2( -4.24268, -193.747 ), Vector2( -4.24268, -193.747 ) ]
 }
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=3]
 resource_name = "Jump"
 length = 0.4
 loop = true
@@ -74,7 +74,7 @@ tracks/1/keys = {
 "values": [ Vector2( -4.24268, -193.747 ), Vector2( -4.24268, -193.747 ), Vector2( -4.24268, -193.747 ), Vector2( -4.243, -240 ) ]
 }
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=4]
 resource_name = "JumpSlow"
 length = 0.4
 loop = true
@@ -103,7 +103,7 @@ tracks/1/keys = {
 "values": [ Vector2( -4.24268, -193.747 ), Vector2( -4.24268, -193.747 ), Vector2( -4.24268, -193.747 ), Vector2( -4.243, -210 ) ]
 }
 
-[sub_resource type="CapsuleShape2D" id=3]
+[sub_resource type="CapsuleShape2D" id=5]
 radius = 29.0733
 height = 112.102
 
@@ -124,7 +124,6 @@ scale = Vector2( 0.8, 0.8 )
 
 [node name="Sprite" type="AnimatedSprite" parent="SpriteBase"]
 position = Vector2( -4.24268, -193.747 )
-scale = Vector2( 1, 1 )
 frames = SubResource( 1 )
 offset = Vector2( -2.56048, -252.61 )
 flip_h = true
@@ -132,13 +131,13 @@ flip_h = true
 [node name="AnimationPlayer" type="AnimationPlayer" parent="SpriteBase/Sprite"]
 autoplay = "Idle"
 anims/Idle = SubResource( 2 )
-anims/Jump = SubResource( 4 )
-anims/JumpSlow = SubResource( 5 )
+anims/Jump = SubResource( 3 )
+anims/JumpSlow = SubResource( 4 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( -3.3118, 25.1907 )
 rotation = -1.55738
-shape = SubResource( 3 )
+shape = SubResource( 5 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2( 5.03973, 51.6567 )

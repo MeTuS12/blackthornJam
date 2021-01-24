@@ -4,6 +4,7 @@ class_name Player
 
 const MIN_ANIMATION_SPEED = 0.5
 
+signal treasure_changed
 
 var motion = Vector2()
 var direction = Vector2()
@@ -17,6 +18,8 @@ export var run_bonus = 1.5
 
 export var max_weight = 5.0
 var current_weight = 0.0
+
+var current_value = 0.0
 
 
 var current_weight_velocity = 0
@@ -36,6 +39,7 @@ onready var pickUps = $PickUps
 onready var pickUpSpawn = $PickupSpawn
 onready var animationPlayer = $SpriteBase/Sprite/AnimationPlayer
 onready var sprite = $SpriteBase/Sprite
+onready var camera = $Camera2D
 
 
 # Called when the node enters the scene tree for the first time.
@@ -70,6 +74,9 @@ func check_input():
 
 
 func _physics_process(delta):
+	if Input.is_action_just_pressed("ui_cancel"):
+		get_tree().quit()
+	
 	if Input.is_action_pressed("ui_ctrl"):
 		current_max_velocity = current_weight_velocity * silence_penalicer
 		running = false
@@ -123,6 +130,10 @@ func move(delta):
 	motion = move_and_slide(motion)
 
 
+func update_camera():
+	pass
+
+
 func update_weight_velocity():
 	print(min(max_weight, current_weight))
 	
@@ -132,8 +143,8 @@ func update_weight_velocity():
 
 
 func pick(pick_up):
-	current_weight += pick_up.weight
 	pick_up.pick(self)
+	emit_signal("treasure_changed", current_value)
 
 
 func throw_pick_up():
@@ -142,6 +153,7 @@ func throw_pick_up():
 	if pick_ups.size() > 0:
 		var throw_pick_up = pick_ups[randi() % pick_ups.size()]
 		throw_pick_up.throw(self)
+		emit_signal("treasure_changed", current_value)
 
 
 

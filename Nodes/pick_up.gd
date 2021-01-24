@@ -17,6 +17,8 @@ func _ready():
 
 func pick(body):
 	if body.name == "Player":
+		body.current_weight += weight
+		body.current_value += value
 		visible = false
 		get_parent().remove_child(self)
 		body.pickUps.add_child(self)
@@ -26,6 +28,7 @@ func pick(body):
 
 func throw(player):
 	player.current_weight -= self.weight
+	player.current_value -= self.value
 	player.pickUps.remove_child(self)
 	
 	player.get_parent().add_child(self)

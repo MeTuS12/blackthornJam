@@ -143,9 +143,7 @@ func check_vision(more_range=false):
 					$Sprite.self_modulate.r = 2.0
 					change_state(STATE.CHASING)
 					return true
-	
 	return false
-	
 
 
 func check_pickup():
@@ -156,15 +154,6 @@ func check_pickup():
 			if position.distance_to(p.position) < DISTANCE_RUN:
 				update_target(p.position)
 				change_state(STATE.CHASING)
-
-
-
-func _draw():
-#	 Lejos
-	draw_circle(Vector2(), 300, vis_color)
-#	 Cerca
-	draw_circle(Vector2(), 100, ear_color)
-
 
 
 func WAIT_init():
@@ -206,9 +195,12 @@ func move_in_path(_delta):
 	popPathPoint()
 	
 	if next_path_point == null or position.distance_to(next_path_point) < target_min_distance:
-		if not popPathPoint() or position.distance_to(target_point) < target_min_distance:
-			change_state(STATE.LOST_TARGET)
-			return 
+		if not popPathPoint():
+			if position.distance_to(target_point) < target_min_distance:
+				change_state(STATE.LOST_TARGET)
+				return 
+			else:
+				next_path_point = target_point
 	
 	direction = position.direction_to(next_path_point).normalized()
 	move(_delta)

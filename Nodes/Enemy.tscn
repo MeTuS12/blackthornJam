@@ -11,7 +11,7 @@
 radius = 44.8043
 height = 133.859
 
-[sub_resource type="SpriteFrames" id=3]
+[sub_resource type="SpriteFrames" id=2]
 animations = [ {
 "frames": [ ExtResource( 4 ), ExtResource( 6 ), ExtResource( 5 ), ExtResource( 1 ) ],
 "loop": true,
@@ -19,7 +19,7 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=3]
 resource_name = "Idle"
 length = 0.4
 loop = true
@@ -36,7 +36,7 @@ tracks/0/keys = {
 "values": [ 0 ]
 }
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=4]
 resource_name = "Walk"
 length = 0.4
 loop = true
@@ -53,7 +53,7 @@ tracks/0/keys = {
 "values": [ 0, 1, 2, 3 ]
 }
 
-[sub_resource type="CircleShape2D" id=2]
+[sub_resource type="CircleShape2D" id=5]
 radius = 563.5
 
 [node name="Enemy" type="KinematicBody2D"]
@@ -69,13 +69,13 @@ shape = SubResource( 1 )
 [node name="Sprite" type="AnimatedSprite" parent="."]
 position = Vector2( -0.401978, 8.61143 )
 scale = Vector2( 0.7, 0.7 )
-frames = SubResource( 3 )
+frames = SubResource( 2 )
 offset = Vector2( -14.563, -227.247 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite"]
 autoplay = "Idle"
-anims/Idle = SubResource( 4 )
-anims/Walk = SubResource( 5 )
+anims/Idle = SubResource( 3 )
+anims/Walk = SubResource( 4 )
 
 [node name="ViewZone" type="Area2D" parent="."]
 collision_layer = 0
@@ -83,11 +83,10 @@ collision_layer = 0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ViewZone"]
 position = Vector2( -3.56348, -167.489 )
 rotation = 1.5708
-shape = SubResource( 2 )
+shape = SubResource( 5 )
 
 [node name="Light2D" type="Light2D" parent="."]
-visible = false
-position = Vector2( 5.03973, 14.199 )
+position = Vector2( -5, -132 )
 texture = ExtResource( 3 )
 texture_scale = 1.2
 color = Color( 0.996078, 0.835294, 0.709804, 1 )
