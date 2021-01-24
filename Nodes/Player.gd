@@ -3,6 +3,9 @@ extends KinematicBody2D
 class_name Player
 
 const MIN_ANIMATION_SPEED = 0.5
+const camera_default = Vector2(2, 2)
+const camera_close = Vector2(1, 1)
+const camera_far = Vector2(2.5, 2.5)
 
 signal treasure_changed
 
@@ -85,6 +88,7 @@ func _physics_process(delta):
 		running = true
 		walking = true
 		current_max_velocity = current_weight_velocity * run_bonus
+		update_camera(camera_close)
 	else:
 		current_max_velocity = current_weight_velocity
 		running = false
@@ -130,7 +134,7 @@ func move(delta):
 	motion = move_and_slide(motion)
 
 
-func update_camera():
+func update_camera(camera_zoom):
 	pass
 
 
