@@ -73,7 +73,7 @@ func change_state(new_state):
 	state = new_state
 	
 	if has_method(new_state_str + '_init'):
-#		print(new_state_str + '_init')
+		print(new_state_str + '_init')
 		call(new_state_str + '_init')
 
 
@@ -81,7 +81,7 @@ func end_state():
 	var state_str = STATE.keys()[state]
 	
 	if has_method(state_str + '_end'):
-#		print(state_str + '_end')
+		print(state_str + '_end')
 		call(state_str + '_end')
 
 
@@ -100,16 +100,8 @@ func update_target(position):
 #	print(position)
 
 
+
 func check_vision():
-	if view_target_pickup:
-		var space_state = get_world_2d().direct_space_state
-		var result = space_state.intersect_ray(position, view_target_pickup.position, [self])
-		
-		if result:
-			if result.collider is PickUpEnemy:
-				update_target(result.position)
-				change_state(STATE.CHASING)
-		
 	if view_target:
 		var space_state = get_world_2d().direct_space_state
 		var result = space_state.intersect_ray(position, view_target.position, [self])
@@ -119,7 +111,7 @@ func check_vision():
 					update_target(result.position)
 					$Sprite.self_modulate.r = 2.0
 
-					if state != STATE.AWARE:
+					if state != STATE.CHASING:
 						change_state(STATE.CHASING)
 
 
