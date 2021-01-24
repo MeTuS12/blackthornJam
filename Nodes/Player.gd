@@ -2,11 +2,15 @@ extends KinematicBody2D
 
 class_name Player
 
+const MIN_ANIMATION_SPEED = 0.5
+var PICK_UP = load("res://Nodes/pick_up_enemy.tscn")
+
+
 var motion = Vector2()
 var direction = Vector2()
 
-export var max_velocity = 200
-export var min_velocity = 50
+export var max_velocity = 300
+export var min_velocity = 100
 var delta_vel = 0
 
 export var silence_penalicer = 0.5
@@ -20,15 +24,19 @@ var current_weight_velocity = 0
 var current_max_velocity = 0
 
 var running = false
+var walking = false
 
 export var acceleration = 2500
 export var deceleration = 3000
 
-export var delta_velocity = 10
+export var delta_velocity = 20
 
 var last_direction = Vector2()
 
 onready var pickUps = $PickUps
+onready var pickUpSpawn = $PickupSpawn
+onready var animationPlayer = $Sprite/AnimationPlayer
+onready var sprite = $Sprite
 
 
 # Called when the node enters the scene tree for the first time.
@@ -60,16 +68,58 @@ func _physics_process(delta):
 	if Input.is_action_pressed("ui_ctrl"):
 		current_max_velocity = current_weight_velocity * silence_penalicer
 		running = false
+		walking = false
 	elif Input.is_action_pressed("ui_shift"):
 		running = true
+		walking = true
 		current_max_velocity = current_weight_velocity * run_bonus
-	elif Input.is_action_just_released("ui_shift"):
-		running = false
 	else:
 		current_max_velocity = current_weight_velocity
+		running = false
+		walking = true
+	
+	if Input.is_action_just_pressed("ui_pickup_spawn"):
+		if current_weight >= 1:
+			current_weight -= 1
+			var main = get_tree().current_scene
+			var instance = PICK_UP.instance()
+			main.add_child(instance)
+			instance.global_position = pickUpSpawn.global_position
+		
+		update_weight_velocity()
+		
+		print(current_weight)
 	
 	direction = check_input()
 	move(delta)
+	update_animation()
+
+
+func update_animation():
+	var vel = motion.length()
+	var speed = 1.0
+	
+	if abs(motion.x) > delta_velocity:
+		if motion.x > 0:
+			sprite.flip_h = false
+			pickUpSpawn.position.x = -115
+		elif motion.x < 0:
+			sprite.flip_h = true
+			pickUpSpawn.position.x = 115
+	
+	if vel > 0:
+		speed = vel / max_velocity * (1.0 - MIN_ANIMATION_SPEED) + MIN_ANIMATION_SPEED
+		
+		if not running and not walking:
+			animationPlayer.play("JumpSlow", -1, speed)
+		else:
+			animationPlayer.play("Jump", -1, speed)
+			
+	else:
+		animationPlayer.play("Idle")
+	
+	
+
 
 func move(delta):
 	if direction == Vector2():
@@ -106,3 +156,7 @@ func pick(pick_up):
 
 func is_running():
 	return running
+	
+
+func is_walking():
+	return walking

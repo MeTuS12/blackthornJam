@@ -5,12 +5,10 @@ export var value = 2
 export var weight = 1
 
 var flag = false
-
+var enemy_flag = false
 
 func _ready():
 	pass
-
-
 
 
 func _on_Area2D_body_entered(body):
