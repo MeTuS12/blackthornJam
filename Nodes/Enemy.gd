@@ -44,6 +44,7 @@ var view_target = null
 var hit_pos = null
 var vis_color = Color(.867,.91,.247,.1)
 var ear_color = Color(.247,.91,.247,.1)
+var target_min_distance_color = Color(.947,.91,.247,.1)
 
 var state = STATE.WAIT
 
@@ -90,18 +91,18 @@ func _physics_process(delta):
 		call(state_str, delta)
 	
 	if view_target:
-		aim()
+		ray()
 
 
 
-func aim():
+func ray():
 	var space_state = get_world_2d().direct_space_state
 	var result = space_state.intersect_ray(position, view_target.position, [self])
-	
 	if result:
-		hit_pos = result.position
 		if result.collider.name == "Player":
-			$Sprite.self_modulate.r = 2.0
+				hit_pos = result.position
+				$Sprite.self_modulate.r = 2.0
+				change_state(STATE.CHASING)
 
 
 
@@ -131,7 +132,7 @@ func WAIT_end():
 func check_sound():
 	var distance_to_player = position.distance_to(player.position)
 	
-	if distance_to_player < DISTANCE_WALK:
+	if distance_to_player < DISTANCE_RUN:
 		if player.is_running():
 			target_point = player.position
 			change_state(STATE.AWARE)
@@ -223,11 +224,12 @@ func CHASING_init():
 
 
 func CHASING(_delta):
+	path = navigation.get_simple_path(position, hit_pos)
 	move_in_path(_delta)
 	is_aware = true
 
 
-func _on_ViewZone_body_entered(body):	
+func _on_ViewZone_body_entered(body):
 	if body is Player:
 		view_target = body
 

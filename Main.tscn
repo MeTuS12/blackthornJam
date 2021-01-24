@@ -160,17 +160,8 @@ shape = SubResource( 3 )
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 1333.94, 579.213 )
 
-[node name="Enemy" parent="." instance=ExtResource( 2 )]
-position = Vector2( -49.6414, -58.1363 )
-
 [node name="Enemy2" parent="." instance=ExtResource( 2 )]
 position = Vector2( 1296.69, -58.1363 )
-
-[node name="Enemy3" parent="." instance=ExtResource( 2 )]
-position = Vector2( 632.009, 243.091 )
-
-[node name="Enemy4" parent="." instance=ExtResource( 2 )]
-position = Vector2( -21.3572, 557.046 )
 
 [node name="pick_up" parent="." instance=ExtResource( 4 )]
 position = Vector2( -25.4559, 548.715 )
