@@ -57,8 +57,8 @@ tracks/0/keys = {
 radius = 563.5
 
 [node name="Enemy" type="KinematicBody2D"]
-collision_layer = 2
-collision_mask = 5
+collision_layer = 16386
+collision_mask = 16389
 script = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

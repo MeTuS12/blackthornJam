@@ -150,6 +150,7 @@ position = Vector2( 5.03973, 51.6567 )
 current = true
 zoom = Vector2( 2, 2 )
 smoothing_enabled = true
+smoothing_speed = 2.0
 
 [node name="Particles2D" type="Particles2D" parent="Camera2D"]
 visible = false
