@@ -10,6 +10,7 @@ const camera_far = Vector2(2.5, 2.5)
 var current_camera_zoom = Vector2()
 
 signal treasure_changed
+signal weight_changed
 
 var motion = Vector2()
 var direction = Vector2()
@@ -168,6 +169,7 @@ func update_weight_velocity():
 func pick(pick_up):
 	pick_up.pick(self)
 	emit_signal("treasure_changed", current_value)
+	emit_signal("weight_changed", current_weight)
 
 
 func throw_pick_up():
@@ -177,6 +179,7 @@ func throw_pick_up():
 		var throw_pick_up = pick_ups[randi() % pick_ups.size()]
 		throw_pick_up.throw(self)
 		emit_signal("treasure_changed", current_value)
+		emit_signal("weight_changed", current_weight)
 
 
 

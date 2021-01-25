@@ -2,7 +2,8 @@ extends Control
 
 var player = null
 
-onready var texture = $TextureRect
+onready var crowns = $Crown
+onready var weight = $Weight
 
 func _ready():
 	
@@ -11,6 +12,11 @@ func _ready():
 	player = player[0]
 	
 	player.connect("treasure_changed", self, "on_treasure_changed")
+	player.connect("weight_changed", self, "on_weight_changed")
 
 func on_treasure_changed(value):
-	texture.rect_size.x = 4000 * value
+	crowns.rect_size.x = 4000 * value
+
+
+func on_weight_changed(value):
+	weight.rect_size.x = 515 * value

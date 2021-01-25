@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Assets/snake/04_Serpiente.png" type="Texture" id=1]
 [ext_resource path="res://Nodes/Enemy.gd" type="Script" id=2]
@@ -56,12 +56,16 @@ tracks/0/keys = {
 [sub_resource type="CircleShape2D" id=5]
 radius = 563.5
 
+[sub_resource type="CircleShape2D" id=6]
+radius = 170.144
+
 [node name="Enemy" type="KinematicBody2D"]
-collision_layer = 16386
-collision_mask = 16389
+collision_layer = 2
+collision_mask = 5
 script = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2( 13.4543, -11.7725 )
 rotation = -1.56053
 shape = SubResource( 1 )
@@ -78,6 +82,7 @@ anims/Idle = SubResource( 3 )
 anims/Walk = SubResource( 4 )
 
 [node name="ViewZone" type="Area2D" parent="."]
+visible = false
 collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ViewZone"]
@@ -86,6 +91,7 @@ rotation = 1.5708
 shape = SubResource( 5 )
 
 [node name="Light2D" type="Light2D" parent="."]
+visible = false
 position = Vector2( -5, -132 )
 texture = ExtResource( 3 )
 texture_scale = 1.2
@@ -95,5 +101,13 @@ shadow_filter = 5
 __meta__ = {
 "_editor_description_": ""
 }
+
+[node name="Hitbox2" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 8
+
+[node name="Hitbox" type="CollisionShape2D" parent="Hitbox2"]
+position = Vector2( 8, -122 )
+shape = SubResource( 6 )
 [connection signal="body_entered" from="ViewZone" to="." method="_on_ViewZone_body_entered"]
 [connection signal="body_exited" from="ViewZone" to="." method="_on_ViewZone_body_exited"]

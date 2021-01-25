@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=2]
+
+[sub_resource type="ParticlesMaterial" id=6]
+flag_disable_z = true
+gravity = Vector3( 0, 98, 0 )
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+
+[node name="Camera2D" type="Camera2D"]
+position = Vector2( 5.03973, 51.6567 )
+current = true
+zoom = Vector2( 2, 2 )
+smoothing_enabled = true
+
+[node name="Particles2D" type="Particles2D" parent="."]
+visible = false
+amount = 50
+process_material = SubResource( 6 )
