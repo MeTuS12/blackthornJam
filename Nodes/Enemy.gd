@@ -5,7 +5,7 @@ class_name Enemy
 
 enum STATE { WAIT, GO_TO_POINT, CHASING, LOST_TARGET }
 
-const DISTANCE_RUN = 500
+const DISTANCE_RUN = 1500
 const DISTANCE_WALK = 200
 
 var motion = Vector2()
@@ -53,6 +53,7 @@ var state = STATE.WAIT
 
 onready var sprite = $Sprite
 onready var animationPlayer = $Sprite/AnimationPlayer
+onready var viewzone = $ViewZone/CollisionShape2D
 
 
 
@@ -93,6 +94,7 @@ func end_state():
 
 
 func _physics_process(delta):
+	
 	var state_str = STATE.keys()[state]
 	
 	if has_method(state_str):
@@ -123,7 +125,9 @@ func check_sound():
 		if player.is_running():
 			update_target(player.position)
 			change_state(STATE.CHASING)
-			
+
+func _draw():
+	draw_circle(Vector2(), DISTANCE_RUN, Color(0.9,0.1,0.1,0.25))
 
 func check_vision(more_range=false):
 	var real_target = null
@@ -195,12 +199,13 @@ func move_in_path(_delta):
 	popPathPoint()
 	
 	if next_path_point == null or position.distance_to(next_path_point) < target_min_distance:
-		if not popPathPoint():
-			if position.distance_to(target_point) < target_min_distance:
-				change_state(STATE.LOST_TARGET)
-				return 
-			else:
-				next_path_point = target_point
+		if not popPathPoint() or position.distance_to(target_point) < target_min_distance:
+#			if position.distance_to(target_point) < target_min_distance:
+#				change_state(STATE.LOST_TARGET)
+			change_state(STATE.LOST_TARGET)
+			return 
+		else:
+			next_path_point = target_point
 	
 	direction = position.direction_to(next_path_point).normalized()
 	move(_delta)
@@ -229,8 +234,10 @@ func update_animation():
 	var vel = motion.length()
 	
 	if motion.x < 0:
+		viewzone.position.x = -736
 		sprite.flip_h = true
 	elif motion.x > 0:
+		viewzone.position.x = 776
 		sprite.flip_h = false
 	
 	if vel > 0:
