@@ -6,7 +6,7 @@
 [ext_resource path="res://Nodes/pick_up.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Nodes/Enemy.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Nodes/EnemyWalkPoint.tscn" type="PackedScene" id=6]
-[ext_resource path="res://Nodes/UI.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Nodes/Exit.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Nodes/PickUps/Ingod3.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Nodes/PickUps/Cup.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Nodes/PickUps/Crown.tscn" type="PackedScene" id=10]
@@ -197,6 +197,9 @@ scale = Vector2( 18.2591, 16.8195 )
 z_index = -2
 texture = ExtResource( 3 )
 
+[node name="Exit" parent="." instance=ExtResource( 7 )]
+position = Vector2( -4.78979, 11508.8 )
+
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 visible = false
 color = Color( 0.254902, 0.239216, 0.505882, 1 )
@@ -281,4 +284,4 @@ position = Vector2( 5290.76, 2247.23 )
 "navigation",
 ]]
 
-[node name="UI" parent="." instance=ExtResource( 7 )]
+[editable path="YSort/Player"]

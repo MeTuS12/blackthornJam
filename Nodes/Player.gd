@@ -48,6 +48,7 @@ onready var pickUpSpawn = $PickupSpawn
 onready var animationPlayer = $SpriteBase/Sprite/AnimationPlayer
 onready var sprite = $SpriteBase/Sprite
 onready var camera = $Camera2D
+onready var gameover_UI = $UI/GameOverPanel
 
 
 # Called when the node enters the scene tree for the first time.
@@ -189,3 +190,8 @@ func is_running():
 
 func is_walking():
 	return walking
+
+
+func _on_Hurtbox_area_entered(area):
+	get_tree().paused = true
+	gameover_UI.visible = true

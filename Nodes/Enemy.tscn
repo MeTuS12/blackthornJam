@@ -102,11 +102,11 @@ __meta__ = {
 "_editor_description_": ""
 }
 
-[node name="Hitbox2" type="Area2D" parent="."]
+[node name="Hitbox" type="Area2D" parent="."]
 collision_layer = 0
 collision_mask = 8
 
-[node name="Hitbox" type="CollisionShape2D" parent="Hitbox2"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
 position = Vector2( 8, -122 )
 shape = SubResource( 6 )
 [connection signal="body_entered" from="ViewZone" to="." method="_on_ViewZone_body_entered"]

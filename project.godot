@@ -36,6 +36,10 @@ config/name="BlackthornJam21"
 run/main_scene="res://Main.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+Globals="*res://Globals.gd"
+
 [display]
 
 window/size/width=1920
@@ -97,7 +101,6 @@ ui_pickup_spawn={
 2d_physics/layer_2="Enemy"
 2d_physics/layer_3="Environment"
 2d_physics/layer_4="Hurtbox"
-2d_physics/layer_5="Hitbox"
 
 [rendering]
 
