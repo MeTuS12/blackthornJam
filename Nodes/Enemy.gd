@@ -147,7 +147,7 @@ func check_vision(more_range=false):
 
 
 func check_pickup():
-	var distance_to_player = position.distance_to(player.position)
+#	var distance_to_player = position.distance_to(player.position)
 	
 	for p in pickups:
 		if is_instance_valid(p) and p.player_flag and p.enemy_flag:

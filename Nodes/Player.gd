@@ -192,6 +192,6 @@ func is_walking():
 	return walking
 
 
-func _on_Hurtbox_area_entered(area):
+func _on_Hurtbox_area_entered(_area):
 	get_tree().paused = true
 	gameover_UI.visible = true
