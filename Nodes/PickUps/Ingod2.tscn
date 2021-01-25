@@ -4,6 +4,8 @@
 [ext_resource path="res://Assets/treasure/04_Lingote-2.png" type="Texture" id=2]
 
 [node name="Ingod2" instance=ExtResource( 1 )]
+value = 2
+weight = 2
 
 [node name="Sprite" parent="." index="0"]
 scale = Vector2( 0.865178, 0.865178 )

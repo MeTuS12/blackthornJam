@@ -7,6 +7,8 @@ const camera_default = Vector2(2, 2)
 const camera_close = Vector2(1.5, 1.5)
 const camera_far = Vector2(2.5, 2.5)
 
+var current_camera_zoom = Vector2()
+
 signal treasure_changed
 
 var motion = Vector2()
@@ -38,6 +40,7 @@ export var delta_velocity = 20
 
 var sprite_direction = 0
 
+var cameraTween = null
 
 onready var pickUps = $PickUps
 onready var pickUpSpawn = $PickupSpawn
@@ -50,6 +53,9 @@ onready var camera = $Camera2D
 func _ready():
 	current_weight_velocity = max_velocity
 	delta_vel = max_velocity - min_velocity
+	
+	cameraTween = Tween.new()
+	camera.add_child(cameraTween)
 
 
 func check_input():
@@ -99,6 +105,7 @@ func _physics_process(delta):
 	
 	direction = check_input()
 	move(delta)
+	check_camera_zoom()
 	update_animation()
 
 
@@ -119,22 +126,19 @@ func update_animation():
 
 
 func update_camera(camera_zoom):
-	var tween = Tween.new()
-	camera.add_child(tween)
-	tween.interpolate_property(camera, "zoom", camera.zoom, camera_zoom, .7, tween.TRANS_LINEAR, tween.EASE_IN_OUT)
-	tween.start()
+	if current_camera_zoom != camera_zoom:
+		cameraTween.interpolate_property(camera, "zoom", camera.zoom, camera_zoom, .7, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+		cameraTween.start()
+		current_camera_zoom = camera_zoom
 
 
-func _input(event):
-	if event is InputEventKey:
-		if event.is_action_pressed("ui_shift") and motion.length() > 0:
-			update_camera(camera_close)
-		elif event.is_action_released("ui_shift") or motion.length() == 0:
-			update_camera(camera_default)
-		if event.is_action_pressed("ui_ctrl"):
-			update_camera(camera_far)
-		elif event.is_action_released("ui_ctrl"):
-			update_camera(camera_default)
+func check_camera_zoom():
+	if Input.is_action_pressed("ui_shift") and motion.length() > 0:
+		update_camera(camera_far)
+	elif Input.is_action_pressed("ui_ctrl"):
+		update_camera(camera_close)
+	else:	#if not Input.is_action_pressed("ui_ctrl"):
+		update_camera(camera_default)
 
 
 func move(delta):

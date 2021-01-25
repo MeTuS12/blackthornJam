@@ -39,6 +39,11 @@ func pick(body):
 	if body.name == "Player":
 		body.current_weight += weight
 		body.current_value += value
+		
+		print(body.current_value)
+		print(value)
+		print(name)
+		
 		visible = false
 		get_parent().remove_child(self)
 		body.pickUps.add_child(self)
@@ -49,8 +54,8 @@ func pick(body):
 
 
 func throw(player):
-	player.current_weight -= self.weight
-	player.current_value -= self.value
+	player.current_weight -= weight
+	player.current_value -= value
 	player.pickUps.remove_child(self)
 	
 	player.get_parent().add_child(self)
@@ -71,23 +76,9 @@ func throw(player):
 	acc.x = acc.x * player.sprite_direction
 	y_floor = ini_pos.y + throw_displacement.y
 	
-#	tween.interpolate_property(self, "global_position:x",
-#		ini_pos.x, 
-#		ini_pos.x + -1 * player.sprite_direction * throw_displacement.x, 
-#		1.0,
-#		Tween.TRANS_CIRC, Tween.EASE_OUT)
-#
-#	tween.interpolate_property(self, "global_position:y",
-#		ini_pos.y, 
-#		ini_pos.y + throw_displacement.y, 
-#		1.0,
-#		Tween.TRANS_BOUNCE, Tween.EASE_OUT)
-#
-#	tween.start()
-#
-#	yield(tween, "tween_completed")
-
-	
+	yield(get_tree().create_timer(0.5), "timeout")
+	player_flag = true
+	enemy_flag = true
 
 
 func move(delta):
