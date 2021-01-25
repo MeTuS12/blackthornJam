@@ -56,8 +56,9 @@ tracks/0/keys = {
 [sub_resource type="CircleShape2D" id=5]
 radius = 563.5
 
-[sub_resource type="CircleShape2D" id=6]
-radius = 147.085
+[sub_resource type="CapsuleShape2D" id=6]
+radius = 62.0
+height = 119.524
 
 [node name="Enemy" type="KinematicBody2D"]
 collision_layer = 16386
@@ -81,14 +82,17 @@ anims/Idle = SubResource( 3 )
 anims/Walk = SubResource( 4 )
 
 [node name="ViewZone" type="Area2D" parent="."]
+visible = false
 collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ViewZone"]
+visible = false
 position = Vector2( -3.56348, -167.489 )
 rotation = 1.5708
 shape = SubResource( 5 )
 
 [node name="Light2D" type="Light2D" parent="."]
+visible = false
 position = Vector2( -5, -132 )
 texture = ExtResource( 3 )
 texture_scale = 1.2
@@ -100,11 +104,13 @@ __meta__ = {
 }
 
 [node name="Hitbox" type="Area2D" parent="."]
+position = Vector2( -2, 57 )
 collision_layer = 0
 collision_mask = 16
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
-position = Vector2( 12, -115 )
+position = Vector2( 14, -75 )
+rotation = 1.58552
 shape = SubResource( 6 )
 [connection signal="body_entered" from="ViewZone" to="." method="_on_ViewZone_body_entered"]
 [connection signal="body_exited" from="ViewZone" to="." method="_on_ViewZone_body_exited"]
