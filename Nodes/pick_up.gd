@@ -39,10 +39,11 @@ func pick(body):
 	if body.name == "Player":
 		body.current_weight += weight
 		body.current_value += value
+		Globals.actual_score = body.current_value
 		
-		print(body.current_value)
-		print(value)
-		print(name)
+#		print(body.current_value)
+#		print(value)
+#		print(name)
 		
 		visible = false
 		get_parent().remove_child(self)

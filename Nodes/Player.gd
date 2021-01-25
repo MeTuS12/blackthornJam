@@ -49,13 +49,13 @@ onready var animationPlayer = $SpriteBase/Sprite/AnimationPlayer
 onready var sprite = $SpriteBase/Sprite
 onready var camera = $Camera2D
 onready var gameover_UI = $UI/GameOverPanel
+onready var insufficent_UI = $UI/InsufficentScore
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	current_weight_velocity = max_velocity
 	delta_vel = max_velocity - min_velocity
-	
 	cameraTween = Tween.new()
 	camera.add_child(cameraTween)
 
@@ -160,7 +160,7 @@ func move(delta):
 
 
 func update_weight_velocity():
-	print(min(max_weight, current_weight))
+#	print(min(max_weight, current_weight))
 	
 	var weight_ratio = 1 - min(max_weight, current_weight) / max_weight
 	current_weight_velocity = min_velocity + delta_vel * weight_ratio
