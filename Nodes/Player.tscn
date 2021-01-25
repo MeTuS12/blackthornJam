@@ -149,8 +149,10 @@ shape = SubResource( 5 )
 position = Vector2( 5.03973, 51.6567 )
 current = true
 zoom = Vector2( 2, 2 )
+smoothing_enabled = true
 
 [node name="Particles2D" type="Particles2D" parent="Camera2D"]
+visible = false
 amount = 50
 process_material = SubResource( 6 )
 
