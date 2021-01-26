@@ -37,6 +37,7 @@ func _on_Left_pressed():
 	get_tree().paused = true
 	yield(get_tree().create_timer(.5), "timeout")
 	Globals.fade_flag = true
+	Globals.pause_flag = false
 	get_tree().paused = false
 # warning-ignore:return_value_discarded
 	get_tree().change_scene("res://MainMenu.tscn")
