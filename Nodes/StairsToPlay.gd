@@ -57,3 +57,7 @@ func _on_Area2D_body_entered(body):
 		Globals.actual_score = 0
 # warning-ignore:return_value_discarded
 		get_tree().change_scene("res://Main.tscn")
+
+
+func _on_Area2D_body_exited(_body):
+	pass

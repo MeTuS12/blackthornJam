@@ -93,9 +93,10 @@ func _physics_process(delta):
 		running = false
 		walking = false
 	elif Input.is_action_pressed("ui_shift"):
-		running = true
 		walking = true
 		current_max_velocity = current_weight_velocity * run_bonus
+		if motion.length() > 0:
+			running = true
 	else:
 		current_max_velocity = current_weight_velocity
 		running = false
