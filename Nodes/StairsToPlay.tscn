@@ -26,27 +26,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="max_easy" type="Label" parent="." index="4"]
-margin_left = -115.0
-margin_top = 148.0
-margin_right = 113.0
-margin_bottom = 211.0
-custom_fonts/font = SubResource( 2 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="max_hard" type="Label" parent="." index="5"]
-margin_left = -115.0
-margin_top = 148.0
-margin_right = 113.0
-margin_bottom = 211.0
-custom_fonts/font = SubResource( 2 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="max_very" type="Label" parent="." index="6"]
+[node name="SubLabel" type="Label" parent="." index="4"]
 margin_left = -115.0
 margin_top = 148.0
 margin_right = 113.0

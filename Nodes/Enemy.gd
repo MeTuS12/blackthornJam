@@ -23,7 +23,8 @@ export var delta_velocity = 10
 
 export var wait_time = 2.0
 export var target_min_distance = 50
-export var path_point_min_distance = 100
+export var path_point_min_distance = 50
+export var cant_access_distance = 100
 
 
 #onready var pickUps = $PickUps
@@ -82,7 +83,6 @@ func change_state(new_state):
 	state = new_state
 	
 	if has_method(new_state_str + '_init'):
-		print(new_state_str + '_init')
 		call(new_state_str + '_init')
 
 
@@ -90,7 +90,6 @@ func end_state():
 	var state_str = STATE.keys()[state]
 	
 	if has_method(state_str + '_end'):
-		print(state_str + '_end')
 		call(state_str + '_end')
 
 
@@ -120,30 +119,32 @@ func check_sound():
 	
 	if distance_to_player < DISTANCE_WALK:
 		if player.is_walking():
-			update_target(player.position)
-			change_state(STATE.CHASING)
+			if can_access(player.position):
+				update_target(player.position)
+				change_state(STATE.CHASING)
 	
 	elif distance_to_player < DISTANCE_RUN:
 		if player.is_running():
-			update_target(player.position)
-			change_state(STATE.CHASING)
+			if can_access(player.position):
+				update_target(player.position)
+				change_state(STATE.CHASING)
 
 
-func _draw():
-	draw_circle(Vector2(), DISTANCE_RUN, Color(0.9,0.1,0.1,0.25))
-	draw_circle(Vector2(), DISTANCE_WALK, Color(0.1,0.1,0.9,0.25))
-
-	if path != null:
-		var prevPoint = Vector2()
-
-		if target_point != null:
-			var targetPos = target_point - position
-			draw_line(targetPos, targetPos + Vector2(0, -30), Color(0, 255, 0), 10)
-
-		for point in path:
-			draw_line(prevPoint, point - position, Color(255, 0, 0), 1)
-			prevPoint = point - position
-			draw_line(prevPoint, prevPoint + Vector2(0, -10), Color(0, 0, 255), 1)
+#func _draw():
+#	draw_circle(Vector2(), DISTANCE_RUN, Color(0.9,0.1,0.1,0.25))
+#	draw_circle(Vector2(), DISTANCE_WALK, Color(0.1,0.1,0.9,0.25))
+#
+#	if path != null:
+#		var prevPoint = Vector2()
+#
+#		if target_point != null:
+#			var targetPos = target_point - position
+#			draw_line(targetPos, targetPos + Vector2(0, -30), Color(0, 255, 0), 10)
+#
+#		for point in path:
+#			draw_line(prevPoint, point - position, Color(255, 0, 0), 1)
+#			prevPoint = point - position
+#			draw_line(prevPoint, prevPoint + Vector2(0, -10), Color(0, 0, 255), 1)
 
 
 func check_vision(more_range=false):
@@ -206,14 +207,32 @@ func GO_TO_POINT(_delta):
 
 
 
+func can_access(target, path=null):
+	if path == null:
+		path = navigation.get_simple_path(position, target)
+	
+	if path[-1].distance_to(target) < cant_access_distance:
+		return true
+	
+	return false
+
+
 func move_in_path(_delta):
+	var target = null
+	
 	if target_point == null and target_pickup_point == null:
 		return
 	
 	if target_pickup_point != null:
-		path = navigation.get_simple_path(position, target_pickup_point)
+		target = target_pickup_point
 	else:
-		path = navigation.get_simple_path(position, target_point)
+		target = target_point
+	
+	path = navigation.get_simple_path(position, target)
+	
+	if not can_access(target, path):
+		change_state(STATE.WAIT)
+		return
 	
 	popPathPoint()
 	

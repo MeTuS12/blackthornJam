@@ -27,6 +27,8 @@ var current_weight = 0.0
 
 var current_value = 0.0
 
+var flag_can_move = true
+
 
 var current_weight_velocity = 0
 var current_max_velocity = 0
@@ -62,6 +64,9 @@ func _ready():
 
 func check_input():
 	var dir = Vector2()
+	
+	if not flag_can_move:
+		return dir
 	
 	if Input.is_action_pressed("ui_up"):
 		dir += Vector2(0, -1)
@@ -185,6 +190,11 @@ func throw_pick_up():
 		emit_signal("weight_changed", current_weight)
 
 
+func transported():
+	flag_can_move = false
+	yield(get_tree().create_timer(1.0), "timeout")
+	flag_can_move = true
+
 
 func is_running():
 	return running
@@ -195,5 +205,6 @@ func is_walking():
 
 
 func _on_Hurtbox_area_entered(_area):
-	get_tree().paused = true
+	flag_can_move = false
+	yield(get_tree().create_timer(1.0), "timeout")
 	gameover_UI.visible = true

@@ -198,6 +198,7 @@ points = PoolVector2Array( 0, 0, 256, 0, 256, 256, 0, 256 )
 0/z_index = 0
 
 [node name="Node2D" type="Node2D"]
+position = Vector2( -16.9705, 0 )
 z_index = 2
 
 [node name="suelo" type="Sprite" parent="."]
@@ -214,6 +215,7 @@ visible = false
 color = Color( 0.254902, 0.239216, 0.505882, 1 )
 
 [node name="TileMap" type="TileMap" parent="."]
+position = Vector2( -59.397, -59.3975 )
 tile_set = ExtResource( 16 )
 cell_size = Vector2( 256, 256 )
 format = 1
