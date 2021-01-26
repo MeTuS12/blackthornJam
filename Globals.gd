@@ -5,6 +5,7 @@ signal score
 # warning-ignore:unused_signal
 signal needed_score
 
+var fade_flag = true
 var pause_flag = false
 
 var easy = false

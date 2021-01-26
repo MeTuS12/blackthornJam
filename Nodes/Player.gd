@@ -53,6 +53,7 @@ onready var camera = $Camera2D
 onready var gameover_UI = $UI/GameOverPanel
 onready var pause_menu_UI = $UI/PauseMenu
 onready var insufficent_UI = $UI/InsufficentScore
+onready var fade = $UI/ColorRect/AnimationPlayer
 
 
 # Called when the node enters the scene tree for the first time.
@@ -61,7 +62,12 @@ func _ready():
 	delta_vel = max_velocity - min_velocity
 	cameraTween = Tween.new()
 	camera.add_child(cameraTween)
-
+	if Globals.fade_flag:
+		get_tree().paused = true
+		yield(get_tree().create_timer(.3), "timeout")
+		fade_out()
+		yield(get_tree().create_timer(.5), "timeout")
+		get_tree().paused = false
 
 func check_input():
 	var dir = Vector2()
@@ -205,6 +211,17 @@ func is_running():
 func is_walking():
 	return walking
 
+func fade_idle():
+	fade.play("Idle")
+
+func fade_in():
+	fade.play("Fade_In")
+
+func fade_out():
+	fade.play("Fade_Out")
+
+#func fade_idle():
+#	fade.play("Idle")
 
 func _on_Hurtbox_area_entered(_area):
 	flag_can_move = false
