@@ -5,13 +5,13 @@ class_name Enemy
 
 enum STATE { WAIT, GO_TO_POINT, CHASING, LOST_TARGET }
 
-const DISTANCE_RUN = 1500
-const DISTANCE_WALK = 200
+const DISTANCE_RUN = 4000
+const DISTANCE_WALK = 1000
 
 var motion = Vector2()
 var direction = Vector2()
 
-export var max_velocity = 150
+export var max_velocity = 250
 var current_max_velocity = 0
 
 export var run_bonus = 1.5
@@ -23,6 +23,7 @@ export var delta_velocity = 10
 
 export var wait_time = 2.0
 export var target_min_distance = 50
+export var path_point_min_distance = 100
 
 
 #onready var pickUps = $PickUps
@@ -53,7 +54,7 @@ var state = STATE.WAIT
 
 onready var sprite = $Sprite
 onready var animationPlayer = $Sprite/AnimationPlayer
-onready var viewzone = $ViewZone/CollisionShape2D
+onready var viewzone = $ViewZone
 
 
 
@@ -105,11 +106,12 @@ func _physics_process(delta):
 	check_sound()
 	check_vision()
 	check_pickup()
+	
+	update()
 
 
 func update_target(position):
 	target_point = position
-#	print(position)
 
 
 
@@ -126,8 +128,22 @@ func check_sound():
 			update_target(player.position)
 			change_state(STATE.CHASING)
 
+
 func _draw():
 	draw_circle(Vector2(), DISTANCE_RUN, Color(0.9,0.1,0.1,0.25))
+	
+	if path != null:
+		var prevPoint = Vector2()
+		
+		if target_point != null:
+			var targetPos = target_point - position
+			draw_line(targetPos, targetPos + Vector2(0, -30), Color(0, 255, 0), 10)
+		
+		for point in path:
+			draw_line(prevPoint, point - position, Color(255, 0, 0), 1)
+			prevPoint = point - position
+			draw_line(prevPoint, prevPoint + Vector2(0, -10), Color(0, 0, 255), 1)
+
 
 func check_vision(more_range=false):
 	var real_target = null
@@ -185,12 +201,14 @@ func closest_compare(a, b):
 
 
 func GO_TO_POINT(_delta):
-	check_sound()
 	move_in_path(_delta)
 
 
 
 func move_in_path(_delta):
+	if target_point == null and target_pickup_point == null:
+		return
+	
 	if target_pickup_point != null:
 		path = navigation.get_simple_path(position, target_pickup_point)
 	else:
@@ -198,14 +216,14 @@ func move_in_path(_delta):
 	
 	popPathPoint()
 	
+	
 	if next_path_point == null or position.distance_to(next_path_point) < target_min_distance:
-		if not popPathPoint() or position.distance_to(target_point) < target_min_distance:
-#			if position.distance_to(target_point) < target_min_distance:
-#				change_state(STATE.LOST_TARGET)
-			change_state(STATE.LOST_TARGET)
-			return 
-		else:
-			next_path_point = target_point
+		if not popPathPoint():
+			if position.distance_to(target_point) < target_min_distance:
+				change_state(STATE.WAIT)
+				return
+			else:
+				next_path_point = target_point
 	
 	direction = position.direction_to(next_path_point).normalized()
 	move(_delta)
@@ -220,6 +238,15 @@ func popPathPoint():
 	if path.size() > 0:
 		next_path_point = path[0]
 		path.remove(0)
+		
+		while position.distance_to(next_path_point) < path_point_min_distance and not path.empty():
+			next_path_point = path[0]
+			path.remove(0)
+		
+		if position.distance_to(next_path_point) < path_point_min_distance and path.empty():
+			next_path_point = null
+			return false
+		
 		return true
 	return false
 
@@ -234,10 +261,12 @@ func update_animation():
 	var vel = motion.length()
 	
 	if motion.x < 0:
-		viewzone.position.x = -736
+#		viewzone.position.x = -736
+		viewzone.scale.x = -1
 		sprite.flip_h = true
 	elif motion.x > 0:
-		viewzone.position.x = 776
+#		viewzone.position.x = 776
+		viewzone.scale.x = 1
 		sprite.flip_h = false
 	
 	if vel > 0:

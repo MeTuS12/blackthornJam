@@ -224,12 +224,12 @@ tile_data = PoolIntArray( 851948, 0, 0, 851949, 0, 0, 851950, 0, 0, 851951, 0, 0
 ]]
 
 [node name="NavigationPolygonInstance" type="NavigationPolygonInstance" parent="Navigation2D"]
+visible = false
 navpoly = SubResource( 1 )
+enabled = false
 
 [node name="NavigationPolygonInstance2" type="NavigationPolygonInstance" parent="Navigation2D"]
-visible = false
 navpoly = SubResource( 2 )
-enabled = false
 
 [node name="Stairs" parent="." instance=ExtResource( 15 )]
 position = Vector2( -1713.59, 7630.58 )
@@ -259,7 +259,7 @@ position = Vector2( 25.147, 10410.2 )
 max_velocity = 600
 
 [node name="Enemy" parent="YSort" instance=ExtResource( 5 )]
-position = Vector2( 6388.58, 9995.85 )
+position = Vector2( 752.605, 9598.57 )
 
 [node name="Enemy2" parent="YSort" instance=ExtResource( 5 )]
 position = Vector2( -19.3594, 6591.57 )

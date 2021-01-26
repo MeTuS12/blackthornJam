@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Assets/snake/04_Serpiente.png" type="Texture" id=1]
 [ext_resource path="res://Nodes/Enemy.gd" type="Script" id=2]
@@ -9,7 +9,7 @@
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 44.8043
-height = 133.859
+height = 91.2952
 
 [sub_resource type="SpriteFrames" id=2]
 animations = [ {
@@ -53,13 +53,7 @@ tracks/0/keys = {
 "values": [ 0, 1, 2, 3 ]
 }
 
-[sub_resource type="CircleShape2D" id=7]
-radius = 725.0
-
-[sub_resource type="CircleShape2D" id=8]
-radius = 725.0
-
-[sub_resource type="CapsuleShape2D" id=6]
+[sub_resource type="CapsuleShape2D" id=7]
 radius = 73.1086
 height = 119.524
 
@@ -69,7 +63,7 @@ collision_mask = 16389
 script = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 13.4543, -11.7725 )
+position = Vector2( 26.4543, -10.7725 )
 rotation = -1.56053
 shape = SubResource( 1 )
 
@@ -87,16 +81,8 @@ anims/Walk = SubResource( 4 )
 [node name="ViewZone" type="Area2D" parent="."]
 collision_layer = 0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ViewZone"]
-position = Vector2( 776, -168 )
-shape = SubResource( 7 )
-
-[node name="ViewZone2" type="Area2D" parent="."]
-visible = false
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ViewZone2"]
-position = Vector2( -736, -168 )
-shape = SubResource( 8 )
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ViewZone"]
+polygon = PoolVector2Array( -5.04468, -96.3477, -808.318, -1244.69, 1013.19, -1980.08, 3027.03, -1346.51, 3722.82, -5.83813, 3145.82, 1210.39, 877.425, 1906.18, -904.485, 972.798 )
 
 [node name="Light2D" type="Light2D" parent="."]
 visible = false
@@ -116,8 +102,8 @@ collision_layer = 0
 collision_mask = 16
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
-position = Vector2( 10, -98 )
+position = Vector2( 12, -98 )
 rotation = 1.58552
-shape = SubResource( 6 )
+shape = SubResource( 7 )
 [connection signal="body_entered" from="ViewZone" to="." method="_on_ViewZone_body_entered"]
 [connection signal="body_exited" from="ViewZone" to="." method="_on_ViewZone_body_exited"]
