@@ -17,8 +17,10 @@ func buttons_sort(a, b):
 		return a.rect_position.y < b.rect_position.y
 	return a.rect_position.x < b.rect_position.x
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	if menu.visible:
+		check_focus()
+		
 		if Input.is_action_just_pressed("ui_up") or Input.is_action_just_pressed("ui_left"):
 			i -= 1
 			if i < 0:
@@ -30,3 +32,12 @@ func _physics_process(delta):
 				i = 0
 			buttons[i].grab_focus()
 		print(i)
+
+func check_focus():
+	var flag = true
+	for b in buttons:
+		if b.has_focus():
+			flag = false
+	if flag:
+		buttons[0].grab_focus()
+		i = 0
