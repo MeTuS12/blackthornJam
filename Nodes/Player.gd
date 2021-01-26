@@ -51,6 +51,7 @@ onready var animationPlayer = $SpriteBase/Sprite/AnimationPlayer
 onready var sprite = $SpriteBase/Sprite
 onready var camera = $Camera2D
 onready var gameover_UI = $UI/GameOverPanel
+onready var pause_menu_UI = $UI/PauseMenu
 onready var insufficent_UI = $UI/InsufficentScore
 
 
@@ -90,8 +91,9 @@ func check_input():
 
 
 func _physics_process(delta):
-	if Input.is_action_just_pressed("ui_cancel"):
-		get_tree().quit()
+	if Input.is_action_just_pressed("ui_cancel") and Globals.pause_flag:
+		pause_menu_UI.visible = true
+		get_tree().paused = true
 	
 	if Input.is_action_pressed("ui_ctrl"):
 		current_max_velocity = current_weight_velocity * silence_penalicer

@@ -2,8 +2,10 @@ extends Node
 
 # warning-ignore:unused_signal
 signal score
+# warning-ignore:unused_signal
 signal needed_score
 
+var pause_flag = false
 
 var easy = false
 var hard = false
