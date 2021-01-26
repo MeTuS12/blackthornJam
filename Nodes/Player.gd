@@ -100,7 +100,8 @@ func _physics_process(delta):
 	else:
 		current_max_velocity = current_weight_velocity
 		running = false
-		walking = true
+		if motion.length() > 0:
+			walking = true
 	
 	if Input.is_action_just_pressed("ui_pickup_spawn"):
 		throw_pick_up()
