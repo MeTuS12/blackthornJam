@@ -104,6 +104,7 @@ func _on_Area2D_body_entered(body):
 	if player_flag:
 		if body.name == "Player":
 			player_flag = false
+			$PickUpSound.play()
 			body.call_deferred('pick', self)
 		elif enemy_flag and body is Enemy:
 			queue_free()

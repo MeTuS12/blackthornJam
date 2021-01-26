@@ -225,6 +225,7 @@ func fade_out():
 
 func _on_Hurtbox_area_entered(_area):
 	print('AAAA')
+	$DeathSound.play()
 	flag_can_move = false
 	yield(get_tree().create_timer(1.0), "timeout")
 	gameover_UI.visible = true
