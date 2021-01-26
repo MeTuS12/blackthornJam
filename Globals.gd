@@ -7,6 +7,7 @@ signal needed_score
 
 var fade_flag = true
 var pause_flag = false
+var score_flag = false
 
 var easy = false
 var hard = false

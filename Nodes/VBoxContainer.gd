@@ -6,10 +6,8 @@ var menu = null
 
 func _ready():
 	buttons = get_children()
-#	buttons.sort_custom(self, "buttons_sort")
 	buttons[0].grab_focus()
 	menu = get_parent().get_parent().get_parent().get_parent()
-	print(buttons)
 
 
 func buttons_sort(a, b):
@@ -30,8 +28,8 @@ func _physics_process(_delta):
 			i += 1
 			if i >= buttons.size():
 				i = 0
-			buttons[i].grab_focus()
-		print(i)
+#			buttons[i].grab_focus()
+#		print(i)
 
 func check_focus():
 	var flag = true

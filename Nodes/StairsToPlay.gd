@@ -17,33 +17,34 @@ var very_score = 0
 func _ready():
 	label.text = name_dif
 	new_score = Globals.actual_score
+	var save_data = SaveAndLoad.load_data_from_file()
 	
 	
 	if easy:
-		easy_score = Globals.easy_score
-		subtext_label.text = "MAX SCORE: " + str(easy_score)
+#		easy_score = save_data.easy
+		subtext_label.text = "MAX SCORE: " + str(save_data.easy)
 	if hard:
-		hard_score = Globals.hard_score
-		subtext_label.text = "MAX SCORE: " + str(hard_score)
+#		hard_score = save_data.hard
+		subtext_label.text = "MAX SCORE: " + str(save_data.hard)
 	if very_hard:
-		very_score = Globals.very_score
-		subtext_label.text = "MAX SCORE: " + str(very_score)
+#		very_score = save_data.very
+		subtext_label.text = "MAX SCORE: " + str(save_data.very)
 	
 	
 	if Globals.easy:
-		if easy:
-			if new_score > easy_score:
-				Globals.easy_score = new_score
+		if easy and Globals.score_flag:
+			if new_score > save_data.easy:
+				save_data.easy = new_score
 				subtext_label.text = "MAX SCORE: " + str(new_score)
 	if Globals.hard:
-		if hard:
-			if new_score > hard_score:
-				Globals.hard_score = new_score
+		if hard and Globals.score_flag:
+			if new_score > save_data.hard:
+				save_data.hard = new_score
 				subtext_label.text = "MAX SCORE: " + str(new_score)
 	if Globals.very_hard:
-		if very_hard:
-			if new_score > very_score:
-				Globals.very_score = new_score
+		if very_hard and save_data.very:
+			if new_score > save_data.very:
+				save_data.very = new_score
 				subtext_label.text = "MAX SCORE: " + str(new_score)
 
 

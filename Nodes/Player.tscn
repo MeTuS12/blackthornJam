@@ -201,7 +201,7 @@ position = Vector2( -10.9603, -93.3433 )
 [node name="Hurtbox" type="Area2D" parent="."]
 position = Vector2( 6.67419, 42.7149 )
 collision_layer = 16
-collision_mask = 16
+collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
 position = Vector2( -11.8618, -18.2323 )

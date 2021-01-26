@@ -32,6 +32,8 @@ func _on_Button_pressed():
 
 
 func _on_Left_pressed():
+	Globals.score_flag = true
+	update_score()
 	visible = false
 	player.fade_in()
 	get_tree().paused = true
@@ -41,3 +43,20 @@ func _on_Left_pressed():
 	get_tree().paused = false
 # warning-ignore:return_value_discarded
 	get_tree().change_scene("res://MainMenu.tscn")
+
+
+func update_score():
+	var save_data = SaveAndLoad.load_data_from_file()
+	
+	if Globals.easy:
+		if Globals.actual_score > save_data.easy:
+			save_data.easy = Globals.actual_score
+			SaveAndLoad.save_data_to_file(save_data)
+	if Globals.hard:
+		if Globals.actual_score > save_data.hard:
+			save_data.hard = Globals.actual_score
+			SaveAndLoad.save_data_to_file(save_data)
+	if Globals.very_hard:
+		if Globals.actual_score > save_data.very:
+			save_data.very = Globals.actual_score
+			SaveAndLoad.save_data_to_file(save_data)

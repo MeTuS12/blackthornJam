@@ -11,13 +11,13 @@ onready var spawn_position = $SpawnPosition
 
 func _ready():
 	var assignedPair = get_node(stairs_pair)
-	print(assignedPair)
+#	print(assignedPair)
 	
 	if not assignedPair == null:
 		assert(assignedPair.is_in_group("spawn"), "Las escaleras " + name + " están asociadas a un objeto que no es tipo Stairs")
 		pair = assignedPair
 		pair.set_pair(self)
-		print(pair)
+#		print(pair)
 
 
 func set_pair(pair):

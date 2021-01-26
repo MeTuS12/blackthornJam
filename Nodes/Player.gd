@@ -220,8 +220,6 @@ func fade_in():
 func fade_out():
 	fade.play("Fade_Out")
 
-#func fade_idle():
-#	fade.play("Idle")
 
 func _on_Hurtbox_area_entered(_area):
 	print('AAAA')
