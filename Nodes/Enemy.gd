@@ -131,14 +131,15 @@ func check_sound():
 
 func _draw():
 	draw_circle(Vector2(), DISTANCE_RUN, Color(0.9,0.1,0.1,0.25))
+	draw_circle(Vector2(), DISTANCE_WALK, Color(0.1,0.1,0.9,0.25))
 	
 	if path != null:
 		var prevPoint = Vector2()
-		
+
 		if target_point != null:
 			var targetPos = target_point - position
 			draw_line(targetPos, targetPos + Vector2(0, -30), Color(0, 255, 0), 10)
-		
+
 		for point in path:
 			draw_line(prevPoint, point - position, Color(255, 0, 0), 1)
 			prevPoint = point - position

@@ -4,12 +4,17 @@ extends Node
 signal score
 
 
-var difficulty = 5
-var min_score
+var easy = false
+var hard = false
+var very_hard = false
+
+var difficulty = 0
+var min_score = 0
 var actual_score = 0
 
-var max_score_easy = 0
-var max_score_hard = 0
+var easy_score = 0
+var hard_score = 0
+var very_score = 0
 
 func _ready():
 	min_score = difficulty
