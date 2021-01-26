@@ -108,14 +108,14 @@ tracks/1/keys = {
 radius = 29.0733
 height = 112.102
 
-[sub_resource type="Gradient" id=7]
+[sub_resource type="Gradient" id=6]
 offsets = PoolRealArray( 0, 0.654135, 1 )
 colors = PoolColorArray( 0.4454, 0.417366, 0.508789, 0.843137, 0.462745, 0.439216, 0.486275, 0.752941, 0.477539, 0.458885, 0.458885, 0 )
 
-[sub_resource type="GradientTexture" id=8]
-gradient = SubResource( 7 )
+[sub_resource type="GradientTexture" id=7]
+gradient = SubResource( 6 )
 
-[sub_resource type="ParticlesMaterial" id=9]
+[sub_resource type="ParticlesMaterial" id=8]
 emission_shape = 2
 emission_box_extents = Vector3( 1920, 1080, 1 )
 flag_disable_z = true
@@ -129,9 +129,9 @@ angle = -18.9
 angle_random = 0.24
 scale = 14.16
 scale_random = 1.0
-color_ramp = SubResource( 8 )
+color_ramp = SubResource( 7 )
 
-[sub_resource type="CircleShape2D" id=6]
+[sub_resource type="CircleShape2D" id=9]
 radius = 53.9915
 
 [node name="Player" type="KinematicBody2D" groups=[
@@ -178,7 +178,7 @@ smoothing_speed = 2.0
 amount = 200
 lifetime = 5.0
 local_coords = false
-process_material = SubResource( 9 )
+process_material = SubResource( 8 )
 
 [node name="PickUps" type="Node" parent="."]
 
@@ -201,5 +201,5 @@ collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
 position = Vector2( -7.85724, -23.5717 )
-shape = SubResource( 6 )
+shape = SubResource( 9 )
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_Hurtbox_area_entered"]

@@ -466,22 +466,11 @@ tile_data = PoolIntArray( -1769513, 0, 0, -1769512, 0, 1, -1769511, 0, 1, -17695
 
 [node name="CreditsLabels" type="Node2D" parent="."]
 
-[node name="Tutorial3" type="Label" parent="CreditsLabels"]
-margin_left = 3309.12
-margin_top = -1467.63
-margin_right = 3615.12
-margin_bottom = -1412.63
-custom_fonts/font = SubResource( 1 )
-text = "SOUND AND MUSIC"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
 [node name="Tutorial4" type="Label" parent="CreditsLabels"]
 margin_left = 5891.88
-margin_top = -1464.82
+margin_top = -1595.03
 margin_right = 6197.88
-margin_bottom = -1409.82
+margin_bottom = -1540.03
 custom_fonts/font = SubResource( 1 )
 text = "ART AND DESIGN"
 __meta__ = {
@@ -489,10 +478,10 @@ __meta__ = {
 }
 
 [node name="Tutorial5" type="Label" parent="CreditsLabels"]
-margin_left = 4609.76
-margin_top = -2751.76
-margin_right = 4915.76
-margin_bottom = -2696.76
+margin_left = 4618.74
+margin_top = -2118.69
+margin_right = 4924.74
+margin_bottom = -2063.69
 custom_fonts/font = SubResource( 1 )
 text = "PROGRAMMING "
 __meta__ = {
@@ -528,6 +517,17 @@ margin_right = 5042.6
 margin_bottom = -2351.55
 custom_fonts/font = SubResource( 30 )
 text = "DAVID LLEDÓ & DAVID CHICO"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Tutorial3" type="Label" parent="CreditsLabels"]
+margin_left = 3290.3
+margin_top = -1611.06
+margin_right = 3596.3
+margin_bottom = -1556.06
+custom_fonts/font = SubResource( 1 )
+text = "SOUND AND MUSIC"
 __meta__ = {
 "_edit_use_anchors_": false
 }

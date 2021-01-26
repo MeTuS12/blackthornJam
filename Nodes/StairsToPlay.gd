@@ -43,11 +43,13 @@ func _ready():
 	if Globals.very_hard:
 		if very_hard:
 			if new_score > very_score:
+				Globals.very_score = new_score
 				subtext_label.text = "MAX SCORE: " + str(new_score)
 
 
 func _on_Area2D_body_entered(body):
 	if body is Player:
+		Globals.score_needed = difficulty
 		Globals.min_score = difficulty
 		Globals.easy = easy
 		Globals.hard = hard
