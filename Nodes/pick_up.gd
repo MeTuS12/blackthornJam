@@ -58,6 +58,7 @@ func throw(player):
 	player.current_weight -= weight
 	player.current_value -= value
 	player.pickUps.remove_child(self)
+	Globals.actual_score = player.current_value
 	
 	player.get_parent().add_child(self)
 	
