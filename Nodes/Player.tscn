@@ -131,8 +131,9 @@ scale = 14.16
 scale_random = 1.0
 color_ramp = SubResource( 7 )
 
-[sub_resource type="CircleShape2D" id=9]
-radius = 53.9915
+[sub_resource type="CapsuleShape2D" id=9]
+radius = 38.543
+height = 105.235
 
 [node name="Player" type="KinematicBody2D" groups=[
 "player",
@@ -175,6 +176,7 @@ smoothing_enabled = true
 smoothing_speed = 2.0
 
 [node name="Particles2D" type="Particles2D" parent="Camera2D"]
+z_index = 10
 amount = 200
 lifetime = 5.0
 local_coords = false
@@ -196,10 +198,12 @@ position = Vector2( -10.9603, -93.3433 )
 [node name="UI" parent="." instance=ExtResource( 9 )]
 
 [node name="Hurtbox" type="Area2D" parent="."]
+position = Vector2( 6.67419, 42.7149 )
 collision_layer = 16
-collision_mask = 0
+collision_mask = 16
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
-position = Vector2( -7.85724, -23.5717 )
+position = Vector2( -11.8618, -18.2323 )
+rotation = -1.57091
 shape = SubResource( 9 )
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_Hurtbox_area_entered"]

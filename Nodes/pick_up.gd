@@ -66,14 +66,12 @@ func throw(player):
 	
 	player.update_weight_velocity()
 	
-	var tween = Tween.new()
-	add_child(tween)
-	
-	var ini_pos = player.pickUpSpawn.global_position
+#	var ini_pos = player.pickUpSpawn.global_position
+#	global_position = player.pickUpSpawn.global_position
+	var ini_pos = player.global_position
+	global_position = player.global_position
 	
 	collisionShape.disabled = false
-	
-	global_position = player.pickUpSpawn.global_position
 	acc = throw_dir * throw_force
 	acc.x = acc.x * player.sprite_direction
 	y_floor = ini_pos.y + throw_displacement.y
@@ -91,6 +89,9 @@ func move(delta):
 
 		motion = move_and_slide(motion)
 		
+		if motion.y == 0:
+			motion = Vector2()
+			
 		if position.y > y_floor:
 			motion = Vector2()
 			player_flag = true

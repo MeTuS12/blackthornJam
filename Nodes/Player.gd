@@ -151,9 +151,9 @@ func update_camera(camera_zoom):
 
 func check_camera_zoom():
 	if Input.is_action_pressed("ui_shift") and motion.length() > 0:
-		update_camera(camera_far)
-	elif Input.is_action_pressed("ui_ctrl"):
 		update_camera(camera_close)
+	elif Input.is_action_pressed("ui_ctrl"):
+		update_camera(camera_far)
 	else:	#if not Input.is_action_pressed("ui_ctrl"):
 		update_camera(camera_default)
 
@@ -224,6 +224,7 @@ func fade_out():
 #	fade.play("Idle")
 
 func _on_Hurtbox_area_entered(_area):
+	print('AAAA')
 	flag_can_move = false
 	yield(get_tree().create_timer(1.0), "timeout")
 	gameover_UI.visible = true

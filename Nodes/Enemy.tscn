@@ -54,8 +54,8 @@ tracks/0/keys = {
 }
 
 [sub_resource type="CapsuleShape2D" id=5]
-radius = 73.1086
-height = 119.524
+radius = 86.0314
+height = 157.418
 
 [node name="Enemy" type="KinematicBody2D"]
 collision_layer = 16386
@@ -98,7 +98,7 @@ __meta__ = {
 
 [node name="Hitbox" type="Area2D" parent="."]
 position = Vector2( -2, 57 )
-collision_layer = 0
+collision_layer = 16
 collision_mask = 16
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
