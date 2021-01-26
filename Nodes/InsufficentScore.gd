@@ -5,10 +5,14 @@ onready var required = $TextureRect/VBoxContainer/RequiredScore
 onready var continue_label = $TextureRect/VBoxContainer/Continue
 onready var left_button = $TextureRect/VBoxContainer/HBoxContainer/VBoxContainer/Left
 
+var player = null
+
 
 func _ready():
 # warning-ignore:return_value_discarded
 	Globals.connect("score", self, "on_score")
+	player = get_tree().get_nodes_in_group('player')
+	player = player[0]
 
 func on_score():
 	if Globals.actual_score < Globals.min_score:
@@ -28,6 +32,11 @@ func _on_Button_pressed():
 
 
 func _on_Left_pressed():
+	visible = false
+	player.fade_in()
+	get_tree().paused = true
+	yield(get_tree().create_timer(.5), "timeout")
+	Globals.fade_flag = true
 	get_tree().paused = false
 # warning-ignore:return_value_discarded
 	get_tree().change_scene("res://MainMenu.tscn")
