@@ -1,7 +1,7 @@
 extends CenterContainer
 
 
-onready var label = $VBoxContainer/Label
+onready var label = $TextureRect/VBoxContainer/Label
 
 func _ready():
 	label.text = "YOU NEED " + str(Globals.score_needed) + " CROWNS TO COMPLETE YOUR QUEST"

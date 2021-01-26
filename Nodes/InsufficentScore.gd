@@ -3,7 +3,7 @@ extends CenterContainer
 onready var actual = $TextureRect/VBoxContainer/ActualScore
 onready var required = $TextureRect/VBoxContainer/RequiredScore
 onready var continue_label = $TextureRect/VBoxContainer/Continue
-onready var left_button = $TextureRect/VBoxContainer/HBoxContainer/Left
+onready var left_button = $TextureRect/VBoxContainer/HBoxContainer/VBoxContainer/Left
 
 
 func _ready():
