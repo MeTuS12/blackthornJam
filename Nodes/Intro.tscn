@@ -60,7 +60,6 @@ __meta__ = {
 }
 
 [node name="Label" type="Label" parent="CanvasLayer/CenterContainer/TextureRect"]
-visible = false
 margin_left = 180.0
 margin_top = 380.0
 margin_right = 421.0

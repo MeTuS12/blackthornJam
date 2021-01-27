@@ -255,7 +255,7 @@ stairs_pair = NodePath("../Stairs5")
 [node name="YSort" type="YSort" parent="."]
 
 [node name="Player" parent="YSort" instance=ExtResource( 2 )]
-position = Vector2( 144.497, 10611.4 )
+position = Vector2( -847.16, 8297.53 )
 
 [node name="Enemy" parent="YSort" instance=ExtResource( 5 )]
 position = Vector2( 5961.96, 7954.06 )
