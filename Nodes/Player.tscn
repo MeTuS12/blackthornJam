@@ -252,7 +252,10 @@ shape = SubResource( 6 )
 position = Vector2( 5.03973, 51.6567 )
 current = true
 zoom = Vector2( 2, 2 )
-smoothing_speed = 2.0
+drag_margin_left = 1.0
+drag_margin_top = 1.0
+drag_margin_right = 1.0
+drag_margin_bottom = 1.0
 
 [node name="Particles2D" type="Particles2D" parent="Camera2D"]
 z_index = 10
