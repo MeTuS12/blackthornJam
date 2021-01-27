@@ -23,7 +23,10 @@ onready var infoLabel = $CanvasLayer/CenterContainer/TextureRect/Info
 onready var audio = $AudioStreamPlayer
 
 func _input(event):
-	VisualServer.set_default_clear_color(Color("#2a2c30"))
+#	VisualServer.set_default_clear_color(Color("#2a2c30")) cambio el color para probar
+	VisualServer.set_default_clear_color(Color("#141617"))
+	if Input.is_action_just_pressed("ui_cancel"):
+		get_tree().change_scene("res://MainMenu.tscn")
 	if flag and event is InputEventKey and event.is_pressed():
 		space_label.visible = false
 		intro()
