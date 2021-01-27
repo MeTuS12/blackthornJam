@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=2]
+[gd_scene load_steps=48 format=2]
 
 [ext_resource path="res://Assets/WallTileset.png" type="Texture" id=1]
 [ext_resource path="res://Nodes/Player.tscn" type="PackedScene" id=2]
@@ -205,6 +205,10 @@ points = PoolVector2Array( 0, 0, 256, 0, 256, 256, 0, 256 )
 size = 60
 font_data = ExtResource( 9 )
 
+[sub_resource type="DynamicFont" id=31]
+size = 44
+font_data = ExtResource( 9 )
+
 [node name="Node2D" type="Node2D"]
 z_index = 2
 
@@ -279,7 +283,6 @@ very_hard = true
 
 [node name="Player" parent="YSort" instance=ExtResource( 2 )]
 position = Vector2( 265.444, -619.811 )
-max_velocity = 600
 
 [node name="CreditsDecoration" type="Node2D" parent="YSort"]
 
@@ -533,9 +536,21 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Thieves Guild" type="Label" parent="CreditsLabels"]
+margin_left = 99.5466
+margin_top = -1113.3
+margin_right = 404.547
+margin_bottom = -1058.3
+custom_fonts/font = SubResource( 31 )
+text = "THE THIEVES GUILD"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="UI" parent="." instance=ExtResource( 7 )]
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+pause_mode = 2
 stream = ExtResource( 16 )
 autoplay = true
 [connection signal="body_entered" from="Stairs5/Area2D2" to="Stairs5/Area2D2" method="_on_Area2D2_body_entered"]

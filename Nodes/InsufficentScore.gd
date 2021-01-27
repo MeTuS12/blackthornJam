@@ -3,7 +3,8 @@ extends CenterContainer
 onready var actual = $TextureRect/VBoxContainer/ActualScore
 onready var required = $TextureRect/VBoxContainer/RequiredScore
 onready var continue_label = $TextureRect/VBoxContainer/Continue
-onready var left_button = $TextureRect/VBoxContainer/HBoxContainer/VBoxContainer/Left
+onready var okay_button = $TextureRect/VBoxContainer/HBoxContainer/VBoxContainer/Okay
+onready var congrat = $TextureRect/VBoxContainer/Congratulations
 
 var player = null
 
@@ -16,15 +17,16 @@ func _ready():
 
 func on_score():
 	if Globals.actual_score < Globals.min_score:
-		left_button.visible = false
+		okay_button.text = "CONTINUE"
 		continue_label.visible = false
-		actual.text = "YOU HAVE: " + str(Globals.actual_score) + " CROWNS"
-		required.text = "YOU NEED: " + str(Globals.min_score) + " CROWNS TO LEAVE THE CASTLE"
+		actual.text = "YOU HAVE STOLEN WORTH OF: " + str(Globals.actual_score) + " TREASURES"
+		required.text = "YOU NEED TO STEAL WORTH OF: " + str(Globals.min_score) + " TREASURES OR MORE TO LEAVE THE CASTLE"
 	else:
-#		left_button.visible = true
+		congrat.visible = true
+		okay_button.text = "LEAVE"
 		continue_label.visible = true
-		actual.text = "CONGRATYLATIONS!! YOU COMPLETED THE QUEST WITH " + str(Globals.actual_score) + " CROWNS!"
-		required.text = "YOU SCAPED SAFE AND SOUND WITH GREAT TREASURE"
+		actual.text = "YOU COMPLETED THE QUEST WITH WORTH OF                     " + str(Globals.actual_score) + " TREASURES!"
+		required.text = "YOU ESCAPED SAFE AND SOUND WITH GREAT TREASURE"
 
 
 func _on_Button_pressed():

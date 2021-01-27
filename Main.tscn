@@ -255,7 +255,7 @@ stairs_pair = NodePath("../Stairs5")
 [node name="YSort" type="YSort" parent="."]
 
 [node name="Player" parent="YSort" instance=ExtResource( 2 )]
-position = Vector2( -813.043, 8267.94 )
+position = Vector2( 144.497, 10611.4 )
 
 [node name="Enemy" parent="YSort" instance=ExtResource( 5 )]
 position = Vector2( 5961.96, 7954.06 )
@@ -288,7 +288,7 @@ position = Vector2( 1172.13, 8306.08 )
 position = Vector2( 920.144, 7580.37 )
 
 [node name="Coins4" parent="YSort" instance=ExtResource( 12 )]
-position = Vector2( -1095.73, 8336.32 )
+position = Vector2( -1015.1, 8396.8 )
 
 [node name="TileMap" type="TileMap" parent="YSort"]
 modulate = Color( 0.694118, 0.694118, 0.694118, 1 )

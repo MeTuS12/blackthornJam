@@ -12,7 +12,6 @@ anchor_bottom = 1.0
 theme = ExtResource( 3 )
 script = ExtResource( 1 )
 __meta__ = {
-"_edit_group_": true,
 "_edit_use_anchors_": false
 }
 
@@ -32,7 +31,7 @@ margin_bottom = 313.0
 [node name="Label" type="Label" parent="TextureRect/VBoxContainer"]
 margin_right = 127.0
 margin_bottom = 44.0
-custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color = Color( 0.0784314, 0.0862745, 0.0901961, 1 )
 text = "GAME OVER"
 align = 1
 
