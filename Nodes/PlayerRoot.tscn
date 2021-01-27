@@ -1,17 +1,10 @@
 [gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://Nodes/Player.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Nodes/Anchor.gd" type="Script" id=2]
+[ext_resource path="res://Nodes/Anchor.tscn" type="PackedScene" id=2]
 
 [node name="PlayerRoot" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( 265.444, -7.81097 )
 
-[node name="Anchor" type="Position2D" parent="."]
-position = Vector2( 265.444, -7.81097 )
-script = ExtResource( 2 )
-
-[node name="Camera2D" type="Camera2D" parent="Anchor"]
-current = true
-zoom = Vector2( 2, 2 )
+[node name="Anchor" parent="." instance=ExtResource( 2 )]

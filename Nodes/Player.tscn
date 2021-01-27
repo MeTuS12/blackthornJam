@@ -181,14 +181,14 @@ tracks/2/keys = {
 "values": [ 0.0 ]
 }
 
-[sub_resource type="Gradient" id=7]
+[sub_resource type="Gradient" id=6]
 offsets = PoolRealArray( 0, 0.654135, 1 )
 colors = PoolColorArray( 0.4454, 0.417366, 0.508789, 0.843137, 0.462745, 0.439216, 0.486275, 0.752941, 0.477539, 0.458885, 0.458885, 0 )
 
-[sub_resource type="GradientTexture" id=8]
-gradient = SubResource( 7 )
+[sub_resource type="GradientTexture" id=7]
+gradient = SubResource( 6 )
 
-[sub_resource type="ParticlesMaterial" id=9]
+[sub_resource type="ParticlesMaterial" id=8]
 emission_shape = 2
 emission_box_extents = Vector3( 1920, 1080, 1 )
 flag_disable_z = true
@@ -202,9 +202,9 @@ angle = -18.9
 angle_random = 0.24
 scale = 14.16
 scale_random = 1.0
-color_ramp = SubResource( 8 )
+color_ramp = SubResource( 7 )
 
-[sub_resource type="CapsuleShape2D" id=6]
+[sub_resource type="CapsuleShape2D" id=9]
 radius = 29.0733
 height = 112.102
 
@@ -257,12 +257,12 @@ z_index = 10
 amount = 200
 lifetime = 5.0
 local_coords = false
-process_material = SubResource( 9 )
+process_material = SubResource( 8 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( -3.3118, 25.1907 )
 rotation = -1.55738
-shape = SubResource( 6 )
+shape = SubResource( 9 )
 
 [node name="PickUps" type="Node" parent="."]
 

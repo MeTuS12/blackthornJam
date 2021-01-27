@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/mixkit-mechanical-crate-pick-up-3154.wav-61a90d07fab74e7f1cd04b145c4cc688.sample"
+
+[deps]
+
+source_file="res://Assets/sound/mixkit-mechanical-crate-pick-up-3154.wav"
+dest_files=[ "res://.import/mixkit-mechanical-crate-pick-up-3154.wav-61a90d07fab74e7f1cd04b145c4cc688.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

@@ -26,8 +26,8 @@ func set_pair(pair):
 
 func disable():
 	flag = false
-#	yield(get_tree().create_timer(1.0), "timeout")
-#	flag = true
+	yield(get_tree().create_timer(2.0), "timeout")
+	flag = true
 
 
 func get_spawn_position():
@@ -40,6 +40,7 @@ func _on_Area2D_body_entered(body):
 		if body is Player:
 			if pair != null:
 				body.global_position = pair.get_spawn_position()
+				$AudioStreamPlayer.play()
 				pair.disable()
 
 

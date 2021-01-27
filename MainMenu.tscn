@@ -1,7 +1,7 @@
-[gd_scene load_steps=55 format=2]
+[gd_scene load_steps=56 format=2]
 
 [ext_resource path="res://Assets/WallTileset.png" type="Texture" id=1]
-[ext_resource path="res://Nodes/PlayerRoot.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Nodes/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Assets/tilesets/Floor.tres" type="TileSet" id=3]
 [ext_resource path="res://Nodes/Stairs.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Nodes/StairsToPlay.tscn" type="PackedScene" id=5]
@@ -23,6 +23,7 @@
 [ext_resource path="res://Nodes/Elements/candlesFloor.tscn" type="PackedScene" id=21]
 [ext_resource path="res://Nodes/Elements/candlesWall.tscn" type="PackedScene" id=22]
 [ext_resource path="res://Nodes/Elements/Library.tscn" type="PackedScene" id=23]
+[ext_resource path="res://Nodes/Anchor.tscn" type="PackedScene" id=24]
 
 [sub_resource type="DynamicFont" id=1]
 size = 44
@@ -288,8 +289,6 @@ very_hard = true
 
 [node name="YSort" type="YSort" parent="."]
 
-[node name="PlayerRoot" parent="YSort" instance=ExtResource( 2 )]
-
 [node name="Barrel2" parent="YSort" instance=ExtResource( 18 )]
 position = Vector2( 4215.02, -1734.28 )
 
@@ -518,6 +517,10 @@ position = Vector2( 5191.8, -1255.16 )
 
 [node name="Banner3" parent="YSort" instance=ExtResource( 19 )]
 position = Vector2( 4937.75, -1791.87 )
+
+[node name="Anchor" parent="YSort" instance=ExtResource( 24 )]
+
+[node name="Player" parent="YSort" instance=ExtResource( 2 )]
 
 [node name="CreditsLabels" type="Node2D" parent="."]
 
