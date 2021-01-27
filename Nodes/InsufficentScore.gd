@@ -19,14 +19,14 @@ func on_score():
 	if Globals.actual_score < Globals.min_score:
 		okay_button.text = "CONTINUE"
 		continue_label.visible = false
-		actual.text = "YOU HAVE STOLEN WORTH OF: " + str(Globals.actual_score) + " TREASURES"
-		required.text = "YOU NEED TO STEAL WORTH OF: " + str(Globals.min_score) + " TREASURES OR MORE TO LEAVE THE CASTLE"
+		actual.text = "YOU HAVE STOLEN TREASURES WORTH OF: " + str(Globals.actual_score) + " CROWNS"
+		required.text = "YOU NEED TO STEAL TREASURES WORTH OF: " + str(Globals.min_score) + " CROWNS OR MORE TO LEAVE THE CASTLE"
 	else:
 		congrat.visible = true
 		okay_button.text = "LEAVE"
 		continue_label.visible = true
-		actual.text = "YOU COMPLETED THE QUEST WITH WORTH OF                     " + str(Globals.actual_score) + " TREASURES!"
-		required.text = "YOU ESCAPED SAFE AND SOUND WITH GREAT TREASURE"
+		actual.text = "YOU COMPLETED THE QUEST WITH TREASURES \nWORTH OF " + str(Globals.actual_score) + " CROWNS!"
+		required.text = "YOU ESCAPED SAFE AND SOUND WITH GREAT TREASURES"
 
 
 func _on_Button_pressed():

@@ -5,7 +5,7 @@ var player = null
 onready var label = $TextureRect/VBoxContainer/Label
 
 func _ready():
-	label.text = "YOU NEED TO STEAL WORTH OF " + str(Globals.score_needed) + " TREASURES                    TO COMPLETE YOUR QUEST"
+	label.text = "YOU NEED TO STEAL TREASURES WORTH OF " + str(Globals.score_needed) + " CROWNS \nTO COMPLETE YOUR QUEST"
 # warning-ignore:return_value_discarded
 	Globals.connect("needed_score", self, "on_needed_score")
 
