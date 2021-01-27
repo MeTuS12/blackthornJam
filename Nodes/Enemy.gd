@@ -5,8 +5,8 @@ class_name Enemy
 
 enum STATE { WAIT, GO_TO_POINT, CHASING, LOST_TARGET }
 
-const DISTANCE_RUN = 4000
-const DISTANCE_WALK = 1000
+const DISTANCE_RUN = 3000
+const DISTANCE_WALK = 700
 
 var motion = Vector2()
 var direction = Vector2()
@@ -174,8 +174,9 @@ func check_pickup():
 	for p in pickups:
 		if is_instance_valid(p) and p.player_flag and p.enemy_flag:
 			if position.distance_to(p.position) < DISTANCE_RUN:
-				update_target(p.position)
-				change_state(STATE.CHASING)
+				if can_access(p.position):
+					update_target(p.position)
+					change_state(STATE.CHASING)
 
 
 func WAIT_init():

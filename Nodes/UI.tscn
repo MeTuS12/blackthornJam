@@ -40,8 +40,7 @@ __meta__ = {
 }
 
 [node name="Crown" type="TextureRect" parent="Treasures"]
-margin_bottom = 4000.0
-rect_scale = Vector2( 0.015, 0.015 )
+margin_bottom = 128.0
 texture = ExtResource( 1 )
 expand = true
 stretch_mode = 2
@@ -50,11 +49,8 @@ __meta__ = {
 }
 
 [node name="Weight" type="TextureRect" parent="Treasures"]
-margin_left = 13.0
-margin_top = 57.0
-margin_right = 13.0
-margin_bottom = 569.0
-rect_scale = Vector2( 0.068, 0.068 )
+margin_top = 128.0
+margin_bottom = 256.0
 texture = ExtResource( 3 )
 expand = true
 stretch_mode = 2

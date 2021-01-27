@@ -28,6 +28,7 @@ var current_weight = 0.0
 var current_value = 0.0
 
 var flag_can_move = true
+var flag_can_die = true
 
 
 var current_weight_velocity = 0
@@ -131,19 +132,20 @@ func _physics_process(delta):
 
 
 func update_animation():
-	var vel = motion.length()
-	var speed = 1.0
-	
-	if vel > 0:
-		speed = vel / max_velocity * (1.0 - MIN_ANIMATION_SPEED) + MIN_ANIMATION_SPEED
+	if flag_can_move:
+		var vel = motion.length()
+		var speed = 1.0
 		
-		if not running and not walking:
-			animationPlayer.play("JumpSlow", -1, speed)
-		else:
-			animationPlayer.play("Jump", -1, speed)
+		if vel > 0:
+			speed = vel / max_velocity * (1.0 - MIN_ANIMATION_SPEED) + MIN_ANIMATION_SPEED
 			
-	else:
-		animationPlayer.play("Idle")
+			if not running and not walking:
+				animationPlayer.play("JumpSlow", -1, speed)
+			else:
+				animationPlayer.play("Jump", -1, speed)
+				
+		else:
+			animationPlayer.play("Idle")
 
 
 func update_camera(camera_zoom):
@@ -226,8 +228,10 @@ func fade_out():
 
 
 func _on_Hurtbox_area_entered(_area):
-	print('AAAA')
-	$DeathSound.play()
-	flag_can_move = false
-	yield(get_tree().create_timer(1.0), "timeout")
-	gameover_UI.visible = true
+	if flag_can_die:
+		animationPlayer.play("Die")
+		flag_can_die = false
+		$DeathSound.play()
+		flag_can_move = false
+		yield(get_tree().create_timer(1.0), "timeout")
+		gameover_UI.visible = true

@@ -15,8 +15,8 @@ func _ready():
 	player.connect("weight_changed", self, "on_weight_changed")
 
 func on_treasure_changed(value):
-	crowns.rect_size.x = 4000 * value
+	crowns.rect_size.x = 128 * value
 
 
 func on_weight_changed(value):
-	weight.rect_size.x = 515 * value
+	weight.rect_size.x = 128 * value
