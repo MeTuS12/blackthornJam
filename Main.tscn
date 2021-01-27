@@ -1,7 +1,7 @@
 [gd_scene load_steps=44 format=2]
 
 [ext_resource path="res://Assets/WallTileset.png" type="Texture" id=1]
-[ext_resource path="res://Nodes/Player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Nodes/PlayerRoot.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Assets/music/Gameplay demo.wav" type="AudioStream" id=3]
 [ext_resource path="res://Main.gd" type="Script" id=4]
 [ext_resource path="res://Nodes/Enemy.tscn" type="PackedScene" id=5]
@@ -260,8 +260,8 @@ stairs_pair = NodePath("../Stairs5")
 
 [node name="YSort" type="YSort" parent="."]
 
-[node name="Player" parent="YSort" instance=ExtResource( 2 )]
-position = Vector2( -757.363, 8279.57 )
+[node name="PlayerRoot" parent="YSort" instance=ExtResource( 2 )]
+position = Vector2( -1113.48, 8355.61 )
 
 [node name="Enemy" parent="YSort" instance=ExtResource( 5 )]
 position = Vector2( 5961.96, 7954.06 )
