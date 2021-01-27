@@ -22,7 +22,7 @@ onready var infoLabel = $CanvasLayer/CenterContainer/TextureRect/Info
 onready var audio = $AudioStreamPlayer
 
 func _input(event):
-	VisualServer.set_default_clear_color(Color.black)
+	VisualServer.set_default_clear_color(Color("#2a2c30"))
 	if flag and event is InputEventKey and event.is_pressed():
 		space_label.visible = false
 		intro()
