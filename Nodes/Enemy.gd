@@ -5,7 +5,7 @@ class_name Enemy
 
 enum STATE { WAIT, GO_TO_POINT, CHASING, LOST_TARGET }
 
-const DISTANCE_RUN = 3000
+const DISTANCE_RUN = 1500
 const DISTANCE_WALK = 700
 
 var motion = Vector2()
@@ -57,7 +57,11 @@ onready var sprite = $Sprite
 onready var animationPlayer = $Sprite/AnimationPlayer
 onready var viewzone = $ViewZone
 
-
+onready var soundHissing = $Hissing
+onready var soundHissingAttack = $HissingAttack
+onready var soundRattle = $Rattle
+var flag_hissing_attack = true
+signal make_sound (position)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -74,7 +78,23 @@ func _ready():
 	assert( player.size() > 0, "No existe ningún objeto Player" )
 	player = player[0]
 	
+	make_sound_each_random_time()
 	change_state(STATE.WAIT)
+
+
+func make_sound_each_random_time():
+	yield(get_tree().create_timer(randf() * 5 + 5), "timeout")
+	
+	soundHissing.play()
+	make_sound_each_random_time()
+	
+	if flag_hissing_attack == false:
+		flag_hissing_attack = true
+
+
+func make_sound(sound):
+	sound.play()
+	emit_signal("make_sound", position)
 
 
 func change_state(new_state):
@@ -121,13 +141,17 @@ func check_sound():
 		if player.is_walking():
 			if can_access(player.position):
 				update_target(player.position)
-				change_state(STATE.CHASING)
+				if state != STATE.CHASING:
+					change_state(STATE.CHASING)
+					make_sound(soundRattle)
 	
 	elif distance_to_player < DISTANCE_RUN:
 		if player.is_running():
 			if can_access(player.position):
 				update_target(player.position)
-				change_state(STATE.CHASING)
+				if state != STATE.CHASING:
+					change_state(STATE.CHASING)
+					make_sound(soundRattle)
 
 
 #func _draw():
@@ -163,7 +187,12 @@ func check_vision(more_range=false):
 			if result.collider is Player:
 					update_target(result.position)
 					$Sprite.self_modulate.r = 2.0
-					change_state(STATE.CHASING)
+					if flag_hissing_attack:
+						make_sound(soundHissingAttack)
+						flag_hissing_attack = false
+						
+					if state != STATE.CHASING:
+						change_state(STATE.CHASING)
 					return true
 	return false
 

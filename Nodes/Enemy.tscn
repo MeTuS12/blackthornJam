@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://Assets/snake/04_Serpiente.png" type="Texture" id=1]
 [ext_resource path="res://Nodes/Enemy.gd" type="Script" id=2]
@@ -8,6 +8,9 @@
 [ext_resource path="res://Assets/snake/02_Serpiente.png" type="Texture" id=6]
 [ext_resource path="res://Assets/sound/zapsplat_animals_snake_shed_skin_long_16902.wav" type="AudioStream" id=7]
 [ext_resource path="res://Assets/shadow.png" type="Texture" id=8]
+[ext_resource path="res://Assets/sound/Blastwave_FX_RattlesnakeShakeTail_BWU.58.wav" type="AudioStream" id=9]
+[ext_resource path="res://Assets/sound/zapsplat_animals_snake_hiss_short_14693.wav" type="AudioStream" id=10]
+[ext_resource path="res://Assets/sound/Blastwave_FX_SnakeHiss_SEU04.2.wav" type="AudioStream" id=11]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 44.8043
@@ -91,7 +94,7 @@ anims/Walk = SubResource( 4 )
 collision_layer = 0
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ViewZone"]
-polygon = PoolVector2Array( -5.04468, -96.3477, -808.318, -1244.69, 1013.19, -1980.08, 3027.03, -1346.51, 3722.82, -5.83813, 3145.82, 1210.39, 877.425, 1906.18, -904.485, 972.798 )
+polygon = PoolVector2Array( -5.04468, -96.3477, -433.135, -734.834, 535.577, -929.922, 1410.11, -600.291, 1659.01, 11.8818, 1315.93, 509.692, 555.759, 711.508, -406.227, 556.783 )
 
 [node name="Light2D" type="Light2D" parent="."]
 visible = false
@@ -115,10 +118,25 @@ position = Vector2( 12, -98 )
 rotation = 1.58552
 shape = SubResource( 5 )
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+[node name="BaseSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 7 )
 volume_db = -3.21
 autoplay = true
+max_distance = 4000.0
+
+[node name="Hissing" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 11 )
+volume_db = -3.21
+max_distance = 4000.0
+
+[node name="HissingAttack" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 10 )
+volume_db = 6.42
+max_distance = 4000.0
+
+[node name="Rattle" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 9 )
+volume_db = -3.21
 max_distance = 4000.0
 [connection signal="body_entered" from="ViewZone" to="." method="_on_ViewZone_body_entered"]
 [connection signal="body_exited" from="ViewZone" to="." method="_on_ViewZone_body_exited"]
