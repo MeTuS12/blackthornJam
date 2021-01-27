@@ -255,20 +255,13 @@ stairs_pair = NodePath("../Stairs5")
 [node name="YSort" type="YSort" parent="."]
 
 [node name="Player" parent="YSort" instance=ExtResource( 2 )]
-position = Vector2( 1014.33, 6612.05 )
-max_velocity = 600
-
-[node name="Particles2D" parent="YSort/Player/Camera2D" index="0"]
-process_material = null
-
-[node name="CollisionShape2D" parent="YSort/Player/Hurtbox" index="0"]
-shape = null
+position = Vector2( 9.10083, 10797.9 )
 
 [node name="Enemy" parent="YSort" instance=ExtResource( 5 )]
 position = Vector2( 5961.96, 7954.06 )
 
 [node name="Enemy2" parent="YSort" instance=ExtResource( 5 )]
-position = Vector2( -19.3594, 6591.57 )
+position = Vector2( -42.0122, 6629.32 )
 
 [node name="Cup" parent="YSort" instance=ExtResource( 9 )]
 position = Vector2( 5441.18, 10177.2 )
@@ -327,7 +320,5 @@ autoplay = true
 [editable path="Exit"]
 
 [editable path="Stairs2"]
-
-[editable path="YSort/Player"]
 
 [editable path="YSort/Enemy"]

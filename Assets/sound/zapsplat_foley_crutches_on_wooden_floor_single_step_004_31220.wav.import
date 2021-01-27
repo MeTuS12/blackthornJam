@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/zapsplat_foley_crutches_on_wooden_floor_single_step_004_31220.wav-53d04b9e5c92a746a925ee071a69909f.sample"
+
+[deps]
+
+source_file="res://Assets/sound/zapsplat_foley_crutches_on_wooden_floor_single_step_004_31220.wav"
+dest_files=[ "res://.import/zapsplat_foley_crutches_on_wooden_floor_single_step_004_31220.wav-53d04b9e5c92a746a925ee071a69909f.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

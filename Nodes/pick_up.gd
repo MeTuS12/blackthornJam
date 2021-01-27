@@ -76,7 +76,7 @@ func throw(player):
 	acc.x = acc.x * player.sprite_direction
 	y_floor = ini_pos.y + throw_displacement.y
 	
-	yield(get_tree().create_timer(0.5), "timeout")
+	yield(get_tree().create_timer(1.0), "timeout")
 	player_flag = true
 	enemy_flag = true
 

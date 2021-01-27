@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/zapsplat_animals_snake_hiss_short_14693.wav-bb80f9911c23dd2bf16af3d9b32ee98a.sample"
+
+[deps]
+
+source_file="res://Assets/sound/zapsplat_animals_snake_hiss_short_14693.wav"
+dest_files=[ "res://.import/zapsplat_animals_snake_hiss_short_14693.wav-bb80f9911c23dd2bf16af3d9b32ee98a.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

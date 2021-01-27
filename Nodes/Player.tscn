@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://Assets/frog/frog3.png" type="Texture" id=1]
 [ext_resource path="res://Nodes/Player.gd" type="Script" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://Assets/shadow.png" type="Texture" id=7]
 [ext_resource path="res://Assets/sound/Muerte demo.wav" type="AudioStream" id=8]
 [ext_resource path="res://Nodes/UI.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Assets/sound/zapsplat_cartoon_frog_jump_26526.wav" type="AudioStream" id=10]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -75,6 +76,20 @@ tracks/1/keys = {
 "update": 0,
 "values": [ Vector2( -4.24268, -193.747 ), Vector2( -4.24268, -193.747 ), Vector2( -4.24268, -193.747 ), Vector2( -4.243, -240 ) ]
 }
+tracks/2/type = "method"
+tracks/2/path = NodePath("../../JumpSound")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.2 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ 0.0 ],
+"method": "play"
+} ]
+}
 
 [sub_resource type="Animation" id=4]
 resource_name = "JumpSlow"
@@ -133,8 +148,8 @@ scale_random = 1.0
 color_ramp = SubResource( 7 )
 
 [sub_resource type="CapsuleShape2D" id=9]
-radius = 38.543
-height = 105.235
+radius = 38.5386
+height = 107.691
 
 [node name="Player" type="KinematicBody2D" groups=[
 "player",
@@ -155,6 +170,7 @@ scale = Vector2( 0.8, 0.8 )
 [node name="Sprite" type="AnimatedSprite" parent="SpriteBase"]
 position = Vector2( -4.24268, -193.747 )
 frames = SubResource( 1 )
+frame = 3
 offset = Vector2( -2.56048, -252.61 )
 flip_h = true
 
@@ -210,4 +226,8 @@ shape = SubResource( 9 )
 
 [node name="DeathSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 8 )
+
+[node name="JumpSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 10 )
+volume_db = -7.704
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_Hurtbox_area_entered"]

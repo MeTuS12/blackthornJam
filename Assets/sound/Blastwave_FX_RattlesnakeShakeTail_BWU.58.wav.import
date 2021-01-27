@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Blastwave_FX_RattlesnakeShakeTail_BWU.58.wav-b80ac36d362cd38f76a1985c07b36682.sample"
+
+[deps]
+
+source_file="res://Assets/sound/Blastwave_FX_RattlesnakeShakeTail_BWU.58.wav"
+dest_files=[ "res://.import/Blastwave_FX_RattlesnakeShakeTail_BWU.58.wav-b80ac36d362cd38f76a1985c07b36682.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

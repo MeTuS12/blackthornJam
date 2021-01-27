@@ -15,7 +15,7 @@ signal weight_changed
 var motion = Vector2()
 var direction = Vector2()
 
-export var max_velocity = 300
+export var max_velocity = 350
 export var min_velocity = 100
 var delta_vel = 0
 
@@ -54,6 +54,7 @@ onready var gameover_UI = $UI/GameOverPanel
 onready var pause_menu_UI = $UI/PauseMenu
 onready var insufficent_UI = $UI/InsufficentScore
 onready var fade = $UI/ColorRect/AnimationPlayer
+onready var JumpSound = $JumpSound
 
 
 # Called when the node enters the scene tree for the first time.
@@ -103,15 +104,18 @@ func _physics_process(delta):
 	
 	if Input.is_action_pressed("ui_ctrl"):
 		current_max_velocity = current_weight_velocity * silence_penalicer
+		JumpSound.volume_db = -10.0
 		running = false
 		walking = false
 	elif Input.is_action_pressed("ui_shift"):
 		walking = true
 		current_max_velocity = current_weight_velocity * run_bonus
 		if motion.length() > 0:
+			JumpSound.volume_db = -7.0
 			running = true
 	else:
 		current_max_velocity = current_weight_velocity
+		JumpSound.volume_db = -10.0
 		running = false
 		if motion.length() > 0:
 			walking = true

@@ -19,16 +19,20 @@ func on_score():
 		left_button.visible = false
 		continue_label.visible = false
 		actual.text = "YOU HAVE: " + str(Globals.actual_score) + " CROWNS"
-		required.text = "YOU NEED: " + str(Globals.min_score) + " CROWNS TO LEFT THE CASTLE"
+		required.text = "YOU NEED: " + str(Globals.min_score) + " CROWNS TO LEAVE THE CASTLE"
 	else:
-		left_button.visible = true
+#		left_button.visible = true
 		continue_label.visible = true
-		actual.text = "YOU HAVE: " + str(Globals.actual_score) + " CROWNS"
-		required.text = "YOU COMPLETED THE QUEST, NOW CAN LEFT THE CASTLE"
+		actual.text = "CONGRATYLATIONS!! YOU COMPLETED THE QUEST WITH " + str(Globals.actual_score) + " CROWNS!"
+		required.text = "YOU SCAPED SAFE AND SOUND WITH GREAT TREASURE"
+
 
 func _on_Button_pressed():
-	get_tree().paused = false
-	visible = false
+	if Globals.actual_score < Globals.min_score:
+		get_tree().paused = false
+		visible = false
+	else:
+		_on_Left_pressed()
 
 
 func _on_Left_pressed():
