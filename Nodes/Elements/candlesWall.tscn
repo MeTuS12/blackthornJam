@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Nodes/Elements/Fire.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Assets/elements/candlesWall.png" type="Texture" id=2]
+
+[node name="CandlesWall" type="Node2D"]
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 0.0135498, 121.556 )
+texture = ExtResource( 2 )
+offset = Vector2( -0.0135498, -280.787 )
+
+[node name="Fire2" parent="Sprite" instance=ExtResource( 1 )]
+position = Vector2( 32.5596, -335.025 )
+
+[node name="Fire" parent="Sprite" instance=ExtResource( 1 )]
+position = Vector2( -34.3925, -337.455 )
