@@ -1,0 +1,82 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Assets/ui/fonts/Spooky Cat Font by Dreamink-7NTypes.otf" type="DynamicFontData" id=1]
+[ext_resource path="res://Nodes/Intro.gd" type="Script" id=2]
+[ext_resource path="res://Assets/sound/page_flip.wav" type="AudioStream" id=3]
+[ext_resource path="res://Assets/intro/paper0.png" type="Texture" id=4]
+
+[sub_resource type="DynamicFont" id=1]
+size = 41
+font_data = ExtResource( 1 )
+
+[sub_resource type="Animation" id=2]
+resource_name = "Idle"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rect_scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0.8, 0.8 ), Vector2( 1, 1 ), Vector2( 0.8, 0.8 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:rect_position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 195, 380 ), Vector2( 180, 380 ), Vector2( 195, 380 ) ]
+}
+
+[node name="Intro" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/CenterContainer"]
+margin_left = 660.0
+margin_top = 315.0
+margin_right = 1260.0
+margin_bottom = 765.0
+texture = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="CanvasLayer/CenterContainer/TextureRect"]
+visible = false
+margin_left = 180.0
+margin_top = 380.0
+margin_right = 421.0
+margin_bottom = 435.0
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0.0784314, 0.0862745, 0.0901961, 1 )
+text = "PRESS <SPACE>"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/CenterContainer/TextureRect/Label"]
+autoplay = "Idle"
+anims/Idle = SubResource( 2 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
