@@ -1,4 +1,4 @@
-[gd_scene load_steps=55 format=2]
+[gd_scene load_steps=56 format=2]
 
 [ext_resource path="res://Assets/WallTileset.png" type="Texture" id=1]
 [ext_resource path="res://Nodes/Player.tscn" type="PackedScene" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://Nodes/Stairs.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Nodes/StairsToPlay.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Nodes/PickUps/Bag.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Assets/ui/ig.png" type="Texture" id=7]
 [ext_resource path="res://Nodes/PickUps/Ingod3.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Assets/ui/fonts/Spooky Cat Font by Dreamink-7NTypes.otf" type="DynamicFontData" id=9]
 [ext_resource path="res://Area2D2.gd" type="Script" id=10]
@@ -570,26 +571,59 @@ __meta__ = {
 }
 
 [node name="Tutorial7" type="Label" parent="CreditsLabels"]
-margin_left = 5926.13
-margin_top = -984.413
-margin_right = 6232.13
-margin_bottom = -909.413
+margin_left = 5799.14
+margin_top = -971.714
+margin_right = 6234.14
+margin_bottom = -896.714
 custom_fonts/font = SubResource( 30 )
-text = "SERGIO"
+text = "@sergio_woodprint"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="TextureRect" type="TextureRect" parent="CreditsLabels/Tutorial7"]
+anchor_left = 0.398
+anchor_top = -0.773
+anchor_right = 0.545
+anchor_bottom = 0.08
+margin_left = -0.13002
+margin_top = -0.0249939
+margin_right = -0.0750122
+margin_bottom = -4.76837e-07
+texture = ExtResource( 7 )
+
 [node name="Tutorial8" type="Label" parent="CreditsLabels"]
-margin_left = 4415.6
-margin_top = -2467.82
-margin_right = 5042.6
-margin_bottom = -2392.82
+margin_left = 4429.05
+margin_top = -2563.68
+margin_right = 5056.05
+margin_bottom = -2488.68
 custom_fonts/font = SubResource( 30 )
 text = "DAVID LLEDÓ & DAVID CHICO"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Tutorial9" type="Label" parent="CreditsLabels"]
+margin_left = 4776.89
+margin_top = -2462.35
+margin_right = 5076.89
+margin_bottom = -2387.35
+custom_fonts/font = SubResource( 30 )
+text = "@_davidchico"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="CreditsLabels/Tutorial9"]
+anchor_left = -0.252
+anchor_top = 0.083
+anchor_right = -0.039
+anchor_bottom = 0.936
+margin_left = -0.126564
+margin_top = 0.0115719
+margin_right = -0.0265627
+margin_bottom = 0.0365677
+texture = ExtResource( 7 )
 
 [node name="Thieves Guild" type="Label" parent="CreditsLabels"]
 margin_left = 99.5466
