@@ -447,10 +447,12 @@ shape = SubResource( 13 )
 
 [node name="DeathSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 8 )
+bus = "Music"
 
 [node name="JumpSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 10 )
 volume_db = -7.704
+bus = "SFX"
 
 [node name="PickArea" type="Area2D" parent="." groups=[
 "pick_area",

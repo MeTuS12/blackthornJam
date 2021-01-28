@@ -88,10 +88,10 @@ margin_bottom = 172.0
 text = "EXIT"
 
 [node name="MusicSilder" type="VSlider" parent="TextureRect"]
-margin_left = 413.0
-margin_top = 279.0
-margin_right = 473.0
-margin_bottom = 449.0
+margin_left = 387.0
+margin_top = 281.0
+margin_right = 447.0
+margin_bottom = 451.0
 rect_rotation = 90.0
 custom_icons/grabber = ExtResource( 8 )
 custom_styles/slider = ExtResource( 7 )
@@ -103,20 +103,20 @@ __meta__ = {
 }
 
 [node name="TextureRect" type="TextureRect" parent="TextureRect"]
-margin_left = 181.0
-margin_top = 337.0
-margin_right = 223.0
-margin_bottom = 379.0
+margin_left = 155.0
+margin_top = 339.0
+margin_right = 197.0
+margin_bottom = 381.0
 texture = ExtResource( 10 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="SFXSlider" type="VSlider" parent="TextureRect"]
-margin_left = 413.0
-margin_top = 329.0
-margin_right = 473.0
-margin_bottom = 499.0
+margin_left = 387.0
+margin_top = 331.0
+margin_right = 447.0
+margin_bottom = 501.0
 rect_rotation = 90.0
 custom_icons/grabber = ExtResource( 8 )
 custom_styles/slider = ExtResource( 7 )
@@ -129,10 +129,10 @@ __meta__ = {
 }
 
 [node name="TextureRect2" type="TextureRect" parent="TextureRect"]
-margin_left = 181.0
-margin_top = 295.0
-margin_right = 221.0
-margin_bottom = 335.0
+margin_left = 155.0
+margin_top = 297.0
+margin_right = 195.0
+margin_bottom = 337.0
 texture = ExtResource( 9 )
 __meta__ = {
 "_edit_use_anchors_": false
