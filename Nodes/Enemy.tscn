@@ -93,6 +93,7 @@ anims/Idle = SubResource( 3 )
 anims/Walk = SubResource( 4 )
 
 [node name="ViewZone" type="Area2D" parent="."]
+visible = false
 collision_layer = 0
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ViewZone"]

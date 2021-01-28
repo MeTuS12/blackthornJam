@@ -21,7 +21,7 @@ func on_treasure_changed(value):
 		crown_label.visible = false
 		crowns.rect_size.x = 128 * value
 	else:
-		crowns.rect_size.x = 1024
+		crowns.rect_size.x = 128
 		crown_label.visible = true
 		crown_label.text = "x" + str(value)
 
@@ -31,6 +31,6 @@ func on_weight_changed(value):
 		weight.rect_size.x = 128 * value
 		weight_label.visible = false
 	else:
-		weight.rect_size.x = 1024
+		weight.rect_size.x = 128
 		weight_label.visible = true
 		weight_label.text = "x" + str(value)
