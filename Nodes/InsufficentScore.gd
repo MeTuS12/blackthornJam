@@ -20,7 +20,7 @@ func on_score():
 		okay_button.text = "CONTINUE"
 		continue_label.visible = false
 		actual.text = "YOU HAVE STOLEN TREASURES WORTH OF: " + str(Globals.actual_score) + " CROWNS"
-		required.text = "YOU NEED TO STEAL TREASURES WORTH OF: " + str(Globals.min_score) + " CROWNS OR MORE TO LEAVE THE CASTLE"
+		required.text = "\nYOU NEED TO STEAL TREASURES WORTH OF: " + str(Globals.min_score) + " CROWNS OR MORE TO LEAVE THE CASTLE"
 	else:
 		congrat.visible = true
 		okay_button.text = "LEAVE"
