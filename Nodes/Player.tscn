@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=28 format=2]
 
 [ext_resource path="res://Assets/frog/frog3.png" type="Texture" id=1]
 [ext_resource path="res://Nodes/Player.gd" type="Script" id=2]
@@ -10,6 +10,9 @@
 [ext_resource path="res://Assets/sound/Muerte demo.wav" type="AudioStream" id=8]
 [ext_resource path="res://Nodes/UI.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Assets/sound/zapsplat_cartoon_frog_jump_26526.wav" type="AudioStream" id=10]
+[ext_resource path="res://Assets/frog/frog_tongue3.png" type="Texture" id=11]
+[ext_resource path="res://Assets/frog/frog_tongue1.png" type="Texture" id=12]
+[ext_resource path="res://Assets/frog/frog_tongue2.png" type="Texture" id=13]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -181,6 +184,142 @@ tracks/2/keys = {
 "values": [ 0.0 ]
 }
 
+[sub_resource type="SpriteFrames" id=11]
+animations = [ {
+"frames": [ ExtResource( 12 ), ExtResource( 13 ), ExtResource( 11 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="Animation" id=12]
+resource_name = "Tongue_Left"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 1, 0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Vector2( -26.1145, -70.0437 ), Vector2( -35, -70.044 ), Vector2( -181, -70.044 ), Vector2( -35, -70.044 ), Vector2( -26.1145, -70.0437 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath(".:flip_h")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("../../Tongue:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0.2 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -243.475, -20.9763 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("../../Tongue:disabled")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+
+[sub_resource type="Animation" id=13]
+resource_name = "Tongue_Right"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 1, 0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Vector2( 17.355, -70.044 ), Vector2( 26, -70.044 ), Vector2( 172, -70.044 ), Vector2( 26, -70.044 ), Vector2( 17.355, -70.044 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath(".:flip_h")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("../../Tongue:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("../../Tongue:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0.2 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 233.736, -20.9763 ) ]
+}
+
 [sub_resource type="Gradient" id=6]
 offsets = PoolRealArray( 0, 0.654135, 1 )
 colors = PoolColorArray( 0.4454, 0.417366, 0.508789, 0.843137, 0.462745, 0.439216, 0.486275, 0.752941, 0.477539, 0.458885, 0.458885, 0 )
@@ -212,6 +351,10 @@ height = 112.102
 radius = 38.5386
 height = 107.691
 
+[sub_resource type="CapsuleShape2D" id=14]
+radius = 20.8525
+height = 237.258
+
 [node name="Player" type="KinematicBody2D" groups=[
 "player",
 ]]
@@ -242,6 +385,19 @@ anims/Die = SubResource( 2 )
 anims/Idle = SubResource( 3 )
 anims/Jump = SubResource( 4 )
 anims/JumpSlow = SubResource( 5 )
+
+[node name="Tongue" type="AnimatedSprite" parent="SpriteBase"]
+position = Vector2( 172, -70.044 )
+frames = SubResource( 11 )
+frame = 2
+offset = Vector2( -2.56048, -252.61 )
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="SpriteBase/Tongue"]
+anims/Tongue_Left = SubResource( 12 )
+anims/Tongue_Right = SubResource( 13 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2( 5.03973, 51.6567 )
@@ -295,4 +451,10 @@ stream = ExtResource( 8 )
 [node name="JumpSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 10 )
 volume_db = -7.704
+
+[node name="Tongue" type="CollisionShape2D" parent="."]
+position = Vector2( 233.736, -20.9763 )
+rotation = 1.5708
+shape = SubResource( 14 )
+disabled = true
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_Hurtbox_area_entered"]
