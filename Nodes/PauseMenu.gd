@@ -10,6 +10,9 @@ func _ready():
 	sfx.value = Globals.sfx_volume
 	player = get_tree().get_nodes_in_group('player')
 	player = player[0]
+	if !Globals.pause_flag:
+		$TextureRect/VBoxContainer/HBoxContainer/VBoxContainer/MainMenu.visible = false
+		$TextureRect/VBoxContainer/HBoxContainer/VBoxContainer/Restart.visible = false
 
 func _physics_process(_delta):
 	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Music"), music.value)

@@ -50,6 +50,7 @@ func _ready():
 
 func _on_Area2D_body_entered(body):
 	if body is Player:
+		Globals.pause_flag = true
 		Globals.score_needed = difficulty
 		Globals.min_score = difficulty
 		Globals.easy = easy
