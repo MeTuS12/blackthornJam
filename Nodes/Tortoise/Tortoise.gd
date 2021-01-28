@@ -42,7 +42,6 @@ func change_state(new_state):
 
 	state = new_state
 
-	print(new_state_str)
 	if has_method(new_state_str + '_init'):
 		call(new_state_str + '_init')
 
@@ -74,9 +73,9 @@ func _physics_process(delta):
 
 
 func treasure_picked():
-	print('PICKED')
-	if position.distance_to(player.position) < DISTANCE_RUN:
-		change_state(STATE.ALMOST_WAKE)
+	if state == STATE.SLEEP:
+		if position.distance_to(player.position) < DISTANCE_RUN:
+			change_state(STATE.ALMOST_WAKE)
 
 
 func check_sound():

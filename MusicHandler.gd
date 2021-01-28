@@ -30,19 +30,26 @@ func _ready():
 
 
 func snake_pursuing():
+	print("PURSUE")
+	print(n_snakes)
 	if not flag_is_awake:
 		n_snakes += 1
 		if snakes_stream.volume_db == SHOUT_DOWN_VOLUME:
 			set_volume(snakes_stream, SNAKE_VOLUME)
+	
+	print(n_snakes)
 
 
 func snake_stop():
+	print("STOP")
 	if not flag_is_awake:
 		n_snakes -= 1
 		
 		if n_snakes <= 0:
 			set_volume(snakes_stream, SHOUT_DOWN_VOLUME)
 			n_snakes = 0
+	
+	print(n_snakes)
 
 
 func tortoise_in_range():
