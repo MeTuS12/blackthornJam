@@ -518,8 +518,10 @@ position = Vector2( 5191.8, -1255.16 )
 position = Vector2( 4937.75, -1791.87 )
 
 [node name="Anchor" parent="YSort" instance=ExtResource( 24 )]
+position = Vector2( 254.712, -557.37 )
 
 [node name="Player" parent="YSort" instance=ExtResource( 2 )]
+position = Vector2( 254.712, -557.37 )
 
 [node name="CreditsLabels" type="Node2D" parent="."]
 
