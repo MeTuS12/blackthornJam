@@ -4,7 +4,7 @@
 [ext_resource path="res://Assets/treasure/06_Corona.png" type="Texture" id=2]
 
 [node name="Crown" instance=ExtResource( 1 )]
-value = 2
+value = 5
 
 [node name="Sprite" parent="." index="0"]
 scale = Vector2( 0.649169, 0.649169 )

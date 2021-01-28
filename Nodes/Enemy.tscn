@@ -94,7 +94,7 @@ anims/Walk = SubResource( 4 )
 collision_layer = 0
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ViewZone"]
-polygon = PoolVector2Array( -5.04468, -96.3477, -433.135, -734.834, 535.577, -929.922, 1410.11, -600.291, 1659.01, 11.8818, 1315.93, 509.692, 555.759, 711.508, -406.227, 556.783 )
+polygon = PoolVector2Array( -5.04468, -96.3477, 233.614, -884.11, 712.491, -990.056, 1695.67, -651.028, 1907.56, 10.0767, 1517.68, 662.706, 648.923, 802.555, 301.419, 734.75 )
 
 [node name="Light2D" type="Light2D" parent="."]
 visible = false
