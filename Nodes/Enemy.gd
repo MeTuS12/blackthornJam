@@ -108,7 +108,7 @@ func change_state(new_state):
 	var new_state_str = STATE.keys()[new_state]
 	
 	if state != new_state:
-		print(new_state_str)
+#		print(name + ": " + new_state_str)
 		
 		state = new_state
 		
@@ -238,7 +238,7 @@ func WAIT_end():
 func GO_TO_POINT_init():
 	walk_points.sort_custom(self, "closest_compare")
 	randomize()
-	update_target( walk_points[ randi() % 3 + 1 ].position )
+	update_target( walk_points[ randi() % (walk_points.size() - 1) + 1 ].position )
 
 
 func closest_compare(a, b):
@@ -287,7 +287,7 @@ func move_in_path(_delta, only_player=false):
 		if not popPathPoint():
 			if position.distance_to(target_point) < target_min_distance  and not only_player:
 				if state == STATE.CHASING:
-					music_handler.snake_stop()
+					music_handler.snake_stop(self)
 				change_state(STATE.WAIT)
 				return
 			else:
@@ -381,7 +381,7 @@ func AWARE(_delta):
 
 
 func CHASING_init():
-	music_handler.snake_pursuing()
+	music_handler.snake_pursuing(self)
 
 
 
@@ -402,7 +402,10 @@ func set_berserk():
 
 
 func is_going_after_player():
-	pass
+	if state == STATE.CHASING:
+		if target_point.distance(player.position) < path_point_min_distance:
+			return true
+	return false
 
 
 func _on_ViewZone_body_entered(body):

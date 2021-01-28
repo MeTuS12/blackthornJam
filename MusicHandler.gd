@@ -16,6 +16,7 @@ onready var tween = $Tween
 var flag_is_awake = false
 
 var n_snakes = 0
+var snakes = []
 
 
 func set_volume(stream, volume):
@@ -29,27 +30,25 @@ func _ready():
 	snakes_stream.volume_db = SHOUT_DOWN_VOLUME
 
 
-func snake_pursuing():
-	print("PURSUE")
-	print(n_snakes)
+func snake_pursuing(snake):
 	if not flag_is_awake:
-		n_snakes += 1
+		if not snakes.has(snake):
+			snakes.append(snake)
+		
 		if snakes_stream.volume_db == SHOUT_DOWN_VOLUME:
 			set_volume(snakes_stream, SNAKE_VOLUME)
-	
-	print(n_snakes)
 
 
-func snake_stop():
-	print("STOP")
+
+func snake_stop(snake):
 	if not flag_is_awake:
-		n_snakes -= 1
+		var i = snakes.find(snake)
 		
-		if n_snakes <= 0:
+		if i > -1:
+			snakes.remove(i)
+		
+		if snakes.size() == 0:
 			set_volume(snakes_stream, SHOUT_DOWN_VOLUME)
-			n_snakes = 0
-	
-	print(n_snakes)
 
 
 func tortoise_in_range():

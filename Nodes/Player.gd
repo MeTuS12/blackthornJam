@@ -113,18 +113,18 @@ func _physics_process(delta):
 	
 	if Input.is_action_pressed("ui_ctrl"):
 		current_max_velocity = current_weight_velocity * silence_penalicer
-		JumpSound.volume_db = -10.0
+		JumpSound.volume_db = -14.0
 		running = false
 		walking = false
 	elif Input.is_action_pressed("ui_shift"):
 		walking = true
 		current_max_velocity = current_weight_velocity * run_bonus
 		if motion.length() > 0:
-			JumpSound.volume_db = -7.0
+			JumpSound.volume_db = -5.0
 		running = true
 	else:
 		current_max_velocity = current_weight_velocity
-		JumpSound.volume_db = -10.0
+		JumpSound.volume_db = -14.0
 		running = false
 		walking = true
 	
