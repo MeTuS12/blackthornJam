@@ -108,3 +108,8 @@ func _on_Area2D_body_entered(body):
 			body.call_deferred('pick', self)
 		elif enemy_flag and body is Enemy:
 			queue_free()
+
+
+func _on_Area2D_area_entered(area):
+	if player_flag and area.is_in_group("pick_area"):
+		_on_Area2D_body_entered(area.get_parent())

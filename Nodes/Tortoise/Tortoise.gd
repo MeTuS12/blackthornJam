@@ -17,6 +17,9 @@ onready var animationPlayer = $AnimatedSprite/AnimationPlayer
 
 export var flag_check_vision = false
 
+signal add_camera_target
+signal remove_camera_target
+
 
 func _ready():
 	enemys = get_tree().get_nodes_in_group('enemy')
@@ -25,6 +28,7 @@ func _ready():
 	player = get_tree().get_nodes_in_group('player')
 	assert( player.size() > 0, "No existe ningún objeto player" )
 	player = player[0]
+	player.connect("picked_treasure", self, "treasure_picked")
 	
 	music_handler = get_tree().get_nodes_in_group('music_handler')
 	assert( music_handler.size() > 0, "No existe ningún objeto music_handler" )
@@ -61,13 +65,18 @@ func _physics_process(delta):
 	if flag_check_vision:
 		check_vision()
 	
-	update()
+#	update()
+#
+#
+#func _draw():
+#	draw_circle(Vector2(), DISTANCE_RUN, Color(0.9,0.1,0.1,0.25))
+#	draw_circle(Vector2(), DISTANCE_WALK, Color(0.1,0.1,0.9,0.25))
 
 
-func _draw():
-	draw_circle(Vector2(), DISTANCE_RUN, Color(0.9,0.1,0.1,0.25))
-	draw_circle(Vector2(), DISTANCE_WALK, Color(0.1,0.1,0.9,0.25))
-
+func treasure_picked():
+	print('PICKED')
+	if position.distance_to(player.position) < DISTANCE_RUN:
+		change_state(STATE.ALMOST_WAKE)
 
 
 func check_sound():
@@ -129,8 +138,10 @@ func AWAKE(_delta):
 func _on_CameraRange_body_entered(body):
 	if body is Player:
 		music_handler.tortoise_in_range()
+		emit_signal("add_camera_target")
 
 
 func _on_CameraRange_body_exited(body):
 	if body is Player:
 		music_handler.tortoise_out_of_range()
+		emit_signal("remove_camera_target")

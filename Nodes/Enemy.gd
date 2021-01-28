@@ -14,7 +14,7 @@ var direction = Vector2()
 export var max_velocity = 250
 var current_max_velocity = 0
 
-export var run_bonus = 1.5
+export var run_bonus = 2.0
 
 export var acceleration = 2500
 export var deceleration = 3000
@@ -47,9 +47,9 @@ var pickups = []
 
 var view_target = null
 var view_target_pickup = null
-var vis_color = Color(.867,.91,.247,.1)
-var ear_color = Color(.247,.91,.247,.1)
-var target_min_distance_color = Color(.947,.91,.247,.1)
+#var vis_color = Color(.867,.91,.247,.1)
+#var ear_color = Color(.247,.91,.247,.1)
+#var target_min_distance_color = Color(.947,.91,.247,.1)
 
 var state = STATE.WAIT
 
@@ -192,7 +192,7 @@ func check_vision(more_range=false):
 		if result:
 			if result.collider is Player:
 					update_target(result.position)
-					$Sprite.self_modulate.r = 2.0
+					
 					if flag_hissing_attack:
 						make_sound(soundHissingAttack)
 						flag_hissing_attack = false
@@ -402,5 +402,4 @@ func _on_ViewZone_body_entered(body):
 func _on_ViewZone_body_exited(body):
 	if body == view_target:
 		view_target = null
-		$Sprite.self_modulate.r = 1.0
 

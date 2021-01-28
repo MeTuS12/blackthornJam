@@ -3,14 +3,13 @@ extends KinematicBody2D
 class_name Player
 
 const MIN_ANIMATION_SPEED = 0.5
-const camera_default = Vector2(2, 2)
-const camera_close = Vector2(1.5, 1.5)
-const camera_far = Vector2(2.5, 2.5)
-
-var current_camera_zoom = Vector2()
+const camera_default = 2.0
+const camera_close = 1.5
+const camera_far = 2.5
 
 signal treasure_changed
 signal weight_changed
+signal picked_treasure
 
 var motion = Vector2()
 var direction = Vector2()
@@ -53,20 +52,20 @@ onready var animationPlayer = $SpriteBase/Sprite/AnimationPlayer
 onready var tongue_anim = $SpriteBase/Tongue/AnimationPlayer
 onready var sprite = $SpriteBase/Sprite
 onready var tongue_sprite = $SpriteBase/Tongue
-onready var camera = get_node("../Anchor/Camera2D")
 onready var gameover_UI = $UI/GameOverPanel
 onready var pause_menu_UI = $UI/PauseMenu
 onready var insufficent_UI = $UI/InsufficentScore
 onready var fade = $UI/ColorRect/AnimationPlayer
 onready var JumpSound = $JumpSound
 
+var camera_anchor = null
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	current_weight_velocity = max_velocity
 	delta_vel = max_velocity - min_velocity
-	cameraTween = Tween.new()
-	camera.add_child(cameraTween)
+	
 	if Globals.fade_flag:
 		get_tree().paused = true
 		yield(get_tree().create_timer(.3), "timeout")
@@ -103,6 +102,10 @@ func check_input():
 	return dir.normalized()
 
 
+func set_anchor(anchor):
+	self.camera_anchor = anchor
+
+
 func _physics_process(delta):
 	if Input.is_action_just_pressed("ui_cancel") and Globals.pause_flag:
 		pause_menu_UI.visible = true
@@ -118,13 +121,12 @@ func _physics_process(delta):
 		current_max_velocity = current_weight_velocity * run_bonus
 		if motion.length() > 0:
 			JumpSound.volume_db = -7.0
-			running = true
+		running = true
 	else:
 		current_max_velocity = current_weight_velocity
 		JumpSound.volume_db = -10.0
 		running = false
-		if motion.length() > 0:
-			walking = true
+		walking = true
 	
 	if Input.is_action_just_pressed("ui_pickup_spawn"):
 		throw_pick_up()
@@ -169,10 +171,7 @@ func use_tongue():
 
 
 func update_camera(camera_zoom):
-	if current_camera_zoom != camera_zoom:
-		cameraTween.interpolate_property(camera, "zoom", camera.zoom, camera_zoom, .7, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
-		cameraTween.start()
-		current_camera_zoom = camera_zoom
+	camera_anchor.set_zoom(camera_zoom)
 
 
 func check_camera_zoom():
@@ -212,6 +211,7 @@ func pick(pick_up):
 	pick_up.pick(self)
 	emit_signal("treasure_changed", current_value)
 	emit_signal("weight_changed", current_weight)
+	emit_signal("picked_treasure")
 
 
 func throw_pick_up():
@@ -231,11 +231,12 @@ func transported():
 
 
 func is_running():
-	return running
+	return running and motion.length_squared() > 0
 	
 
 func is_walking():
-	return walking
+	return (walking or running) and motion.length_squared() > 0
+
 
 func fade_idle():
 	fade.play("Idle")

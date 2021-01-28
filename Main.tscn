@@ -291,22 +291,22 @@ navpoly = SubResource( 2 )
 [node name="YSort" type="YSort" parent="."]
 
 [node name="Player" parent="YSort" instance=ExtResource( 25 )]
-position = Vector2( 14.1729, 10695.2 )
+position = Vector2( 43.3403, 1421.63 )
 
 [node name="Anchor" parent="YSort" instance=ExtResource( 2 )]
 position = Vector2( 5.06445, 10823.1 )
 
+[node name="Enemy" parent="YSort" instance=ExtResource( 5 )]
+position = Vector2( 2802.17, 7338.6 )
+
+[node name="Enemy2" parent="YSort" instance=ExtResource( 5 )]
+position = Vector2( -1936.32, 6612.55 )
+
+[node name="Tortoise" parent="YSort" instance=ExtResource( 30 )]
+position = Vector2( 7.76002, -1086.96 )
+
 [node name="Enemies" type="YSort" parent="YSort"]
 position = Vector2( 419.074, -736.554 )
-
-[node name="Enemy" parent="YSort/Enemies" instance=ExtResource( 5 )]
-position = Vector2( 2383.1, 8075.15 )
-
-[node name="Enemy2" parent="YSort/Enemies" instance=ExtResource( 5 )]
-position = Vector2( -2423.43, 7328.95 )
-
-[node name="Tortoise" parent="YSort/Enemies" instance=ExtResource( 30 )]
-position = Vector2( -411.314, -350.403 )
 
 [node name="Decorations" type="YSort" parent="YSort"]
 position = Vector2( 14.2704, 114.164 )

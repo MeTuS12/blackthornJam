@@ -184,7 +184,7 @@ tracks/2/keys = {
 "values": [ 0.0 ]
 }
 
-[sub_resource type="SpriteFrames" id=11]
+[sub_resource type="SpriteFrames" id=6]
 animations = [ {
 "frames": [ ExtResource( 12 ), ExtResource( 13 ), ExtResource( 11 ) ],
 "loop": true,
@@ -192,7 +192,7 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="Animation" id=12]
+[sub_resource type="Animation" id=7]
 resource_name = "Tongue_Left"
 length = 0.5
 tracks/0/type = "value"
@@ -232,7 +232,7 @@ tracks/2/keys = {
 "values": [ true ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("../../Tongue:position")
+tracks/3/path = NodePath("../../PickArea/Tongue:position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -244,7 +244,7 @@ tracks/3/keys = {
 "values": [ Vector2( -243.475, -20.9763 ) ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("../../Tongue:disabled")
+tracks/4/path = NodePath("../../PickArea/Tongue:disabled")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
@@ -256,7 +256,7 @@ tracks/4/keys = {
 "values": [ false, true ]
 }
 
-[sub_resource type="Animation" id=13]
+[sub_resource type="Animation" id=8]
 resource_name = "Tongue_Right"
 length = 0.5
 tracks/0/type = "value"
@@ -296,7 +296,7 @@ tracks/2/keys = {
 "values": [ false ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("../../Tongue:disabled")
+tracks/3/path = NodePath("../../PickArea/Tongue:disabled")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -308,7 +308,7 @@ tracks/3/keys = {
 "values": [ false, true ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("../../Tongue:position")
+tracks/4/path = NodePath("../../PickArea/Tongue:position")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
@@ -320,14 +320,14 @@ tracks/4/keys = {
 "values": [ Vector2( 233.736, -20.9763 ) ]
 }
 
-[sub_resource type="Gradient" id=6]
+[sub_resource type="Gradient" id=9]
 offsets = PoolRealArray( 0, 0.654135, 1 )
 colors = PoolColorArray( 0.4454, 0.417366, 0.508789, 0.843137, 0.462745, 0.439216, 0.486275, 0.752941, 0.477539, 0.458885, 0.458885, 0 )
 
-[sub_resource type="GradientTexture" id=7]
-gradient = SubResource( 6 )
+[sub_resource type="GradientTexture" id=10]
+gradient = SubResource( 9 )
 
-[sub_resource type="ParticlesMaterial" id=8]
+[sub_resource type="ParticlesMaterial" id=11]
 emission_shape = 2
 emission_box_extents = Vector3( 1920, 1080, 1 )
 flag_disable_z = true
@@ -341,13 +341,13 @@ angle = -18.9
 angle_random = 0.24
 scale = 14.16
 scale_random = 1.0
-color_ramp = SubResource( 7 )
+color_ramp = SubResource( 10 )
 
-[sub_resource type="CapsuleShape2D" id=9]
+[sub_resource type="CapsuleShape2D" id=12]
 radius = 29.0733
 height = 112.102
 
-[sub_resource type="CapsuleShape2D" id=10]
+[sub_resource type="CapsuleShape2D" id=13]
 radius = 38.5386
 height = 107.691
 
@@ -375,7 +375,6 @@ scale = Vector2( 0.8, 0.8 )
 [node name="Sprite" type="AnimatedSprite" parent="SpriteBase"]
 position = Vector2( -4.24268, -193.747 )
 frames = SubResource( 1 )
-frame = 1
 offset = Vector2( -2.56048, -252.61 )
 flip_h = true
 
@@ -387,17 +386,18 @@ anims/Jump = SubResource( 4 )
 anims/JumpSlow = SubResource( 5 )
 
 [node name="Tongue" type="AnimatedSprite" parent="SpriteBase"]
-position = Vector2( 172, -70.044 )
-frames = SubResource( 11 )
-frame = 2
+visible = false
+position = Vector2( -26.1145, -70.0437 )
+frames = SubResource( 6 )
 offset = Vector2( -2.56048, -252.61 )
+flip_h = true
 __meta__ = {
 "_editor_description_": ""
 }
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="SpriteBase/Tongue"]
-anims/Tongue_Left = SubResource( 12 )
-anims/Tongue_Right = SubResource( 13 )
+anims/Tongue_Left = SubResource( 7 )
+anims/Tongue_Right = SubResource( 8 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2( 5.03973, 51.6567 )
@@ -413,12 +413,12 @@ z_index = 10
 amount = 200
 lifetime = 5.0
 local_coords = false
-process_material = SubResource( 8 )
+process_material = SubResource( 11 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( -3.3118, 25.1907 )
 rotation = -1.55738
-shape = SubResource( 9 )
+shape = SubResource( 12 )
 
 [node name="PickUps" type="Node" parent="."]
 
@@ -443,7 +443,7 @@ collision_mask = 0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
 position = Vector2( -11.8618, -18.2323 )
 rotation = -1.57091
-shape = SubResource( 10 )
+shape = SubResource( 13 )
 
 [node name="DeathSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 8 )
@@ -452,8 +452,12 @@ stream = ExtResource( 8 )
 stream = ExtResource( 10 )
 volume_db = -7.704
 
-[node name="Tongue" type="CollisionShape2D" parent="."]
-position = Vector2( 233.736, -20.9763 )
+[node name="PickArea" type="Area2D" parent="." groups=[
+"pick_area",
+]]
+
+[node name="Tongue" type="CollisionShape2D" parent="PickArea"]
+position = Vector2( -243.475, -20.9763 )
 rotation = 1.5708
 shape = SubResource( 14 )
 disabled = true
