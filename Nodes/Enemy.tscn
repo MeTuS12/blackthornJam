@@ -125,24 +125,20 @@ stream = ExtResource( 7 )
 volume_db = -3.21
 autoplay = true
 max_distance = 4000.0
-bus = "SFX"
 
 [node name="Hissing" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 11 )
 volume_db = -3.21
 max_distance = 4000.0
-bus = "SFX"
 
 [node name="HissingAttack" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 10 )
 volume_db = 6.42
 max_distance = 4000.0
-bus = "SFX"
 
 [node name="Rattle" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 9 )
 volume_db = -3.21
 max_distance = 4000.0
-bus = "SFX"
 [connection signal="body_entered" from="ViewZone" to="." method="_on_ViewZone_body_entered"]
 [connection signal="body_exited" from="ViewZone" to="." method="_on_ViewZone_body_exited"]
