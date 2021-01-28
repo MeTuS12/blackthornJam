@@ -21,6 +21,9 @@ var actual_score = 0
 
 var score_needed = 0
 
+var music_volume = 0
+var sfx_volume = 0
+
 var easy_score = 0
 var hard_score = 0
 var very_score = 0

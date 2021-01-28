@@ -34,7 +34,7 @@ _global_script_class_icons={
 
 config/name="BlackthornJam21"
 run/main_scene="res://Nodes/Intro.tscn"
-config/icon="res://icon.png"
+config/icon="res://Assets/frog/frog1.png"
 
 [autoload]
 

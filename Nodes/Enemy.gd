@@ -51,7 +51,7 @@ var view_target_pickup = null
 #var ear_color = Color(.247,.91,.247,.1)
 #var target_min_distance_color = Color(.947,.91,.247,.1)
 
-var state = STATE.WAIT
+var state = null
 
 
 onready var sprite = $Sprite
@@ -61,6 +61,8 @@ onready var viewzone = $ViewZone
 onready var soundHissing = $Hissing
 onready var soundHissingAttack = $HissingAttack
 onready var soundRattle = $Rattle
+onready var moveSound = $MoveSound
+
 var flag_hissing_attack = true
 signal make_sound (position)
 
@@ -106,6 +108,8 @@ func change_state(new_state):
 	var new_state_str = STATE.keys()[new_state]
 	
 	if state != new_state:
+#		print(name + ": " + new_state_str)
+		
 		state = new_state
 		
 		if has_method(new_state_str + '_init'):
@@ -131,7 +135,10 @@ func _physics_process(delta):
 	check_vision()
 	check_pickup()
 	
-	update()
+	if motion.length_squared() > 0:
+		moveSound.volume_db = -3.0
+	else:
+		moveSound.volume_db = -80.0
 
 
 func update_target(position):
@@ -219,8 +226,8 @@ func WAIT_init():
 	end_state()
 
 
-func WAIT(_delta):
-	check_sound()
+#func WAIT(_delta):
+#	check_sound()
 
 
 func WAIT_end():
@@ -230,7 +237,7 @@ func WAIT_end():
 func GO_TO_POINT_init():
 	walk_points.sort_custom(self, "closest_compare")
 	randomize()
-	update_target( walk_points[ randi() % 3 + 1 ].position )
+	update_target( walk_points[ randi() % (walk_points.size() - 1) + 1 ].position )
 
 
 func closest_compare(a, b):
@@ -246,7 +253,7 @@ func can_access(target, path=null):
 	if path == null:
 		path = navigation.get_simple_path(position, target)
 	
-	if path[-1].distance_to(target) < cant_access_distance:
+	if path.size() > 0 and path[-1].distance_to(target) < cant_access_distance:
 		return true
 	
 	return false
@@ -279,7 +286,7 @@ func move_in_path(_delta, only_player=false):
 		if not popPathPoint():
 			if position.distance_to(target_point) < target_min_distance  and not only_player:
 				if state == STATE.CHASING:
-					music_handler.snake_stop()
+					music_handler.snake_stop(self)
 				change_state(STATE.WAIT)
 				return
 			else:
@@ -373,7 +380,7 @@ func AWARE(_delta):
 
 
 func CHASING_init():
-	music_handler.snake_pursuing()
+	music_handler.snake_pursuing(self)
 
 
 
@@ -391,6 +398,13 @@ func BERSERK_MODE(_delta):
 
 func set_berserk():
 	change_state(STATE.BERSERK_MODE)
+
+
+func is_going_after_player():
+	if state == STATE.CHASING:
+		if target_point.distance(player.position) < path_point_min_distance:
+			return true
+	return false
 
 
 func _on_ViewZone_body_entered(body):

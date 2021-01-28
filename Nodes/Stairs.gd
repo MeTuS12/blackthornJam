@@ -40,6 +40,7 @@ func _on_Area2D_body_entered(body):
 		if body is Player:
 			if pair != null:
 				body.global_position = pair.get_spawn_position()
+				body.motion = Vector2()
 				$AudioStreamPlayer.play()
 				pair.disable()
 
