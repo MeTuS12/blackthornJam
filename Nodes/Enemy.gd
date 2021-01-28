@@ -124,7 +124,6 @@ func end_state():
 
 
 func _physics_process(delta):
-	
 	var state_str = STATE.keys()[state]
 	
 	if has_method(state_str):

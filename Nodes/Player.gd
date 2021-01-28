@@ -57,6 +57,7 @@ onready var pause_menu_UI = $UI/PauseMenu
 onready var insufficent_UI = $UI/InsufficentScore
 onready var fade = $UI/ColorRect/AnimationPlayer
 onready var JumpSound = $JumpSound
+onready var DeathSound = $DeathSound
 
 var camera_anchor = null
 
@@ -107,7 +108,8 @@ func set_anchor(anchor):
 
 
 func _physics_process(delta):
-	if Input.is_action_just_pressed("ui_cancel") and Globals.pause_flag:
+	
+	if Input.is_action_just_pressed("ui_cancel") and flag_can_die:
 		pause_menu_UI.visible = true
 		get_tree().paused = true
 	
@@ -252,7 +254,7 @@ func _on_Hurtbox_area_entered(_area):
 	if flag_can_die:
 		animationPlayer.play("Die")
 		flag_can_die = false
-		$DeathSound.play()
+		DeathSound.play()
 		flag_can_move = false
 		yield(get_tree().create_timer(1.0), "timeout")
 		gameover_UI.visible = true

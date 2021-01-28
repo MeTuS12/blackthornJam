@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/PikPng.com_shift-png_4447153.png-cc429e07c6e0a7891d08b05bf5c5df8b.stex"
+path="res://.import/toppng.com-music-icon-music-icon-black-and-white-1417x1558.png-8582542784572371a7c646575af5cd65.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/ui/PikPng.com_shift-png_4447153.png"
-dest_files=[ "res://.import/PikPng.com_shift-png_4447153.png-cc429e07c6e0a7891d08b05bf5c5df8b.stex" ]
+source_file="res://Assets/ui/toppng.com-music-icon-music-icon-black-and-white-1417x1558.png"
+dest_files=[ "res://.import/toppng.com-music-icon-music-icon-black-and-white-1417x1558.png-8582542784572371a7c646575af5cd65.stex" ]
 
 [params]
 

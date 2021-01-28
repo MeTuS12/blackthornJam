@@ -1,10 +1,15 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Assets/ui/paper.png" type="Texture" id=1]
 [ext_resource path="res://Assets/ui/fonts/Spooky Cat Font by Dreamink-7NTypes.otf" type="DynamicFontData" id=2]
 [ext_resource path="res://Assets/ui/theme.tres" type="Theme" id=3]
 [ext_resource path="res://Nodes/PauseMenu.gd" type="Script" id=4]
 [ext_resource path="res://Nodes/VBoxContainer.gd" type="Script" id=5]
+[ext_resource path="res://Assets/ui/stylebox_hover.tres" type="StyleBox" id=6]
+[ext_resource path="res://Assets/ui/stylebox.tres" type="StyleBox" id=7]
+[ext_resource path="res://Assets/ui/ButtonHoverStylebox.png" type="Texture" id=8]
+[ext_resource path="res://Assets/ui/toppng.com-music-icon-music-icon-black-and-white-1417x1558.png" type="Texture" id=9]
+[ext_resource path="res://Assets/ui/sound-off-icon-40944.png" type="Texture" id=10]
 
 [sub_resource type="DynamicFont" id=1]
 size = 44
@@ -78,6 +83,55 @@ margin_top = 132.0
 margin_right = 164.0
 margin_bottom = 172.0
 text = "EXIT"
+
+[node name="MusicSilder" type="VSlider" parent="TextureRect"]
+margin_left = 65.0
+margin_top = 163.0
+margin_right = 125.0
+margin_bottom = 333.0
+custom_icons/grabber = ExtResource( 8 )
+custom_styles/slider = ExtResource( 7 )
+custom_styles/grabber_area = ExtResource( 6 )
+min_value = -30.0
+max_value = 0.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="TextureRect"]
+margin_left = 127.0
+margin_top = 340.0
+margin_right = 169.0
+margin_bottom = 382.0
+texture = ExtResource( 10 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SFXSlider" type="VSlider" parent="TextureRect"]
+margin_left = 117.0
+margin_top = 163.0
+margin_right = 177.0
+margin_bottom = 333.0
+custom_icons/grabber = ExtResource( 8 )
+custom_styles/slider = ExtResource( 7 )
+custom_styles/grabber_area = ExtResource( 6 )
+min_value = -30.0
+max_value = 0.0
+rounded = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect2" type="TextureRect" parent="TextureRect"]
+margin_left = 76.0
+margin_top = 345.0
+margin_right = 116.0
+margin_bottom = 385.0
+texture = ExtResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 [connection signal="pressed" from="TextureRect/VBoxContainer/HBoxContainer/VBoxContainer/Resume" to="." method="_on_Resume_pressed"]
 [connection signal="pressed" from="TextureRect/VBoxContainer/HBoxContainer/VBoxContainer/MainMenu" to="." method="_on_MainMenu_pressed"]
 [connection signal="pressed" from="TextureRect/VBoxContainer/HBoxContainer/VBoxContainer/Restart" to="." method="_on_Restart_pressed"]
