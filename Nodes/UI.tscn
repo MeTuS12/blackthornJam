@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://Assets/ui/crown_ico.png" type="Texture" id=1]
 [ext_resource path="res://Nodes/Treasures.gd" type="Script" id=2]
@@ -12,6 +12,7 @@
 [ext_resource path="res://Assets/ui/CTRL.png" type="Texture" id=10]
 [ext_resource path="res://Assets/ui/F.png" type="Texture" id=11]
 [ext_resource path="res://Assets/ui/SHIFT.png" type="Texture" id=12]
+[ext_resource path="res://Assets/ui/E.png" type="Texture" id=13]
 
 [sub_resource type="DynamicFont" id=1]
 size = 38
@@ -45,8 +46,8 @@ __meta__ = {
 }
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Help/CenterContainer2"]
-margin_left = 492.0
-margin_right = 1427.0
+margin_left = 320.0
+margin_right = 1600.0
 margin_bottom = 80.0
 
 [node name="TextureRect" type="TextureRect" parent="Help/CenterContainer2/HBoxContainer"]
@@ -75,29 +76,47 @@ texture = ExtResource( 10 )
 [node name="Label2" type="Label" parent="Help/CenterContainer2/HBoxContainer"]
 margin_left = 327.0
 margin_top = 16.0
-margin_right = 584.0
+margin_right = 593.0
 margin_bottom = 64.0
 custom_fonts/font = SubResource( 2 )
-text = " MOVE SLOW         "
+text = " MOVE SLOW          "
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="TextureRect3" type="TextureRect" parent="Help/CenterContainer2/HBoxContainer"]
-margin_left = 588.0
-margin_right = 668.0
+margin_left = 597.0
+margin_right = 677.0
 margin_bottom = 80.0
 texture = ExtResource( 11 )
 
 [node name="Label3" type="Label" parent="Help/CenterContainer2/HBoxContainer"]
-margin_left = 672.0
+margin_left = 681.0
 margin_top = 16.0
-margin_right = 935.0
+margin_right = 1016.0
 margin_bottom = 64.0
 custom_fonts/font = SubResource( 3 )
-text = " THROW TREAUSRE  "
+text = " THROW TREAUSRE          "
 __meta__ = {
 "_edit_use_anchors_": false
+}
+
+[node name="TextureRect4" type="TextureRect" parent="Help/CenterContainer2/HBoxContainer"]
+margin_left = 1020.0
+margin_right = 1100.0
+margin_bottom = 80.0
+texture = ExtResource( 13 )
+
+[node name="Label4" type="Label" parent="Help/CenterContainer2/HBoxContainer"]
+margin_left = 1104.0
+margin_top = 16.0
+margin_right = 1280.0
+margin_bottom = 64.0
+custom_fonts/font = SubResource( 3 )
+text = " USE TONGUE"
+__meta__ = {
+"_edit_use_anchors_": false,
+"_editor_description_": ""
 }
 
 [node name="ColorRect" parent="." instance=ExtResource( 8 )]

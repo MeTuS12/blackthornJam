@@ -1,4 +1,4 @@
-[gd_scene load_steps=56 format=2]
+[gd_scene load_steps=55 format=2]
 
 [ext_resource path="res://Assets/WallTileset.png" type="Texture" id=1]
 [ext_resource path="res://Nodes/Player.tscn" type="PackedScene" id=2]
@@ -6,7 +6,6 @@
 [ext_resource path="res://Nodes/Stairs.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Nodes/StairsToPlay.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Nodes/PickUps/Bag.tscn" type="PackedScene" id=6]
-[ext_resource path="res://Nodes/UI.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Nodes/PickUps/Ingod3.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Assets/ui/fonts/Spooky Cat Font by Dreamink-7NTypes.otf" type="DynamicFontData" id=9]
 [ext_resource path="res://Area2D2.gd" type="Script" id=10]
@@ -601,10 +600,9 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="UI" parent="." instance=ExtResource( 7 )]
-
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 pause_mode = 2
 stream = ExtResource( 16 )
 autoplay = true
+bus = "Music"
 [connection signal="body_entered" from="Stairs5/Area2D2" to="Stairs5/Area2D2" method="_on_Area2D2_body_entered"]

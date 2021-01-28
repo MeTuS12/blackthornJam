@@ -9,6 +9,7 @@ var fade_flag = true
 var pause_flag = false
 var score_flag = false
 
+
 var easy = false
 var hard = false
 var very_hard = false
@@ -16,6 +17,7 @@ var very_hard = false
 var difficulty = 0
 var min_score = 0
 var actual_score = 0
+
 
 var score_needed = 0
 

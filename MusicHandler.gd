@@ -26,7 +26,7 @@ func set_volume(stream, volume):
 
 func _ready():
 	gameplay_stream.volume_db = NORMAL_VOLUME
-	snakes_stream.volume_db = SHOUT_DOWN_VOLUME
+	snakes_stream.stop()
 
 
 func snake_pursuing():
@@ -46,11 +46,13 @@ func snake_stop():
 
 
 func tortoise_in_range():
-	set_volume(gameplay_stream, SHOUT_DOWN_VOLUME)
+	gameplay_stream.stop()
+#	set_volume(gameplay_stream, SHOUT_DOWN_VOLUME)
 
 
 func tortoise_out_of_range():
-	set_volume(gameplay_stream, NORMAL_VOLUME)
+	gameplay_stream.play()
+#	set_volume(gameplay_stream, NORMAL_VOLUME)
 
 
 func tortoise_awake():
@@ -60,3 +62,4 @@ func tortoise_awake():
 	snakes_stream.volume_db = SHOUT_DOWN_VOLUME
 	
 	tortoise_stream.play()
+

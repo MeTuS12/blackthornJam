@@ -8,19 +8,22 @@
 [node name="MusicHandler" type="Node" groups=[
 "music_handler",
 ]]
+pause_mode = 2
 script = ExtResource( 4 )
 
 [node name="SnakesStream" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 3 )
 volume_db = -80.0
 autoplay = true
+bus = "Music"
 
 [node name="GameplayStream" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 1 )
-volume_db = -5.0
 autoplay = true
+bus = "Music"
 
 [node name="TortoiseStream" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 2 )
+bus = "Music"
 
 [node name="Tween" type="Tween" parent="."]

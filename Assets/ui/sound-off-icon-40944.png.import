@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/klipartz.com.png-b977f94c25acb3dbb8d976a562ac878b.stex"
+path="res://.import/sound-off-icon-40944.png-f25a5c1a1435660aa0266f286d1afd04.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/ui/klipartz.com.png"
-dest_files=[ "res://.import/klipartz.com.png-b977f94c25acb3dbb8d976a562ac878b.stex" ]
+source_file="res://Assets/ui/sound-off-icon-40944.png"
+dest_files=[ "res://.import/sound-off-icon-40944.png-f25a5c1a1435660aa0266f286d1afd04.stex" ]
 
 [params]
 

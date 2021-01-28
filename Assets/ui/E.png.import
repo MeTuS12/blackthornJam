@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/PikPng.com_shift-png_4447153 (1).png-361509d166fde9e2b4b89ef37bcf35db.stex"
+path="res://.import/E.png-81b62a40bfc5133924f6cf43ad59f795.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/ui/PikPng.com_shift-png_4447153 (1).png"
-dest_files=[ "res://.import/PikPng.com_shift-png_4447153 (1).png-361509d166fde9e2b4b89ef37bcf35db.stex" ]
+source_file="res://Assets/ui/E.png"
+dest_files=[ "res://.import/E.png-81b62a40bfc5133924f6cf43ad59f795.stex" ]
 
 [params]
 

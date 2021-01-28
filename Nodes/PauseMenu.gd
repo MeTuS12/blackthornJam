@@ -2,9 +2,16 @@ extends CenterContainer
 
 var player = null
 
+onready var music = $TextureRect/MusicSilder
+onready var sfx = $TextureRect/SFXSlider
+
 func _ready():
 	player = get_tree().get_nodes_in_group('player')
 	player = player[0]
+
+func _physics_process(_delta):
+	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Music"), music.value)
+	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("SFX"), sfx.value)
 
 
 func _on_Resume_pressed():

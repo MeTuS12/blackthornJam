@@ -375,6 +375,7 @@ scale = Vector2( 0.8, 0.8 )
 [node name="Sprite" type="AnimatedSprite" parent="SpriteBase"]
 position = Vector2( -4.24268, -193.747 )
 frames = SubResource( 1 )
+frame = 1
 offset = Vector2( -2.56048, -252.61 )
 flip_h = true
 
@@ -447,10 +448,12 @@ shape = SubResource( 13 )
 
 [node name="DeathSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 8 )
+bus = "Music"
 
 [node name="JumpSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 10 )
 volume_db = -7.704
+bus = "SFX"
 
 [node name="PickArea" type="Area2D" parent="." groups=[
 "pick_area",
