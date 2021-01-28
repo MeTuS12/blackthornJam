@@ -3,7 +3,7 @@ extends KinematicBody2D
 class_name Enemy
 
 
-enum STATE { WAIT, GO_TO_POINT, CHASING, LOST_TARGET }
+enum STATE { WAIT, GO_TO_POINT, CHASING, LOST_TARGET, BERSERK_MODE }
 
 const DISTANCE_RUN = 1500
 const DISTANCE_WALK = 700
@@ -42,7 +42,8 @@ var next_path_point = null
 var navigation = null
 var path = null
 var player = null
-var pickups
+var music_handler = null
+var pickups = []
 
 var view_target = null
 var view_target_pickup = null
@@ -78,6 +79,10 @@ func _ready():
 	assert( player.size() > 0, "No existe ningún objeto Player" )
 	player = player[0]
 	
+	music_handler = get_tree().get_nodes_in_group('music_handler')
+	assert( music_handler.size() > 0, "No existe ningún objeto music_handler" )
+	music_handler = music_handler[0]
+	
 	make_sound_each_random_time()
 	change_state(STATE.WAIT)
 
@@ -100,10 +105,11 @@ func make_sound(sound):
 func change_state(new_state):
 	var new_state_str = STATE.keys()[new_state]
 	
-	state = new_state
-	
-	if has_method(new_state_str + '_init'):
-		call(new_state_str + '_init')
+	if state != new_state:
+		state = new_state
+		
+		if has_method(new_state_str + '_init'):
+			call(new_state_str + '_init')
 
 
 func end_state():
@@ -247,16 +253,19 @@ func can_access(target, path=null):
 	return false
 
 
-func move_in_path(_delta):
+func move_in_path(_delta, only_player=false):
 	var target = null
 	
-	if target_point == null and target_pickup_point == null:
-		return
-	
-	if target_pickup_point != null:
-		target = target_pickup_point
+	if not only_player:
+		if target_point == null and target_pickup_point == null:
+			return
+		
+		if target_pickup_point != null:
+			target = target_pickup_point
+		else:
+			target = target_point
 	else:
-		target = target_point
+		target = player.position
 	
 	path = navigation.get_simple_path(position, target)
 	
@@ -270,6 +279,8 @@ func move_in_path(_delta):
 	if next_path_point == null or position.distance_to(next_path_point) < target_min_distance:
 		if not popPathPoint():
 			if position.distance_to(target_point) < target_min_distance:
+				if state == STATE.CHASING:
+					music_handler.snake_stop()
 				change_state(STATE.WAIT)
 				return
 			else:
@@ -362,7 +373,8 @@ func AWARE(_delta):
 
 
 
-#func CHASING_init():
+func CHASING_init():
+	music_handler.snake_pursuing()
 
 
 
@@ -370,6 +382,16 @@ func CHASING(_delta):
 	path = navigation.get_simple_path(position, target_point)
 	move_in_path(_delta)
 	is_aware = true
+
+
+
+func BERSERK_MODE(_delta):
+	move_in_path(_delta, true)
+	is_aware = true
+
+
+func set_berserk():
+	change_state(STATE.BERSERK_MODE)
 
 
 func _on_ViewZone_body_entered(body):

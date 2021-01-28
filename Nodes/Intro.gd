@@ -17,10 +17,12 @@ var infos = [info0, info1, info2, info3, info4]
 var next_page = 0
 var flag = true
 
+
 onready var space_label = $CanvasLayer/CenterContainer/TextureRect/Label
 onready var texture = $CanvasLayer/CenterContainer/TextureRect
 onready var infoLabel = $CanvasLayer/CenterContainer/TextureRect/Info
 onready var audio = $AudioStreamPlayer
+
 
 func _input(event):
 #	VisualServer.set_default_clear_color(Color("#2a2c30")) cambio el color para probar

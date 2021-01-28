@@ -2,7 +2,7 @@
 
 [ext_resource path="res://Assets/WallTileset.png" type="Texture" id=1]
 [ext_resource path="res://Nodes/Anchor.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Assets/music/Gameplay demo.wav" type="AudioStream" id=3]
+[ext_resource path="res://MusicHandler.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Main.gd" type="Script" id=4]
 [ext_resource path="res://Nodes/Enemy.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Nodes/EnemyWalkPoint.tscn" type="PackedScene" id=6]
@@ -291,7 +291,7 @@ navpoly = SubResource( 2 )
 [node name="YSort" type="YSort" parent="."]
 
 [node name="Player" parent="YSort" instance=ExtResource( 25 )]
-position = Vector2( -7.34082, 1092 )
+position = Vector2( -16.8545, 2024.34 )
 
 [node name="Anchor" parent="YSort" instance=ExtResource( 2 )]
 position = Vector2( 5.06445, 10823.1 )
@@ -563,7 +563,7 @@ position = Vector2( 510.113, 144.782 )
 position = Vector2( 738.655, 89.2808 )
 
 [node name="CandlesFloor12" parent="YSort/Decorations3" instance=ExtResource( 22 )]
-position = Vector2( 2950.56, -1450.03 )
+position = Vector2( 1312.36, 92.9283 )
 
 [node name="CandlesFloor11" parent="YSort/Decorations3" instance=ExtResource( 22 )]
 position = Vector2( 1318.22, -691.87 )
@@ -807,8 +807,6 @@ position = Vector2( 13.6506, 9956.32 )
 [node name="WalkPoint4" parent="." instance=ExtResource( 6 )]
 position = Vector2( 6498.92, 10100.3 )
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 3 )
-autoplay = true
+[node name="MusicHandler" parent="." instance=ExtResource( 3 )]
 
 [editable path="Exit"]
