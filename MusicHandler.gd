@@ -3,6 +3,7 @@ extends Node
 
 
 const NORMAL_VOLUME = -5.0
+const SNAKE_VOLUME = -2.0
 const SHOUT_DOWN_VOLUME = -80.0
 
 
@@ -32,7 +33,7 @@ func snake_pursuing():
 	if not flag_is_awake:
 		n_snakes += 1
 		if snakes_stream.volume_db == SHOUT_DOWN_VOLUME:
-			set_volume(snakes_stream, NORMAL_VOLUME)
+			set_volume(snakes_stream, SNAKE_VOLUME)
 
 
 func snake_stop():
