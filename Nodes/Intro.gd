@@ -30,7 +30,7 @@ func _input(event):
 	if Input.is_action_just_pressed("ui_cancel"):
 # warning-ignore:return_value_discarded
 		get_tree().change_scene("res://MainMenu.tscn")
-	if flag and event is InputEventKey and event.is_pressed():
+	if flag and event is InputEventKey or InputEventMouse and event.is_pressed():
 		space_label.visible = false
 		intro()
 
