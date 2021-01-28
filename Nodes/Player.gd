@@ -29,6 +29,7 @@ var current_value = 0.0
 
 var flag_can_move = true
 var flag_can_die = true
+var tongue_flip = false
 
 
 var current_weight_velocity = 0
@@ -49,7 +50,9 @@ var cameraTween = null
 onready var pickUps = $PickUps
 onready var pickUpSpawn = $PickupSpawn
 onready var animationPlayer = $SpriteBase/Sprite/AnimationPlayer
+onready var tongue_anim = $SpriteBase/Tongue/AnimationPlayer
 onready var sprite = $SpriteBase/Sprite
+onready var tongue_sprite = $SpriteBase/Tongue
 onready var camera = get_node("../Anchor/Camera2D")
 onready var gameover_UI = $UI/GameOverPanel
 onready var pause_menu_UI = $UI/PauseMenu
@@ -86,12 +89,14 @@ func check_input():
 	if Input.is_action_pressed("ui_left"):
 		dir += Vector2(-1, 0)
 		sprite.flip_h = true
+		tongue_flip = false
 		sprite_direction = -1
 		pickUpSpawn.position.x = 10
 	
 	if Input.is_action_pressed("ui_right"):
 		dir += Vector2(1, 0)
 		sprite.flip_h = false
+		tongue_flip = true
 		sprite_direction = 1
 		pickUpSpawn.position.x = -10
 
@@ -123,7 +128,8 @@ func _physics_process(delta):
 	
 	if Input.is_action_just_pressed("ui_pickup_spawn"):
 		throw_pick_up()
-	
+	if Input.is_action_just_pressed("ui_tongue"):
+		use_tongue()
 	
 	direction = check_input()
 	move(delta)
@@ -146,6 +152,20 @@ func update_animation():
 				
 		else:
 			animationPlayer.play("Idle")
+
+func use_tongue():
+	flag_can_move = false
+	sprite.visible = false
+	tongue_sprite.visible = true
+	if !tongue_flip:
+		tongue_anim.play("Tongue_Left")
+	else:
+		tongue_anim.play("Tongue_Right")
+	yield(get_tree().create_timer(.5), "timeout")
+	tongue_sprite.visible = false
+	sprite.visible = true
+	flag_can_move = true
+
 
 
 func update_camera(camera_zoom):
