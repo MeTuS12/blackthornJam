@@ -445,7 +445,7 @@ position = Vector2( 5392.19, 10451 )
 position = Vector2( 4573.91, 10136.8 )
 
 [node name="Library" parent="YSort/Decorations2" instance=ExtResource( 21 )]
-position = Vector2( 3449.05, 6100.79 )
+position = Vector2( 3826.63, 6190.69 )
 
 [node name="Box4" parent="YSort/Decorations2" instance=ExtResource( 13 )]
 position = Vector2( 4820.37, 6951.68 )
@@ -476,7 +476,7 @@ position = Vector2( 510.113, 144.782 )
 position = Vector2( -1020.34, 880.013 )
 
 [node name="Library" parent="YSort/Decorations3" instance=ExtResource( 21 )]
-position = Vector2( 4463.76, 5813.44 )
+position = Vector2( 5087.05, 6442.73 )
 
 [node name="Box4" parent="YSort/Decorations3" instance=ExtResource( 13 )]
 position = Vector2( 4820.37, 6951.68 )

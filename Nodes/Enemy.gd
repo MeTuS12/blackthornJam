@@ -269,7 +269,7 @@ func move_in_path(_delta, only_player=false):
 	
 	path = navigation.get_simple_path(position, target)
 	
-	if not can_access(target, path):
+	if not can_access(target, path) and not only_player:
 		change_state(STATE.WAIT)
 		return
 	
@@ -278,7 +278,7 @@ func move_in_path(_delta, only_player=false):
 	
 	if next_path_point == null or position.distance_to(next_path_point) < target_min_distance:
 		if not popPathPoint():
-			if position.distance_to(target_point) < target_min_distance:
+			if position.distance_to(target_point) < target_min_distance  and not only_player:
 				if state == STATE.CHASING:
 					music_handler.snake_stop()
 				change_state(STATE.WAIT)
