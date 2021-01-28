@@ -5,8 +5,8 @@ class_name Enemy
 
 enum STATE { WAIT, GO_TO_POINT, CHASING, LOST_TARGET, BERSERK_MODE }
 
-const DISTANCE_RUN = 1500
-const DISTANCE_WALK = 700
+const DISTANCE_RUN = 1920
+const DISTANCE_WALK = 1000
 
 var motion = Vector2()
 var direction = Vector2()

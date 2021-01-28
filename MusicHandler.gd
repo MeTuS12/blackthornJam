@@ -20,7 +20,7 @@ var snakes = []
 
 
 func set_volume(stream, volume):
-	tween.interpolate_property(stream, "volume_db", stream.volume_db, volume, 0.4,
+	tween.interpolate_property(stream, "volume_db", stream.volume_db, volume, 1.0,
 		Tween.TRANS_EXPO, Tween.EASE_OUT)
 	tween.start()
 
@@ -41,14 +41,13 @@ func snake_pursuing(snake):
 
 
 func snake_stop(snake):
-	if not flag_is_awake:
-		var i = snakes.find(snake)
-		
-		if i > -1:
-			snakes.remove(i)
-		
-		if snakes.size() == 0:
-			set_volume(snakes_stream, SHOUT_DOWN_VOLUME)
+	var i = snakes.find(snake)
+	
+	if i > -1:
+		snakes.remove(i)
+	
+	if snakes.size() == 0:
+		set_volume(snakes_stream, SHOUT_DOWN_VOLUME)
 
 
 func tortoise_in_range():
