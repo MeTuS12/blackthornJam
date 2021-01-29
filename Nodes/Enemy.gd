@@ -204,7 +204,7 @@ func check_vision(more_range=false):
 						make_sound(soundHissingAttack)
 						flag_hissing_attack = false
 						
-					if state != STATE.CHASING:
+					if state != STATE.CHASING and player.flag_can_die:
 						change_state(STATE.CHASING)
 					return true
 	return false

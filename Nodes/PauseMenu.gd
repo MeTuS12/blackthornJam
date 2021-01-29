@@ -19,6 +19,11 @@ func _physics_process(_delta):
 	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("SFX"), sfx.value)
 	Globals.music_volume = music.value
 	Globals.sfx_volume = sfx.value
+	
+	if Input.is_action_just_pressed("ui_cancel") and player.flag_can_die:
+		visible = !visible
+		get_tree().paused = !get_tree().paused
+
 
 
 func _on_Resume_pressed():

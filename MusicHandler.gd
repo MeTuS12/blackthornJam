@@ -23,21 +23,25 @@ var snakes = []
 
 func set_volume(stream, volume):
 	if not flag_sound_ended:
+		print("SET VOLUME")
+		print(stream.name)
+		print(volume)
 		tween.interpolate_property(stream, "volume_db", stream.volume_db, volume, 1.0,
 			Tween.TRANS_EXPO, Tween.EASE_OUT)
 		tween.start()
-	
+	else:
+		stream.volume_db = SHOUT_DOWN_VOLUME
 
 
 func _ready():
 	gameplay_stream.volume_db = NORMAL_VOLUME
-	snakes_stream.stop()
 
 
 func snake_pursuing(snake):
 	print('Pursuing')
 	print(flag_is_awake)
 	print(flag_snake_is_playing)
+	print(flag_sound_ended)
 	
 	if not flag_is_awake and not flag_snake_is_playing:
 		if not snakes.has(snake):
@@ -75,6 +79,7 @@ func end_all_sound():
 	set_volume(gameplay_stream, SHOUT_DOWN_VOLUME)
 	set_volume(snakes_stream, SHOUT_DOWN_VOLUME)
 	set_volume(tortoise_stream, SHOUT_DOWN_VOLUME)
+	flag_sound_ended = true
 
 
 func tortoise_awake():

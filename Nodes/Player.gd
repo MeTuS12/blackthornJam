@@ -115,10 +115,10 @@ func set_anchor(anchor):
 
 
 func _physics_process(delta):
-	
-	if Input.is_action_just_pressed("ui_cancel") and flag_can_die:
-		pause_menu_UI.visible = true
-		get_tree().paused = true
+#
+#	if Input.is_action_just_pressed("ui_cancel") and flag_can_die:
+#		pause_menu_UI.visible = true
+#		get_tree().paused = true
 	
 	if Input.is_action_pressed("ui_ctrl"):
 		current_max_velocity = current_weight_velocity * silence_penalicer
