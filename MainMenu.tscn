@@ -15,7 +15,7 @@
 [ext_resource path="res://Nodes/PickUps/Crown.tscn" type="PackedScene" id=13]
 [ext_resource path="res://Nodes/PickUps/Ring.tscn" type="PackedScene" id=14]
 [ext_resource path="res://Nodes/PickUps/Cup.tscn" type="PackedScene" id=15]
-[ext_resource path="res://Assets/music/Main Theme. demo.wav" type="AudioStream" id=16]
+[ext_resource path="res://Assets/music/Main Theme Master 1.wav" type="AudioStream" id=16]
 [ext_resource path="res://Nodes/Elements/Box.tscn" type="PackedScene" id=17]
 [ext_resource path="res://Nodes/Elements/Barrel.tscn" type="PackedScene" id=18]
 [ext_resource path="res://Nodes/Elements/Banner2.tscn" type="PackedScene" id=19]
