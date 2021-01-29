@@ -20,15 +20,16 @@ var next_page = 0
 var flag = true
 
 
-onready var space_label = $CanvasLayer/CenterContainer/TextureRect/Label
+onready var space_label = $CanvasLayer/CenterContainer/Control/PressKey
 onready var texture = $CanvasLayer/CenterContainer/TextureRect
-onready var infoLabel = $CanvasLayer/CenterContainer/TextureRect/Info
+onready var infoLabel = $CanvasLayer/CenterContainer/Control/Info
 onready var audio = $AudioStreamPlayer
+onready var title = $CanvasLayer/CenterContainer/Control/Title
 
 
 func _input(event):
 #	VisualServer.set_default_clear_color(Color("#2a2c30")) cambio el color para probar
-	VisualServer.set_default_clear_color(Color("#141617"))
+	VisualServer.set_default_clear_color(Color("#111312"))
 	if Input.is_action_just_pressed("ui_cancel"):
 # warning-ignore:return_value_discarded
 		get_tree().change_scene("res://MainMenu.tscn")
@@ -51,5 +52,8 @@ func intro():
 	yield(get_tree().create_timer(.3), "timeout")
 	space_label.visible = true
 	flag = true
-	texture.texture = papers[next_page]
-	infoLabel.text = infos[next_page]
+	space_label.rect_position.x = -114.345
+	space_label.rect_position.y = -282.354
+	if next_page < papers.size() -1:
+		texture.texture = papers[next_page]
+		infoLabel.text = infos[next_page]
