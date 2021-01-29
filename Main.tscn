@@ -342,13 +342,16 @@ position = Vector2( 16.8207, 10676.4 )
 position = Vector2( 16.821, 10676.4 )
 
 [node name="Enemy" parent="YSort" instance=ExtResource( 5 )]
-position = Vector2( -6015.08, 6590.28 )
+position = Vector2( -4273.02, 7631.93 )
 
 [node name="Enemy2" parent="YSort" instance=ExtResource( 5 )]
 position = Vector2( 4177.11, 5345.44 )
 
+[node name="Enemy4" parent="YSort" instance=ExtResource( 5 )]
+position = Vector2( -3868.7, 5076.05 )
+
 [node name="Enemy3" parent="YSort" instance=ExtResource( 5 )]
-position = Vector2( 82.7055, 6654.21 )
+position = Vector2( 6063.18, 8073 )
 
 [node name="Tortoise" parent="YSort" instance=ExtResource( 30 )]
 position = Vector2( 7.76002, -1086.96 )
@@ -1194,6 +1197,12 @@ position = Vector2( -7407.03, 3712 )
 
 [node name="WalkPoint7" parent="." instance=ExtResource( 6 )]
 position = Vector2( 5000.83, 5283.96 )
+
+[node name="WalkPoint8" parent="." instance=ExtResource( 6 )]
+position = Vector2( 1390.99, 1979.43 )
+
+[node name="WalkPoint9" parent="." instance=ExtResource( 6 )]
+position = Vector2( -1329.93, 1979.43 )
 
 [node name="WalkPoint3" parent="." instance=ExtResource( 6 )]
 position = Vector2( 13.6506, 9956.32 )

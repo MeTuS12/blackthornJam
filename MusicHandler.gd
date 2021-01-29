@@ -60,8 +60,13 @@ func tortoise_out_of_range():
 #	set_volume(gameplay_stream, NORMAL_VOLUME)
 
 
+func end_all_sound():
+	set_volume(gameplay_stream, SHOUT_DOWN_VOLUME)
+	set_volume(snakes_stream, SHOUT_DOWN_VOLUME)
+	set_volume(tortoise_stream, SHOUT_DOWN_VOLUME)
+
+
 func tortoise_awake():
-	print('AWAKE????? MUSIC???')
 	flag_is_awake = true
 	gameplay_stream.volume_db = SHOUT_DOWN_VOLUME
 	snakes_stream.volume_db = SHOUT_DOWN_VOLUME

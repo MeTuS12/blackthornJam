@@ -7,6 +7,8 @@ onready var okay_button = $TextureRect/VBoxContainer/HBoxContainer/VBoxContainer
 onready var congrat = $TextureRect/VBoxContainer/Congratulations
 onready var victory_audio = $VictorySound
 
+var music_handler = null
+
 var player = null
 
 
@@ -15,6 +17,12 @@ func _ready():
 	Globals.connect("score", self, "on_score")
 	player = get_tree().get_nodes_in_group('player')
 	player = player[0]
+	
+	music_handler = get_tree().get_nodes_in_group('music_handler')
+	if music_handler.size() > 0:
+		music_handler = music_handler[0]
+	else:
+		music_handler = null
 
 func on_score():
 	if Globals.actual_score < Globals.min_score:
@@ -23,6 +31,8 @@ func on_score():
 		actual.text = "YOU HAVE STOLEN TREASURES WORTH OF: " + str(Globals.actual_score) + " CROWNS"
 		required.text = "\nYOU NEED TO STEAL TREASURES WORTH OF: " + str(Globals.min_score) + " CROWNS OR MORE TO LEAVE THE CASTLE"
 	else:
+		if music_handler != null:
+			music_handler.end_all_sound()
 		victory_audio.play()
 		congrat.visible = true
 		okay_button.text = "LEAVE"

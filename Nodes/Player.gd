@@ -60,12 +60,19 @@ onready var JumpSound = $JumpSound
 onready var DeathSound = $DeathSound
 
 var camera_anchor = null
+var music_handler = null
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	current_weight_velocity = max_velocity
 	delta_vel = max_velocity - min_velocity
+	
+	music_handler = get_tree().get_nodes_in_group('music_handler')
+	if music_handler.size() > 0:
+		music_handler = music_handler[0]
+	else:
+		music_handler = null
 	
 	if Globals.fade_flag:
 		get_tree().paused = true
@@ -257,6 +264,8 @@ func _on_Hurtbox_area_entered(_area):
 	if flag_can_die:
 		animationPlayer.play("Die")
 		flag_can_die = false
+		if music_handler != null:
+			music_handler.end_all_sound()
 		DeathSound.play()
 		flag_can_move = false
 		yield(get_tree().create_timer(1.0), "timeout")
