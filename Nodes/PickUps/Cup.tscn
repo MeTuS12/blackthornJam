@@ -6,6 +6,7 @@
 [node name="Cup" instance=ExtResource( 1 )]
 value = 4
 weight = 2
+ID = "cup"
 
 [node name="Sprite" parent="." index="0"]
 position = Vector2( -7.85721, -6.17354 )

@@ -6,6 +6,7 @@
 [node name="Ingod2" instance=ExtResource( 1 )]
 value = 2
 weight = 2
+ID = "ingod2"
 
 [node name="Sprite" parent="." index="0"]
 scale = Vector2( 0.865178, 0.865178 )

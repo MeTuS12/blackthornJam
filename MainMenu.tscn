@@ -549,42 +549,7 @@ position = Vector2( 254.712, -557.37 )
 [node name="Player" parent="YSort" instance=ExtResource( 2 )]
 position = Vector2( 254.712, -557.37 )
 
-[node name="Trophies" type="YSort" parent="YSort"]
-script = ExtResource( 26 )
-
-[node name="Coins" parent="YSort/Trophies" instance=ExtResource( 12 )]
-position = Vector2( -1792, -3840 )
-can_be_picked = false
-
-[node name="Bag" parent="YSort/Trophies" instance=ExtResource( 6 )]
-position = Vector2( -768, -3840 )
-can_be_picked = false
-
-[node name="Ingod1" parent="YSort/Trophies" instance=ExtResource( 25 )]
-position = Vector2( -1280, -3840 )
-can_be_picked = false
-
-[node name="Ingod2" parent="YSort/Trophies" instance=ExtResource( 11 )]
-position = Vector2( -256, -3840 )
-can_be_picked = false
-
-[node name="Ingod3" parent="YSort/Trophies" instance=ExtResource( 8 )]
-position = Vector2( 256, -3840 )
-can_be_picked = false
-
-[node name="Cup" parent="YSort/Trophies" instance=ExtResource( 15 )]
-position = Vector2( 768, -3840 )
-can_be_picked = false
-
-[node name="Ring" parent="YSort/Trophies" instance=ExtResource( 14 )]
-position = Vector2( 1280, -3840 )
-can_be_picked = false
-
-[node name="Crown" parent="YSort/Trophies" instance=ExtResource( 13 )]
-position = Vector2( 1792, -3840 )
-can_be_picked = false
-
-[node name="Trophy" type="Label" parent="YSort/Trophies"]
+[node name="Trophy" type="Label" parent="YSort"]
 margin_left = -1861.59
 margin_top = -3986.0
 margin_right = -1713.59
@@ -597,7 +562,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Trophy9" type="Label" parent="YSort/Trophies"]
+[node name="Trophy9" type="Label" parent="YSort"]
 margin_left = -1864.96
 margin_top = -3770.73
 margin_right = -1716.96
@@ -611,7 +576,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Trophy10" type="Label" parent="YSort/Trophies"]
+[node name="Trophy10" type="Label" parent="YSort"]
 margin_left = -843.715
 margin_top = -3766.73
 margin_right = -695.715
@@ -625,7 +590,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Trophy11" type="Label" parent="YSort/Trophies"]
+[node name="Trophy11" type="Label" parent="YSort"]
 margin_left = -1356.0
 margin_top = -3772.73
 margin_right = -1208.0
@@ -639,7 +604,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Trophy12" type="Label" parent="YSort/Trophies"]
+[node name="Trophy12" type="Label" parent="YSort"]
 margin_left = -334.525
 margin_top = -3770.73
 margin_right = -186.525
@@ -653,7 +618,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Trophy13" type="Label" parent="YSort/Trophies"]
+[node name="Trophy13" type="Label" parent="YSort"]
 margin_left = 180.103
 margin_top = -3770.73
 margin_right = 328.103
@@ -667,7 +632,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Trophy14" type="Label" parent="YSort/Trophies"]
+[node name="Trophy14" type="Label" parent="YSort"]
 margin_left = 694.732
 margin_top = -3770.73
 margin_right = 842.732
@@ -681,7 +646,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Trophy15" type="Label" parent="YSort/Trophies"]
+[node name="Trophy15" type="Label" parent="YSort"]
 margin_left = 1204.32
 margin_top = -3770.73
 margin_right = 1352.32
@@ -695,7 +660,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Trophy16" type="Label" parent="YSort/Trophies"]
+[node name="Trophy16" type="Label" parent="YSort"]
 margin_left = 1713.9
 margin_top = -3770.73
 margin_right = 1861.9
@@ -709,7 +674,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Trophy2" type="Label" parent="YSort/Trophies"]
+[node name="Trophy2" type="Label" parent="YSort"]
 margin_left = -870.054
 margin_top = -3982.7
 margin_right = -645.054
@@ -722,7 +687,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Trophy3" type="Label" parent="YSort/Trophies"]
+[node name="Trophy3" type="Label" parent="YSort"]
 margin_left = -1351.48
 margin_top = -3982.0
 margin_right = -1203.48
@@ -735,7 +700,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Trophy4" type="Label" parent="YSort/Trophies"]
+[node name="Trophy4" type="Label" parent="YSort"]
 margin_left = -352.532
 margin_top = -3986.0
 margin_right = -152.532
@@ -748,7 +713,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Trophy5" type="Label" parent="YSort/Trophies"]
+[node name="Trophy5" type="Label" parent="YSort"]
 margin_left = 150.489
 margin_top = -3986.0
 margin_right = 370.489
@@ -761,7 +726,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Trophy6" type="Label" parent="YSort/Trophies"]
+[node name="Trophy6" type="Label" parent="YSort"]
 margin_left = 698.407
 margin_top = -3986.0
 margin_right = 846.407
@@ -774,7 +739,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Trophy7" type="Label" parent="YSort/Trophies"]
+[node name="Trophy7" type="Label" parent="YSort"]
 margin_left = 1210.41
 margin_top = -3986.0
 margin_right = 1358.41
@@ -787,7 +752,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Trophy8" type="Label" parent="YSort/Trophies"]
+[node name="Trophy8" type="Label" parent="YSort"]
 margin_left = 1722.41
 margin_top = -3986.0
 margin_right = 1870.41
@@ -799,6 +764,41 @@ align = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Trophies" type="YSort" parent="YSort"]
+script = ExtResource( 26 )
+
+[node name="coins" parent="YSort/Trophies" instance=ExtResource( 12 )]
+position = Vector2( -1792, -3840 )
+can_be_picked = false
+
+[node name="bag" parent="YSort/Trophies" instance=ExtResource( 6 )]
+position = Vector2( -768, -3840 )
+can_be_picked = false
+
+[node name="ingod1" parent="YSort/Trophies" instance=ExtResource( 25 )]
+position = Vector2( -1280, -3840 )
+can_be_picked = false
+
+[node name="ingod2" parent="YSort/Trophies" instance=ExtResource( 11 )]
+position = Vector2( -256, -3840 )
+can_be_picked = false
+
+[node name="ingod3" parent="YSort/Trophies" instance=ExtResource( 8 )]
+position = Vector2( 256, -3840 )
+can_be_picked = false
+
+[node name="cup" parent="YSort/Trophies" instance=ExtResource( 15 )]
+position = Vector2( 768, -3840 )
+can_be_picked = false
+
+[node name="ring" parent="YSort/Trophies" instance=ExtResource( 14 )]
+position = Vector2( 1280, -3840 )
+can_be_picked = false
+
+[node name="crown" parent="YSort/Trophies" instance=ExtResource( 13 )]
+position = Vector2( 1792, -3840 )
+can_be_picked = false
 
 [node name="CreditsLabels" type="Node2D" parent="."]
 

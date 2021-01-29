@@ -5,6 +5,7 @@
 
 [node name="Crown" instance=ExtResource( 1 )]
 value = 5
+ID = "crown"
 
 [node name="Sprite" parent="." index="0"]
 scale = Vector2( 0.649169, 0.649169 )

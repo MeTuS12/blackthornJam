@@ -906,6 +906,12 @@ position = Vector2( 1172.13, 8306.08 )
 [node name="Coins2" parent="YSort/Treasures" instance=ExtResource( 12 )]
 position = Vector2( 60.2892, 9788.54 )
 
+[node name="Coins6" parent="YSort/Treasures" instance=ExtResource( 12 )]
+position = Vector2( -75.7822, 9775.94 )
+
+[node name="Coins7" parent="YSort/Treasures" instance=ExtResource( 12 )]
+position = Vector2( -156.417, 9879.25 )
+
 [node name="Coins3" parent="YSort/Treasures" instance=ExtResource( 12 )]
 position = Vector2( 920.144, 7580.37 )
 

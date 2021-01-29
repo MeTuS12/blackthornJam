@@ -6,6 +6,7 @@ export var throw_displacement = Vector2(200, 130)
 
 export var value = 2
 export var weight = 1
+export var ID = ""
 
 var player_flag = true
 var enemy_flag = false

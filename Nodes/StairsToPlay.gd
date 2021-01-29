@@ -21,13 +21,13 @@ func _ready():
 	
 	if easy:
 #		easy_score = save_data.easy
-		subtext_label.text = "MAX SCORE: " + str(save_data.easy)
+		subtext_label.text = "MAX SCORE: " + str(save_data[0].easy)
 	if hard:
 #		hard_score = save_data.hard
-		subtext_label.text = "MAX SCORE: " + str(save_data.hard)
+		subtext_label.text = "MAX SCORE: " + str(save_data[0].hard)
 	if very_hard:
 #		very_score = save_data.very
-		subtext_label.text = "MAX SCORE: " + str(save_data.very)
+		subtext_label.text = "MAX SCORE: " + str(save_data[0].very)
 	
 	
 	if Globals.easy:

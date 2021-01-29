@@ -420,7 +420,9 @@ position = Vector2( -3.3118, 25.1907 )
 rotation = -1.55738
 shape = SubResource( 12 )
 
-[node name="PickUps" type="Node" parent="."]
+[node name="PickUps" type="Node" parent="." groups=[
+"pickups",
+]]
 
 [node name="Light2D" type="Light2D" parent="."]
 position = Vector2( 5.03973, 14.199 )

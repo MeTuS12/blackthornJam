@@ -5,6 +5,7 @@
 
 [node name="Ring" instance=ExtResource( 1 )]
 value = 3
+ID = "ring"
 
 [node name="Sprite" parent="." index="0"]
 position = Vector2( -1.87288, 5.24408 )

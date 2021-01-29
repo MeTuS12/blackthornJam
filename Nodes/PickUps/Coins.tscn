@@ -4,6 +4,7 @@
 [ext_resource path="res://Assets/treasure/01_Monedas.png" type="Texture" id=2]
 
 [node name="Coins" instance=ExtResource( 1 )]
+ID = "coins"
 
 [node name="Sprite" parent="." index="0"]
 position = Vector2( -4.12035, -15.3576 )
