@@ -10,6 +10,7 @@ export var weight = 1
 var player_flag = true
 var enemy_flag = false
 
+export var can_be_picked = true
 
 var motion = Vector2()
 var acc = Vector2()
@@ -101,7 +102,7 @@ func move(delta):
 
 
 func _on_Area2D_body_entered(body):
-	if player_flag:
+	if player_flag and can_be_picked:
 		if body.name == "Player":
 			player_flag = false
 			$PickUpSound.play()
@@ -111,5 +112,5 @@ func _on_Area2D_body_entered(body):
 
 
 func _on_Area2D_area_entered(area):
-	if player_flag and area.is_in_group("pick_area"):
+	if player_flag and can_be_picked and area.is_in_group("pick_area"):
 		_on_Area2D_body_entered(area.get_parent())
