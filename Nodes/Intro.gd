@@ -9,11 +9,13 @@ var info2 = "BEWARE OF THE GUARDS,\nTHEY WILL TRY TO CATCH YOU"
 var paper3 = load("res://Assets/intro/paper3.png")
 var info3 = "THE MORE WEIGHT YOU CARRY,\nTHE SLOWER YOU MOVE"
 var paper4 = load("res://Assets/intro/paper4.png")
-var info4 = "ONCE YOU HAVE THE TREASURE,\nLEAVE WITHOUT BEING CAUGHT"
+var info4 = "YOU CAN THROW YOUR TREASURE,\nBUT THE GUARDS WILL TAKE IT"
+var paper5 = load("res://Assets/intro/paper5.png")
+var info5 = "ONCE YOU HAVE THE TREASURE,\nLEAVE WITHOUT BEING CAUGHT"
 
 
-var papers = [paper0, paper1, paper2, paper3, paper4]
-var infos = [info0, info1, info2, info3, info4]
+var papers = [paper0, paper1, paper2, paper3, paper4, paper5]
+var infos = [info0, info1, info2, info3, info4, info5]
 var next_page = 0
 var flag = true
 
