@@ -5,6 +5,7 @@ onready var required = $TextureRect/VBoxContainer/RequiredScore
 onready var continue_label = $TextureRect/VBoxContainer/Continue
 onready var okay_button = $TextureRect/VBoxContainer/HBoxContainer/VBoxContainer/Okay
 onready var congrat = $TextureRect/VBoxContainer/Congratulations
+onready var victory_audio = $AudioStreamPlayer
 
 var player = null
 
@@ -22,6 +23,7 @@ func on_score():
 		actual.text = "YOU HAVE STOLEN TREASURES WORTH OF: " + str(Globals.actual_score) + " CROWNS"
 		required.text = "\nYOU NEED TO STEAL TREASURES WORTH OF: " + str(Globals.min_score) + " CROWNS OR MORE TO LEAVE THE CASTLE"
 	else:
+		victory_audio.play()
 		congrat.visible = true
 		okay_button.text = "LEAVE"
 		continue_label.visible = true
