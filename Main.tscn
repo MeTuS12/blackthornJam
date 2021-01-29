@@ -533,6 +533,24 @@ position = Vector2( -980.781, 1678.67 )
 [node name="CandlesWall7" parent="YSort/Decorations" instance=ExtResource( 14 )]
 position = Vector2( -1469.87, 1679.53 )
 
+[node name="CandlesWall16" parent="YSort/Decorations" instance=ExtResource( 14 )]
+position = Vector2( -2009.15, 2446.05 )
+
+[node name="CandlesWall17" parent="YSort/Decorations" instance=ExtResource( 14 )]
+position = Vector2( -2836.75, 2446.05 )
+
+[node name="CandlesWall18" parent="YSort/Decorations" instance=ExtResource( 14 )]
+position = Vector2( -3568.24, 2446.05 )
+
+[node name="CandlesWall19" parent="YSort/Decorations" instance=ExtResource( 14 )]
+position = Vector2( 3489.48, 2446.05 )
+
+[node name="CandlesWall20" parent="YSort/Decorations" instance=ExtResource( 14 )]
+position = Vector2( 2661.88, 2446.05 )
+
+[node name="CandlesWall21" parent="YSort/Decorations" instance=ExtResource( 14 )]
+position = Vector2( 1930.39, 2446.05 )
+
 [node name="CandlesWall8" parent="YSort/Decorations" instance=ExtResource( 14 )]
 position = Vector2( -527.472, 1679.53 )
 
@@ -818,6 +836,42 @@ position = Vector2( -3531.69, 12186.3 )
 [node name="CandlesFloor16" parent="YSort/Decorations3" instance=ExtResource( 22 )]
 position = Vector2( -6684.02, 2602 )
 
+[node name="CandlesFloor21" parent="YSort/Decorations3" instance=ExtResource( 22 )]
+position = Vector2( -2436.02, 3058 )
+
+[node name="CandlesFloor22" parent="YSort/Decorations3" instance=ExtResource( 22 )]
+position = Vector2( -2492.02, 3650 )
+
+[node name="CandlesFloor23" parent="YSort/Decorations3" instance=ExtResource( 22 )]
+position = Vector2( -2396.02, 4330 )
+
+[node name="CandlesFloor27" parent="YSort/Decorations3" instance=ExtResource( 22 )]
+position = Vector2( 581.754, 4368.05 )
+
+[node name="CandlesFloor28" parent="YSort/Decorations3" instance=ExtResource( 22 )]
+position = Vector2( 1789.99, 4777.14 )
+
+[node name="CandlesFloor29" parent="YSort/Decorations3" instance=ExtResource( 22 )]
+position = Vector2( 2826.98, 4805.68 )
+
+[node name="CandlesFloor30" parent="YSort/Decorations3" instance=ExtResource( 22 )]
+position = Vector2( -911.89, 4434.65 )
+
+[node name="CandlesFloor31" parent="YSort/Decorations3" instance=ExtResource( 22 )]
+position = Vector2( -1359.03, 3102.74 )
+
+[node name="CandlesFloor32" parent="YSort/Decorations3" instance=ExtResource( 22 )]
+position = Vector2( 1052.4, 3118.48 )
+
+[node name="CandlesFloor24" parent="YSort/Decorations3" instance=ExtResource( 22 )]
+position = Vector2( -3244.02, 2978 )
+
+[node name="CandlesFloor25" parent="YSort/Decorations3" instance=ExtResource( 22 )]
+position = Vector2( -3228.02, 3626 )
+
+[node name="CandlesFloor26" parent="YSort/Decorations3" instance=ExtResource( 22 )]
+position = Vector2( -3212.02, 4194 )
+
 [node name="Barrel9" parent="YSort/Decorations3" instance=ExtResource( 17 )]
 position = Vector2( 989.076, 3483.07 )
 
@@ -904,13 +958,13 @@ position = Vector2( -5000.26, 846.273 )
 position = Vector2( 1172.13, 8306.08 )
 
 [node name="Coins2" parent="YSort/Treasures" instance=ExtResource( 12 )]
-position = Vector2( 60.2892, 9788.54 )
+position = Vector2( -5873.08, 13017.6 )
 
 [node name="Coins6" parent="YSort/Treasures" instance=ExtResource( 12 )]
-position = Vector2( -75.7822, 9775.94 )
+position = Vector2( -6009.15, 13005 )
 
 [node name="Coins7" parent="YSort/Treasures" instance=ExtResource( 12 )]
-position = Vector2( -156.417, 9879.25 )
+position = Vector2( -6089.78, 13108.3 )
 
 [node name="Coins3" parent="YSort/Treasures" instance=ExtResource( 12 )]
 position = Vector2( 920.144, 7580.37 )

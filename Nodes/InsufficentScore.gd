@@ -5,7 +5,7 @@ onready var required = $TextureRect/VBoxContainer/RequiredScore
 onready var continue_label = $TextureRect/VBoxContainer/Continue
 onready var okay_button = $TextureRect/VBoxContainer/HBoxContainer/VBoxContainer/Okay
 onready var congrat = $TextureRect/VBoxContainer/Congratulations
-onready var victory_audio = $AudioStreamPlayer
+onready var victory_audio = $VictorySound
 
 var player = null
 

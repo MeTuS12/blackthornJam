@@ -4,7 +4,7 @@
 [ext_resource path="res://Nodes/InsufficentScore.gd" type="Script" id=2]
 [ext_resource path="res://Assets/ui/theme.tres" type="Theme" id=3]
 [ext_resource path="res://Nodes/VBoxContainer.gd" type="Script" id=4]
-[ext_resource path="res://Assets/sound/Victoria demo.wav" type="AudioStream" id=5]
+[ext_resource path="res://Assets/sound/Victoria master.wav" type="AudioStream" id=5]
 
 [node name="InsufficentScore" type="CenterContainer"]
 pause_mode = 2
@@ -115,7 +115,7 @@ margin_right = 115.0
 margin_bottom = 84.0
 text = " CONTINUE "
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+[node name="VictorySound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 5 )
 volume_db = -5.0
 bus = "SFX"
