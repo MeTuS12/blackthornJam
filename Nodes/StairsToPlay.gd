@@ -19,7 +19,6 @@ func _ready():
 	new_score = Globals.actual_score
 	var save_data = SaveAndLoad.load_data_from_file()
 	
-	
 	if easy:
 #		easy_score = save_data.easy
 		subtext_label.text = "MAX SCORE: " + str(save_data.easy)

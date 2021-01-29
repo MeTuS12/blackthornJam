@@ -2,7 +2,11 @@ extends Node
 
 const SAVE_DATA_PATH = "user://save_data.json"
 
-var default_save_data = {"easy" : 0, "hard" : 0, "very" : 0}
+var default_save_data = {"easy" : 0, "hard" : 0, "very" : 0, "coins" : false, "bag" : false, "ingod1" : false,
+"ingod2" : false, "ingod3" : false, "cup" : false, "ring" : false, "crown" : false}
+
+#var trophies = {"coins" : false, "bag" : false, "ingod1" : false,
+#"ingod2" : false, "ingod3" : false, "cup" : false, "ring" : false, "crown" : false}
 
 func _ready():
 	pass
