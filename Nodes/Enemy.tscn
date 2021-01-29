@@ -93,11 +93,10 @@ anims/Idle = SubResource( 3 )
 anims/Walk = SubResource( 4 )
 
 [node name="ViewZone" type="Area2D" parent="."]
-visible = false
 collision_layer = 0
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ViewZone"]
-polygon = PoolVector2Array( -5.04468, -96.3477, 233.614, -884.11, 712.491, -990.056, 1695.67, -651.028, 1907.56, 10.0767, 1517.68, 662.706, 648.923, 802.555, 301.419, 734.75 )
+polygon = PoolVector2Array( -5.04468, -96.3477, -359.693, -939.203, 627.725, -1121.43, 1771.94, -862.922, 2102.5, -6.87732, 1750.75, 866.119, 644.677, 1099.2, -308.839, 781.362 )
 
 [node name="Light2D" type="Light2D" parent="."]
 visible = false

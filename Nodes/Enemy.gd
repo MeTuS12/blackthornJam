@@ -5,6 +5,7 @@ class_name Enemy
 
 enum STATE { WAIT, GO_TO_POINT, CHASING, LOST_TARGET, BERSERK_MODE }
 
+const RESET_CHASE_DISTANCE = 1920
 const DISTANCE_RUN = 1920
 const DISTANCE_WALK = 1000
 
@@ -52,7 +53,7 @@ var view_target_pickup = null
 #var target_min_distance_color = Color(.947,.91,.247,.1)
 
 var state = null
-
+var flag_chasing_player = false
 
 onready var sprite = $Sprite
 onready var animationPlayer = $Sprite/AnimationPlayer
@@ -108,7 +109,7 @@ func change_state(new_state):
 	var new_state_str = STATE.keys()[new_state]
 	
 	if state != new_state:
-#		print(name + ": " + new_state_str)
+		print(name + ": " + new_state_str)
 		
 		state = new_state
 		
@@ -153,7 +154,7 @@ func check_sound():
 		if player.is_walking():
 			if can_access(player.position):
 				update_target(player.position)
-				if state != STATE.CHASING:
+				if state != STATE.CHASING and player.flag_can_die:
 					change_state(STATE.CHASING)
 					make_sound(soundRattle)
 	
@@ -161,7 +162,7 @@ func check_sound():
 		if player.is_running():
 			if can_access(player.position):
 				update_target(player.position)
-				if state != STATE.CHASING:
+				if state != STATE.CHASING and player.flag_can_die:
 					change_state(STATE.CHASING)
 					make_sound(soundRattle)
 
@@ -237,7 +238,9 @@ func WAIT_end():
 func GO_TO_POINT_init():
 	walk_points.sort_custom(self, "closest_compare")
 	randomize()
-	update_target( walk_points[ randi() % (walk_points.size() - 1) + 1 ].position )
+	var point = walk_points[ randi() % (walk_points.size() - 1) + 1 ]
+	update_target( point.position )
+	print(point)
 
 
 func closest_compare(a, b):
@@ -276,6 +279,7 @@ func move_in_path(_delta, only_player=false):
 	path = navigation.get_simple_path(position, target)
 	
 	if not can_access(target, path) and not only_player:
+		print('A')
 		change_state(STATE.WAIT)
 		return
 	
@@ -287,6 +291,8 @@ func move_in_path(_delta, only_player=false):
 			if position.distance_to(target_point) < target_min_distance  and not only_player:
 				if state == STATE.CHASING:
 					music_handler.snake_stop(self)
+					flag_chasing_player = false
+				print('B')
 				change_state(STATE.WAIT)
 				return
 			else:
