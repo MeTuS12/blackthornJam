@@ -54,6 +54,6 @@ func intro():
 	flag = true
 	space_label.rect_position.x = -114.345
 	space_label.rect_position.y = -282.354
-	if next_page < papers.size() -1:
+	if next_page < papers.size():
 		texture.texture = papers[next_page]
 		infoLabel.text = infos[next_page]

@@ -5,21 +5,20 @@
 [ext_resource path="res://Assets/sound/page_flip.wav" type="AudioStream" id=3]
 [ext_resource path="res://Assets/intro/portada.png" type="Texture" id=4]
 
-[sub_resource type="DynamicFont" id=3]
+[sub_resource type="DynamicFont" id=1]
 size = 44
 font_data = ExtResource( 1 )
 
-[sub_resource type="DynamicFont" id=4]
+[sub_resource type="DynamicFont" id=2]
 size = 98
 outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 1 )
 
-[sub_resource type="DynamicFont" id=1]
+[sub_resource type="DynamicFont" id=3]
 size = 38
 font_data = ExtResource( 1 )
 
-[sub_resource type="Animation" id=2]
-resource_name = "Idle"
+[sub_resource type="Animation" id=4]
 loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:rect_scale")
@@ -78,7 +77,7 @@ margin_left = 615.363
 margin_top = 469.089
 margin_right = 935.363
 margin_bottom = 524.089
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = SubResource( 1 )
 text = "PRESS [ESC] TO SKIP"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -89,7 +88,7 @@ margin_left = -183.949
 margin_top = 304.901
 margin_right = 178.051
 margin_bottom = 549.901
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0.0666667, 0.0745098, 0.0705882, 1 )
 text = "FROGGY'S 
 QUEST"
@@ -106,7 +105,7 @@ margin_right = 105.9
 margin_bottom = -458.091
 rect_scale = Vector2( 0.84, 0.84 )
 rect_pivot_offset = Vector2( 117.411, 29.129 )
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = SubResource( 3 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 text = "PRESS ANY KEY"
 align = 1
@@ -117,7 +116,7 @@ __meta__ = {
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/CenterContainer/Control/PressKey"]
 autoplay = "Idle"
-anims/Idle = SubResource( 2 )
+anims/Idle = SubResource( 4 )
 
 [node name="Node" type="Node" parent="CanvasLayer/CenterContainer/Control/PressKey"]
 
@@ -126,7 +125,7 @@ margin_left = -234.566
 margin_top = 106.541
 margin_right = 243.434
 margin_bottom = 211.541
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = SubResource( 3 )
 custom_colors/font_color = Color( 0.0784314, 0.0862745, 0.0901961, 1 )
 align = 1
 valign = 1
