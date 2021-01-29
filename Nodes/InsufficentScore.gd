@@ -7,7 +7,6 @@ onready var okay_button = $TextureRect/VBoxContainer/HBoxContainer/VBoxContainer
 onready var congrat = $TextureRect/VBoxContainer/Congratulations
 
 var player = null
-var pickups = null
 
 
 func _ready():
@@ -15,7 +14,6 @@ func _ready():
 	Globals.connect("score", self, "on_score")
 	player = get_tree().get_nodes_in_group('player')
 	player = player[0]
-	pickups = get_tree().get_nodes_in_group('pickups')
 
 func on_score():
 	if Globals.actual_score < Globals.min_score:
@@ -55,6 +53,7 @@ func _on_Left_pressed():
 
 func update_score():
 	var save_data = SaveAndLoad.load_data_from_file()
+	var pickups = player.get_pickups()
 	
 	if Globals.easy:
 		if Globals.actual_score > save_data[0].easy:
@@ -69,3 +68,10 @@ func update_score():
 			save_data[0].very = Globals.actual_score
 			SaveAndLoad.save_data_to_file(save_data)
 	
+	for p in pickups:
+		if save_data[1].keys().has(p.ID):
+			if save_data[1][p.ID] == false:
+				save_data[1][p.ID] = true
+				SaveAndLoad.save_data_to_file(save_data)
+			else:
+				return

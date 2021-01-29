@@ -225,6 +225,9 @@ func throw_pick_up():
 		emit_signal("treasure_changed", current_value)
 		emit_signal("weight_changed", current_weight)
 
+func get_pickups():
+	return pickUps.get_children()
+
 
 func transported():
 	flag_can_move = false

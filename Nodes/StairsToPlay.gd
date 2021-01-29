@@ -32,18 +32,18 @@ func _ready():
 	
 	if Globals.easy:
 		if easy and Globals.score_flag:
-			if new_score > save_data.easy:
-				save_data.easy = new_score
+			if new_score > save_data[0].easy:
+				save_data[0].easy = new_score
 				subtext_label.text = "MAX SCORE: " + str(new_score)
 	if Globals.hard:
 		if hard and Globals.score_flag:
-			if new_score > save_data.hard:
-				save_data.hard = new_score
+			if new_score > save_data[0].hard:
+				save_data[0].hard = new_score
 				subtext_label.text = "MAX SCORE: " + str(new_score)
 	if Globals.very_hard:
-		if very_hard and save_data.very:
-			if new_score > save_data.very:
-				save_data.very = new_score
+		if very_hard and save_data[0].very:
+			if new_score > save_data[0].very:
+				save_data[0].very = new_score
 				subtext_label.text = "MAX SCORE: " + str(new_score)
 
 
