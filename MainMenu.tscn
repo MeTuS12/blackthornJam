@@ -15,7 +15,7 @@
 [ext_resource path="res://Nodes/PickUps/Crown.tscn" type="PackedScene" id=13]
 [ext_resource path="res://Nodes/PickUps/Ring.tscn" type="PackedScene" id=14]
 [ext_resource path="res://Nodes/PickUps/Cup.tscn" type="PackedScene" id=15]
-[ext_resource path="res://Assets/music/Main Theme. demo.wav" type="AudioStream" id=16]
+[ext_resource path="res://Assets/music/Main Theme Master 1.wav" type="AudioStream" id=16]
 [ext_resource path="res://Nodes/Elements/Box.tscn" type="PackedScene" id=17]
 [ext_resource path="res://Nodes/Elements/Barrel.tscn" type="PackedScene" id=18]
 [ext_resource path="res://Nodes/Elements/Banner2.tscn" type="PackedScene" id=19]
@@ -210,15 +210,15 @@ points = PoolVector2Array( 0, 0, 256, 0, 256, 256, 0, 256 )
 } ]
 0/z_index = 0
 
-[sub_resource type="DynamicFont" id=32]
+[sub_resource type="DynamicFont" id=30]
 size = 30
 font_data = ExtResource( 9 )
 
-[sub_resource type="DynamicFont" id=30]
+[sub_resource type="DynamicFont" id=31]
 size = 60
 font_data = ExtResource( 9 )
 
-[sub_resource type="DynamicFont" id=31]
+[sub_resource type="DynamicFont" id=32]
 size = 44
 font_data = ExtResource( 9 )
 
@@ -600,7 +600,7 @@ margin_left = -1864.96
 margin_top = -3770.73
 margin_right = -1716.96
 margin_bottom = -3691.73
-custom_fonts/font = SubResource( 32 )
+custom_fonts/font = SubResource( 30 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 text = "1 SCORE
 1 WEIGHT"
@@ -614,7 +614,7 @@ margin_left = -843.715
 margin_top = -3766.73
 margin_right = -695.715
 margin_bottom = -3687.73
-custom_fonts/font = SubResource( 32 )
+custom_fonts/font = SubResource( 30 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 text = "2 SCORE
 2 WEIGHT"
@@ -628,7 +628,7 @@ margin_left = -1356.0
 margin_top = -3772.73
 margin_right = -1208.0
 margin_bottom = -3693.73
-custom_fonts/font = SubResource( 32 )
+custom_fonts/font = SubResource( 30 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 text = "1 SCORE
 1 WEIGHT"
@@ -642,7 +642,7 @@ margin_left = -334.525
 margin_top = -3770.73
 margin_right = -186.525
 margin_bottom = -3691.73
-custom_fonts/font = SubResource( 32 )
+custom_fonts/font = SubResource( 30 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 text = "2 SCORE
 2 WEIGHT"
@@ -656,7 +656,7 @@ margin_left = 180.103
 margin_top = -3770.73
 margin_right = 328.103
 margin_bottom = -3691.73
-custom_fonts/font = SubResource( 32 )
+custom_fonts/font = SubResource( 30 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 text = "3 SCORE
 3 WEIGHT"
@@ -670,7 +670,7 @@ margin_left = 694.732
 margin_top = -3770.73
 margin_right = 842.732
 margin_bottom = -3691.73
-custom_fonts/font = SubResource( 32 )
+custom_fonts/font = SubResource( 30 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 text = "3 SCORE
 2 WEIGHT"
@@ -684,7 +684,7 @@ margin_left = 1204.32
 margin_top = -3770.73
 margin_right = 1352.32
 margin_bottom = -3691.73
-custom_fonts/font = SubResource( 32 )
+custom_fonts/font = SubResource( 30 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 text = "3 SCORE
 1 WEIGHT"
@@ -698,7 +698,7 @@ margin_left = 1713.9
 margin_top = -3770.73
 margin_right = 1861.9
 margin_bottom = -3691.73
-custom_fonts/font = SubResource( 32 )
+custom_fonts/font = SubResource( 30 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 text = "5 SCORE
 1 WEIGHT"
@@ -838,7 +838,7 @@ margin_left = 3302.98
 margin_top = -983.701
 margin_right = 3612.98
 margin_bottom = -908.701
-custom_fonts/font = SubResource( 30 )
+custom_fonts/font = SubResource( 31 )
 text = "ALBERTO RAYA"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -849,7 +849,7 @@ margin_left = 5799.14
 margin_top = -971.714
 margin_right = 6234.14
 margin_bottom = -896.714
-custom_fonts/font = SubResource( 30 )
+custom_fonts/font = SubResource( 31 )
 text = "@sergio_woodprint"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -871,7 +871,7 @@ margin_left = 4429.05
 margin_top = -2563.68
 margin_right = 5056.05
 margin_bottom = -2488.68
-custom_fonts/font = SubResource( 30 )
+custom_fonts/font = SubResource( 31 )
 text = "DAVID LLEDÓ & DAVID CHICO"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -882,7 +882,7 @@ margin_left = 4776.89
 margin_top = -2462.35
 margin_right = 5076.89
 margin_bottom = -2387.35
-custom_fonts/font = SubResource( 30 )
+custom_fonts/font = SubResource( 31 )
 text = "@_davidchico"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -904,7 +904,7 @@ margin_left = 99.5466
 margin_top = -1113.3
 margin_right = 404.547
 margin_bottom = -1058.3
-custom_fonts/font = SubResource( 31 )
+custom_fonts/font = SubResource( 32 )
 text = "THE THIEVES GUILD"
 __meta__ = {
 "_edit_use_anchors_": false
